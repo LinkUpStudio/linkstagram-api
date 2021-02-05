@@ -25,6 +25,5 @@ RSpec.describe User, type: :model do
     it 'is invalid without profile photo' do
       expect(build(:user, profile_photo: nil)).not_to be_valid
     end
-
   end
 end
