@@ -11,7 +11,6 @@ class RodauthApp < Rodauth::Rails::App
     # ==> General
     # The secret key used for hashing public-facing tokens for various features.
     # Defaults to Rails `secret_key_base`, but you can use your own secret key.
-    # hmac_secret "ba552239d73ac0acedc815f31b188e3327bc09cc7018346588bbb3556f153342c60e0b7180e88a1bc1893a644403ce4b841c282dc0e30086eb3d833af263175f"
 
     # Specify the controller used for view rendering and CSRF verification.
     rails_controller { RodauthController }
@@ -43,7 +42,7 @@ class RodauthApp < Rodauth::Rails::App
 
     # ==> JWT
     # Set JWT secret, which is used to cryptographically protect the token.
-    jwt_secret '850cd3ba7f00ca50f54ef51623fd69c2a94f92ba788ca685828a39985f651c99492cf04c9f76a4ba0be37536fb2c4f46d3b6800fff1817745455f1a2e8407efc'
+    jwt_secret Rails.application.credentials.jwt_secret
 
     # Don't require login confirmation param.
     require_login_confirmation? false
