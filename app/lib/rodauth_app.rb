@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RodauthApp < Rodauth::Rails::App
   configure json: :only do
     # List of authentication features that are loaded.
@@ -41,7 +43,7 @@ class RodauthApp < Rodauth::Rails::App
 
     # ==> JWT
     # Set JWT secret, which is used to cryptographically protect the token.
-    jwt_secret "850cd3ba7f00ca50f54ef51623fd69c2a94f92ba788ca685828a39985f651c99492cf04c9f76a4ba0be37536fb2c4f46d3b6800fff1817745455f1a2e8407efc"
+    jwt_secret '850cd3ba7f00ca50f54ef51623fd69c2a94f92ba788ca685828a39985f651c99492cf04c9f76a4ba0be37536fb2c4f46d3b6800fff1817745455f1a2e8407efc'
 
     # Don't require login confirmation param.
     require_login_confirmation? false
@@ -90,22 +92,24 @@ class RodauthApp < Rodauth::Rails::App
     # Override default validation error messages.
     # no_matching_login_message "user with this email address doesn't exist"
     # already_an_account_with_this_login_message "user with this email address already exists"
-    # password_too_short_message { "needs to have at least #{password_minimum_length} characters" }
+    password_too_short_message { "needs to have at least #{password_minimum_length} characters" }
     # login_does_not_meet_requirements_message { "invalid email#{", #{login_requirement_message}" if login_requirement_message}" }
 
     # Change minimum number of password characters required when creating an account.
-    # password_minimum_length 8
+    password_minimum_length 6
 
     # ==> Hooks
     # Validate custom fields in the create account form.
-    # before_create_account do
-    #   throw_error_status(422, "name", "must be present") if param("name").empty?
-    # end
+    before_create_account do
+      throw_error_status(422, 'login', 'must be present') if param('login').empty?
+    end
 
     # Perform additional actions after the account is created.
-    # after_create_account do
-    #   Profile.create!(account_id: account[:id], name: param("name"))
-    # end
+    after_create_account do
+      User.create!(account_id: account[:id], login: param('login'),
+                   description: param('description'),
+                   profile_photo: param('profile_photo'))
+    end
 
     # Do additional cleanup after the account is closed.
     # after_close_account do
@@ -114,7 +118,7 @@ class RodauthApp < Rodauth::Rails::App
 
     # ==> Redirects
     # Redirect to home page after logout.
-    logout_redirect "/"
+    logout_redirect '/'
 
     # Redirect to wherever login redirects to after account verification.
     # verify_account_redirect { login_redirect }
@@ -138,28 +142,5 @@ class RodauthApp < Rodauth::Rails::App
   #   session_key :admin_id
   # end
 
-  route do |r|
-    r.rodauth # route rodauth requests
-
-    # ==> Authenticating Requests
-    # Call `rodauth.require_authentication` for requests that you want to
-    # require authentication for. Some examples:
-    #
-    # next if r.path.start_with?("/docs") # skip authentication for documentation pages
-    # next if session[:admin] # skip authentication for admins
-    #
-    # # authenticate /dashboard/* and /account/* requests
-    # if r.path.start_with?("/dashboard") || r.path.start_with?("/account")
-    #   rodauth.require_authentication
-    # end
-
-    # ==> Multiple configurations
-    # r.on "admin" do
-    #   r.rodauth(:admin)
-    #
-    #   unless rodauth(:admin).logged_in?
-    #     rodauth(:admin).require_http_basic_auth
-    #   end
-    # end
-  end
+  route(&:rodauth)
 end
