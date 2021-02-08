@@ -30,6 +30,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 4.0.2'
+  gem 'rspec_api_documentation'
 end
 
 group :development do
