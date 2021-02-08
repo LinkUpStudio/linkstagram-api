@@ -92,7 +92,7 @@ class RodauthApp < Rodauth::Rails::App
     # no_matching_login_message "user with this email address doesn't exist"
     # already_an_account_with_this_login_message "user with this email address already exists"
     password_too_short_message { "needs to have at least #{password_minimum_length} characters" }
-    # login_does_not_meet_requirements_message { "invalid email#{", #{login_requirement_message}" if login_requirement_message}" }
+    login_does_not_meet_requirements_message { "invalid email#{", #{login_requirement_message}" if login_requirement_message}" }
 
     # Change minimum number of password characters required when creating an account.
     password_minimum_length 6
@@ -106,7 +106,6 @@ class RodauthApp < Rodauth::Rails::App
     # Perform additional actions after the account is created.
     after_create_account do
       User.create!(account_id: account[:id], login: param('login'),
-                   description: param('description'),
                    profile_photo: param('profile_photo'))
     end
 

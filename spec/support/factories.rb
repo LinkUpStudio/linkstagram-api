@@ -7,7 +7,7 @@ FactoryBot.define do
     sequence :login do |n|
       "user#{n}"
     end
-    description { 'Description text' }
+    # description { 'Description text' }
     profile_photo { 'Profile photo' }
     account
   end
