@@ -3,18 +3,17 @@
 require 'bcrypt'
 
 FactoryBot.define do
-  factory :user do
-    sequence :login do |n|
+  factory :account do
+    sequence :username do |n|
       "user#{n}"
     end
-    # description { 'Description text' }
     profile_photo { 'Profile photo' }
-    account
-  end
-
-  factory :account do
     sequence :email do |n|
       "person#{n}@example.com"
+    end
+
+    trait :with_description do
+      description { 'Description text' }
     end
 
     transient do
