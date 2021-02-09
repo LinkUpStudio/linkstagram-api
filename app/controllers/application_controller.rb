@@ -13,5 +13,4 @@ class ApplicationController < ActionController::API
     rodauth.logout
     rodauth.login_required
   end
-  helper_method :current_account
 end

@@ -6,6 +6,12 @@ class CreateRodauth < ActiveRecord::Migration[6.1]
 
     create_table :accounts do |t|
       t.string :email, null: false, index: { unique: true }
+      t.string :username, null: false, index: { unique: true }
+      t.text :description
+      t.string :profile_photo
+      t.integer :followers
+      t.integer :following
+      t.timestamps
     end
 
     # Used if storing password hashes in a separate table (default)
