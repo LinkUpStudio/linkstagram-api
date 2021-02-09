@@ -3,22 +3,17 @@
 class RodauthApp < Rodauth::Rails::App
   configure json: :only do
     # List of authentication features that are loaded.
-    enable :create_account, :login, :logout, :jwt
+    enable :create_account, :login, :jwt
 
     # See the Rodauth documentation for the list of available config options:
     # http://rodauth.jeremyevans.net/documentation.html
 
-    login_column :username
-    email_to do
-      account[:email]
-    end
-    
     # ==> General
     # The secret key used for hashing public-facing tokens for various features.
     # Defaults to Rails `secret_key_base`, but you can use your own secret key.
 
     # Specify the controller used for view rendering and CSRF verification.
-    rails_controller { RodauthController }
+    # rails_controller { RodauthController }
 
     # Store account status in a text column.
     # account_status_column :status
@@ -47,7 +42,7 @@ class RodauthApp < Rodauth::Rails::App
 
     # ==> JWT
     # Set JWT secret, which is used to cryptographically protect the token.
-    jwt_secret Rails.application.credentials.jwt_secret
+    jwt_secret Rails.application.credentials.config[:jwt_secret]
 
     # Don't require login confirmation param.
     require_login_confirmation? false
@@ -125,7 +120,7 @@ class RodauthApp < Rodauth::Rails::App
 
     # ==> Redirects
     # Redirect to home page after logout.
-    logout_redirect '/'
+    # logout_redirect '/'
 
     # Redirect to wherever login redirects to after account verification.
     # verify_account_redirect { login_redirect }
