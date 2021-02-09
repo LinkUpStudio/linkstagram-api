@@ -39,8 +39,6 @@ ActiveRecord::Schema.define(version: 2021_02_05_101032) do
     t.string "profile_photo"
     t.integer "followers"
     t.integer "following"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["username"], name: "index_accounts_on_username", unique: true
   end

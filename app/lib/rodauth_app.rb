@@ -8,6 +8,11 @@ class RodauthApp < Rodauth::Rails::App
     # See the Rodauth documentation for the list of available config options:
     # http://rodauth.jeremyevans.net/documentation.html
 
+    login_column :username
+    email_to do
+      account[:email]
+    end
+    
     # ==> General
     # The secret key used for hashing public-facing tokens for various features.
     # Defaults to Rails `secret_key_base`, but you can use your own secret key.
@@ -100,14 +105,18 @@ class RodauthApp < Rodauth::Rails::App
     # ==> Hooks
     # Validate custom fields in the create account form.
     before_create_account do
-      throw_error_status(422, 'login', 'must be present') if param('login').empty?
+      unless (username = param_or_nil("username"))
+        throw_error_status(422, "username", "must be present")
+      end
+      account[:username] = username
+      account[:profile_photo] = param("profile_photo")
+      account[:followers] = rand(0..1000)
+      account[:following] = rand(0..1000)
     end
 
     # Perform additional actions after the account is created.
-    after_create_account do
-      User.create!(account_id: account[:id], login: param('login'),
-                   profile_photo: param('profile_photo'))
-    end
+    # after_create_account do
+    # end
 
     # Do additional cleanup after the account is closed.
     # after_close_account do

@@ -11,7 +11,6 @@ class CreateRodauth < ActiveRecord::Migration[6.1]
       t.string :profile_photo
       t.integer :followers
       t.integer :following
-      t.timestamps
     end
 
     # Used if storing password hashes in a separate table (default)
