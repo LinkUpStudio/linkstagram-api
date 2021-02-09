@@ -3,8 +3,11 @@ require 'rspec_api_documentation'
 require 'rspec_api_documentation/dsl'
 
 RspecApiDocumentation.configure do |config|
-  config.format = [:html]
-  config.request_body_formatter = :json
+  config.format = [:html, :json]
+  config.request_body_formatter = proc do |params|
+    JSON.pretty_generate(params)
+  end
+  config.response_body_formatter = Proc.new { |response_content_type, response_body| response_body }
   config.request_headers_to_include = %w[Content-Type Accept]
   config.response_headers_to_include = %w[Content-Type]
 

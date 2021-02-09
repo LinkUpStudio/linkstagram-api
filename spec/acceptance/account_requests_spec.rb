@@ -9,21 +9,16 @@ resource 'Authentication' do
     parameter :login, 'User email', type: :string, example: 'john_doe@example.com', required: true
     parameter :password, 'User password', type: :string, required: true
     parameter :profile_photo, 'User profile photo', type: :string, required: true
-    route_description 'After creating new user you can get their JWT. Loging out means just deleting this token.'
 
     let(:login) { 'user@example.com' }
     let(:password) { 'password' }
     let(:username) { 'username' }
     let(:profile_photo) { 'photo' }
 
-    example 'returns status 200' do
-      do_request
-      expect(status).to eq(200)
-    end
-
     example 'creates new account' do
       do_request
       created_user = Account.first
+      expect(status).to eq(200)
       expect(created_user.email).to eq(login)
       expect(created_user.username).to eq(username)
       expect(created_user.profile_photo).to eq(profile_photo)
@@ -39,14 +34,15 @@ resource 'Authentication' do
   end
 
   post '/login', 'Log in' do
-    attribute :login, 'Username', type: :string, example: 'john_doe', required: true
-    attribute :password, 'User password', type: :string, required: true
+    parameter :login, 'Username', type: :string, example: 'john_doe', required: true
+    parameter :password, 'User password', type: :string, required: true
+    explanation "After 'Log in' you can get user's JWT. Loging out means just deleting this token."
 
     let!(:account) { create(:account, password: 'password') }
 
     let(:login) { account.email }
     let(:password) { 'password' }
-    example 'returns status 200' do
+    example 'log in as registered user' do
       do_request
       expect(status).to eq(200)
     end
