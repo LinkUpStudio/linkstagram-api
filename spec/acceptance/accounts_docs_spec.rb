@@ -34,7 +34,7 @@ resource 'Authentication' do
   end
 
   post '/login', 'Log in' do
-    parameter :login, 'Username', type: :string, example: 'john_doe', required: true
+    parameter :login, 'User email', type: :string, example: 'john_doe@example.com', required: true
     parameter :password, 'User password', type: :string, required: true
     explanation "After 'Log in' you can get user's JWT. Loging out means just deleting this token."
 

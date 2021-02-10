@@ -45,3 +45,5 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'rodauth-rails', '~> 0.6'
 
 gem 'jwt'
+
+gem "pundit"
