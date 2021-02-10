@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_05_101032) do
+ActiveRecord::Schema.define(version: 2021_02_10_151747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -43,7 +43,16 @@ ActiveRecord::Schema.define(version: 2021_02_05_101032) do
     t.index ["username"], name: "index_accounts_on_username", unique: true
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.text "description"
+    t.bigint "account_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_posts_on_account_id"
+  end
+
   add_foreign_key "account_login_change_keys", "accounts", column: "id"
   add_foreign_key "account_password_hashes", "accounts", column: "id"
   add_foreign_key "account_password_reset_keys", "accounts", column: "id"
+  add_foreign_key "posts", "accounts"
 end

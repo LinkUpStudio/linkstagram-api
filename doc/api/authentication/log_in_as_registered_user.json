@@ -3,7 +3,7 @@
   "resource_explanation": "After 'Log in' you can get user's JWT. Loging out means just deleting this token.",
   "http_method": "POST",
   "route": "/login",
-  "description": "Log in as registered user",
+  "description": "log in as registered user",
   "explanation": null,
   "parameters": [
     {

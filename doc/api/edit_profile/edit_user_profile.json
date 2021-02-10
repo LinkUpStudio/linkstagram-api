@@ -26,7 +26,7 @@
     {
       "request_method": "PATCH",
       "request_path": "/account",
-      "request_body": "{\n  \"username\": \"new_name\",\n  \"profile_photo\": \"new_photo\",\n  \"description\": \"new description\"\n}",
+      "request_body": "{\n  \"username\": \"new_name\",\n  \"profile_photo\": \"new photo\",\n  \"description\": \"new description\"\n}",
       "request_headers": {
         "Accept": "application/json",
         "Content-Type": "application/json"
@@ -41,7 +41,7 @@
         "Content-Type": "text/plain; charset=utf-8"
       },
       "response_content_type": "text/plain; charset=utf-8",
-      "curl": "curl \"http://localhost:3000/account\" -d '{\n  \"username\": \"new_name\",\n  \"profile_photo\": \"new_photo\",\n  \"description\": \"new description\"\n}' -X PATCH \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjo1fQ.YH-EEY_KczRKNvExjeb5GK56yiTc3UzBaR0nyOm_5iI\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \"",
+      "curl": "curl \"http://localhost:3000/account\" -d '{\n  \"username\": \"new_name\",\n  \"profile_photo\": \"new photo\",\n  \"description\": \"new description\"\n}' -X PATCH \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjo1fQ.DEPOEuupNi4qFEL9jagCx4bLm6fkjnyrjGJjcLtZYIs\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \"",
       "request_headers_text": "Accept: application/json\nContent-Type: application/json",
       "request_query_parameters_text": null,
       "response_headers_text": "Content-Type: text/plain; charset=utf-8"

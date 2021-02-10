@@ -5,14 +5,14 @@
       "explanation": null,
       "examples": [
         {
-          "description": "Create new account",
-          "link": "authentication/create_new_account.json",
+          "description": "creates new account",
+          "link": "authentication/creates_new_account.json",
           "groups": "all",
           "route": "/create-account",
           "method": "post"
         },
         {
-          "description": "Log in as registered user",
+          "description": "log in as registered user",
           "link": "authentication/log_in_as_registered_user.json",
           "groups": "all",
           "route": "/login",

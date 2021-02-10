@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Account < ApplicationRecord
-  # has_many :posts
+  has_many :posts
 
   validates :username, presence: true,
                        uniqueness: true,

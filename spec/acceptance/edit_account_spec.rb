@@ -29,7 +29,7 @@ resource 'Edit profile' do
       end
     end
 
-    context 'edit account of the other user' do
+    context 'edit account of the other user', document: false do
       let(:token) { nil }
       example 'Edit user profile' do
         do_request

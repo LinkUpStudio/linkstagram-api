@@ -30,4 +30,9 @@ FactoryBot.define do
       )
     end
   end
+
+  factory :post do
+    description { 'Post description' }
+    account
+  end
 end
