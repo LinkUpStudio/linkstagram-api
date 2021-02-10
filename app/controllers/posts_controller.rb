@@ -1,11 +1,12 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[show update destroy]
+  before_action :set_post, only: %i[show destroy]
 
   def index
     render json: Post.all, status: 200
   end
 
   def create
+    authenticate
     @post = Post.new(post_params)
 
     if @post.save
@@ -17,14 +18,6 @@ class PostsController < ApplicationController
 
   def show
     render json: @post, status: 200
-  end
-
-  def update
-    if @post.update(post_params)
-      render json: { message: 'Post successfully updated.' }, status: 200
-    else
-      render json: { error: 'Unable to update post' }, status: 400
-    end
   end
 
   def destroy
