@@ -1,13 +1,20 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::API
+  include Pundit
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
   private
+
+  def user_not_authorized
+    render :json, status: 401
+  end
 
   def authenticate
     rodauth.require_authentication
   end
 
-  def current_account
+  def current_user
     @current_account ||= Account.find(rodauth.session_value)
   rescue ActiveRecord::RecordNotFound
     rodauth.logout

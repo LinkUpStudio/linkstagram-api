@@ -116,6 +116,8 @@ GEM
     pg (1.2.3-x64-mingw32)
     puma (5.2.1)
       nio4r (~> 2.0)
+    pundit (2.1.0)
+      activesupport (>= 3.0.0)
     racc (1.5.2)
     rack (2.2.3)
     rack-test (1.1.0)
@@ -223,6 +225,7 @@ DEPENDENCIES
   listen (~> 3.3)
   pg (~> 1.1)
   puma (~> 5.0)
+  pundit
   rails (~> 6.1.1)
   rodauth-rails (~> 0.6)
   rspec-rails (~> 4.0.2)
@@ -231,7 +234,7 @@ DEPENDENCIES
   tzinfo-data
 
 RUBY VERSION
-   ruby 2.7.2p137
+   ruby 2.7.1p83
 
 BUNDLED WITH
    2.1.4
