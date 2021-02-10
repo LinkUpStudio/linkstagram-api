@@ -7,7 +7,7 @@ class AccountPolicy
   end
 
   def update?
-    p user.as_json
+    user.id == account.id
   end
 
 end
