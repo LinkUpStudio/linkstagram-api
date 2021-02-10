@@ -42,7 +42,7 @@ class RodauthApp < Rodauth::Rails::App
 
     # ==> JWT
     # Set JWT secret, which is used to cryptographically protect the token.
-    jwt_secret Rails.application.credentials.config[:jwt_secret]
+    jwt_secret Rails.application.credentials.secret_key_base
 
     # Don't require login confirmation param.
     require_login_confirmation? false
@@ -105,8 +105,6 @@ class RodauthApp < Rodauth::Rails::App
       end
       account[:username] = username
       account[:profile_photo] = param("profile_photo")
-      account[:followers] = rand(0..1000)
-      account[:following] = rand(0..1000)
     end
 
     # Perform additional actions after the account is created.
