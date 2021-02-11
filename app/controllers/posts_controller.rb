@@ -21,12 +21,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    if @post
-      @post.destroy
-      render json: { message: 'Post successfully deleted.' }, status: 200
-    else
-      render json: { error: 'Unable to delete post' }, status: 400
-    end
+    authorize @post
+    @post.destroy
+    render json: { message: 'Post successfully deleted.' }, status: 200
   end
 
   private

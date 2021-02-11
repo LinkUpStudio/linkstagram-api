@@ -1,11 +1,33 @@
 require 'acceptance_helper'
 
 include Helpers::JwtToken
+include Helpers::JsonParse
 
 resource 'Posts CRUD actions' do
   header 'Accept', 'application/json'
   header 'Content-Type', 'application/json'
   header 'Authorization', :token
+
+  get '/posts' do
+    let!(:posts) { create_list(:post, 6) }
+
+    let(:token) { nil }
+    example 'Get all posts if user logged out' do
+      do_request
+      expect(status).to eq(200)
+      expect(parsed_json.size).to eq(posts.size)
+    end
+
+    context do
+      let(:user) { create(:account) }
+      let(:token) { jwt_token(user.id) }
+      example 'Get all posts if user logged in' do
+        do_request
+        expect(status).to eq(200)
+        expect(parsed_json.size).to eq(posts.size)
+      end
+    end
+  end
 
   post '/posts' do
     parameter :description, 'Post description'
@@ -38,6 +60,58 @@ resource 'Posts CRUD actions' do
     context 'cannot create post' do
       let(:token) { nil }
       example 'returns http unauthorized', document: false do
+        do_request
+        expect(status).to eq(401)
+      end
+    end
+  end
+
+  get '/posts/:id', :realistic_error_responses do
+    parameter :id, 'Post id'
+
+    let!(:post) { create(:post) }
+    let!(:id) { post.id }
+    let(:token) { nil }
+    example 'Get a post if user logged out' do
+      do_request
+      expect(status).to eq(200)
+      expect(parsed_json).to eq(post.as_json)
+    end
+
+    context do
+      let(:user) { create(:account) }
+      let(:token) { jwt_token(user.id) }
+      example 'Get a post if user logged in' do
+        do_request
+        expect(status).to eq(200)
+        expect(parsed_json).to eq(post.as_json)
+      end
+    end
+
+    context 'failed requests', document: false do
+      let(:id) { 0 }
+      example 'returns 404 for non existed record' do
+        do_request
+        expect(status).to eq(404)
+      end
+    end
+  end
+
+  delete '/posts/:id' do
+    parameter :id, 'Post id'
+
+    let!(:posts) { create_list(:post, 5) }
+    let!(:id) { posts.first.id }
+    let(:token) { jwt_token(posts.first.account_id) }
+    example 'Delete post only when the user is the author' do
+      do_request
+      expect(status).to eq(200)
+      expect(Post.count).to eq(4)
+    end
+
+    context 'failed requests', document: false do
+      let(:token) { jwt_token(posts.last.account_id) }
+      example 'does not delete post of the other user' do
         do_request
         expect(status).to eq(401)
       end

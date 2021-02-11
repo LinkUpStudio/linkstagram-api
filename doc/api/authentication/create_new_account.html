@@ -108,11 +108,9 @@ table th, table td {
     <div class="container">
       <h1>Authentication API</h1>
 
-        <p class="explanation">After 'Log in' you can get user's JWT. Loging out means just deleting this token.</p>
-
       <div class="article">
-        <h2>Log in as registered user</h2>
-        <h3>POST /login</h3>
+        <h2>Create new account</h2>
+        <h3>POST /create-account</h3>
 
           <h3>Parameters</h3>
           <table class="parameters table table-striped table-bordered table-condensed">
@@ -123,6 +121,14 @@ table th, table td {
               </tr>
             </thead>
             <tbody>
+              <tr>
+                <td class="required">
+                    <span class="name">username</span>
+                </td>
+                <td>
+                  <span class="description">Username</span>
+                </td>
+              </tr>
               <tr>
                 <td class="required">
                     <span class="name">login</span>
@@ -139,6 +145,14 @@ table th, table td {
                   <span class="description">User password</span>
                 </td>
               </tr>
+              <tr>
+                <td class="required">
+                    <span class="name">profile_photo</span>
+                </td>
+                <td>
+                  <span class="description">User profile photo</span>
+                </td>
+              </tr>
             </tbody>
           </table>
 
@@ -150,19 +164,23 @@ table th, table td {
 Content-Type: application/json</pre>
 
           <h4>Route</h4>
-          <pre class="request route highlight">POST /login</pre>
+          <pre class="request route highlight">POST /create-account</pre>
 
 
             <h4>Body</h4>
             <pre class="request body">{
-  "login": "person1@example.com",
-  "password": "password"
+  "username": "username",
+  "login": "user@example.com",
+  "password": "password",
+  "profile_photo": "photo"
 }</pre>
 
             <h4>cURL</h4>
-            <pre class="request curl">curl &quot;http://localhost:3000/login&quot; -d &#39;{
-  &quot;login&quot;: &quot;person1@example.com&quot;,
-  &quot;password&quot;: &quot;password&quot;
+            <pre class="request curl">curl &quot;http://localhost:3000/create-account&quot; -d &#39;{
+  &quot;username&quot;: &quot;username&quot;,
+  &quot;login&quot;: &quot;user@example.com&quot;,
+  &quot;password&quot;: &quot;password&quot;,
+  &quot;profile_photo&quot;: &quot;photo&quot;
 }&#39; -X POST \
 	-H &quot;Accept: application/json&quot; \
 	-H &quot;Content-Type: application/json&quot; \

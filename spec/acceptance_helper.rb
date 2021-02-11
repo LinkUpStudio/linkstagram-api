@@ -2,9 +2,10 @@ require 'rails_helper'
 require 'rspec_api_documentation'
 require 'rspec_api_documentation/dsl'
 require 'support/helpers'
+require 'support/database_cleaner'
 
 RspecApiDocumentation.configure do |config|
-  config.format = [:html, :json]
+  config.format = [:html]
   config.request_body_formatter = proc do |params|
     JSON.pretty_generate(params)
   end
@@ -14,9 +15,4 @@ RspecApiDocumentation.configure do |config|
 
   config.curl_host = 'http://localhost:3000'
   config.api_name = "Linkstagram API"
-
-  # config.define_group :linkstagram do |config|
-  #   config.docs_dir = Rails.root.join("public", "assets", "api", "linkstagram")
-  #   config.filter = :linkstagram
-  # end
 end

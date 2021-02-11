@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Get profiles API</title>
+    <title>Posts CRUD actions API</title>
     <meta charset="utf-8">
     <style>
       
@@ -106,11 +106,11 @@ table th, table td {
   </head>
   <body>
     <div class="container">
-      <h1>Get profiles API</h1>
+      <h1>Posts CRUD actions API</h1>
 
       <div class="article">
-        <h2>Get profile photos for stories</h2>
-        <h3>GET /profiles</h3>
+        <h2>Get all posts if user logged out</h2>
+        <h3>GET /posts</h3>
 
 
 
@@ -121,7 +121,7 @@ table th, table td {
 Content-Type: application/json</pre>
 
           <h4>Route</h4>
-          <pre class="request route highlight">GET /profiles</pre>
+          <pre class="request route highlight">GET /posts</pre>
 
             <h4>Query Parameters</h4>
             <pre class="request query_parameters highlight">{
@@ -129,9 +129,10 @@ Content-Type: application/json</pre>
 
 
             <h4>cURL</h4>
-            <pre class="request curl">curl -g &quot;http://localhost:3000/profiles&quot; -X GET \
+            <pre class="request curl">curl -g &quot;http://localhost:3000/posts&quot; -X GET \
 	-H &quot;Accept: application/json&quot; \
 	-H &quot;Content-Type: application/json&quot; \
+	-H &quot;Authorization: &quot; \
 	-H &quot;Host: example.org&quot; \
 	-H &quot;Cookie: &quot;</pre>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Authentication API</title>
+    <title>Posts CRUD actions API</title>
     <meta charset="utf-8">
     <style>
       
@@ -106,13 +106,11 @@ table th, table td {
   </head>
   <body>
     <div class="container">
-      <h1>Authentication API</h1>
-
-        <p class="explanation">After 'Log in' you can get user's JWT. Loging out means just deleting this token.</p>
+      <h1>Posts CRUD actions API</h1>
 
       <div class="article">
-        <h2>Log in as registered user</h2>
-        <h3>POST /login</h3>
+        <h2>Delete post only when the user is the author</h2>
+        <h3>DELETE /posts/:id</h3>
 
           <h3>Parameters</h3>
           <table class="parameters table table-striped table-bordered table-condensed">
@@ -124,19 +122,11 @@ table th, table td {
             </thead>
             <tbody>
               <tr>
-                <td class="required">
-                    <span class="name">login</span>
+                <td>
+                    <span class="name">id</span>
                 </td>
                 <td>
-                  <span class="description">User email</span>
-                </td>
-              </tr>
-              <tr>
-                <td class="required">
-                    <span class="name">password</span>
-                </td>
-                <td>
-                  <span class="description">User password</span>
+                  <span class="description">Post id</span>
                 </td>
               </tr>
             </tbody>
@@ -150,28 +140,25 @@ table th, table td {
 Content-Type: application/json</pre>
 
           <h4>Route</h4>
-          <pre class="request route highlight">POST /login</pre>
+          <pre class="request route highlight">DELETE /posts/17</pre>
 
 
             <h4>Body</h4>
             <pre class="request body">{
-  "login": "person1@example.com",
-  "password": "password"
 }</pre>
 
             <h4>cURL</h4>
-            <pre class="request curl">curl &quot;http://localhost:3000/login&quot; -d &#39;{
-  &quot;login&quot;: &quot;person1@example.com&quot;,
-  &quot;password&quot;: &quot;password&quot;
-}&#39; -X POST \
+            <pre class="request curl">curl &quot;http://localhost:3000/posts/17&quot; -d &#39;{
+}&#39; -X DELETE \
 	-H &quot;Accept: application/json&quot; \
 	-H &quot;Content-Type: application/json&quot; \
+	-H &quot;Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoyNn0.cH96hC2X8IjxNZNxeJLEf8h_ZUQTVM7lZiuWZ7E4orU&quot; \
 	-H &quot;Host: example.org&quot; \
 	-H &quot;Cookie: &quot;</pre>
 
             <h3>Response</h3>
               <h4>Headers</h4>
-              <pre class="response headers">Content-Type: application/json</pre>
+              <pre class="response headers">Content-Type: application/json; charset=utf-8</pre>
             <h4>Status</h4>
             <pre class="response status">200 OK</pre>
               <h4>Body</h4>

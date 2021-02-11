@@ -15,7 +15,7 @@ resource 'Authentication' do
     let(:username) { 'username' }
     let(:profile_photo) { 'photo' }
 
-    example 'creates new account' do
+    example 'Create new account' do
       do_request
       created_user = Account.first
       expect(status).to eq(200)
@@ -33,7 +33,7 @@ resource 'Authentication' do
     end
   end
 
-  post '/login', 'Log in' do
+  post '/login' do
     parameter :login, 'User email', type: :string, example: 'john_doe@example.com', required: true
     parameter :password, 'User password', type: :string, required: true
     explanation "After 'Log in' you can get user's JWT. Loging out means just deleting this token."
@@ -42,7 +42,7 @@ resource 'Authentication' do
 
     let(:login) { account.email }
     let(:password) { 'password' }
-    example 'log in as registered user' do
+    example 'Log in as registered user' do
       do_request
       expect(status).to eq(200)
     end

@@ -7,7 +7,7 @@ class ApplicationController < ActionController::API
   private
 
   def user_not_authorized
-    render :json, status: 401
+    render json: { error: 'User is not allowed to perform this action' }, status: 401
   end
 
   def authenticate
@@ -17,7 +17,6 @@ class ApplicationController < ActionController::API
   def current_user
     @current_account ||= Account.find(rodauth.session_value)
   rescue ActiveRecord::RecordNotFound
-    rodauth.logout
     rodauth.login_required
   end
 end

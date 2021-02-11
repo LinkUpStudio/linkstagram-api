@@ -20,6 +20,8 @@ resource 'Edit profile' do
       let(:my_account) { create(:account) }
       let(:token) { jwt_token(my_account.id) }
       example 'Edit user profile' do
+        p my_account
+
         do_request
         expect(status).to eq(200)
         my_account.reload

@@ -9,7 +9,7 @@ resource 'Get profiles' do
   get '/profiles' do
     let!(:profiles) { create_list(:account, 5) }
 
-    example 'Get profile photos for stories' do
+    example 'Get profiles of all users' do
       do_request
       expect(status).to eq(200)
       expect(parsed_json.length).to eq(5)
