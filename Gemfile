@@ -47,3 +47,5 @@ gem 'rodauth-rails', '~> 0.6'
 gem 'jwt'
 
 gem "pundit"
+
+gem 'kaminari'
