@@ -112,6 +112,25 @@ table th, table td {
         <h2>Get all posts if user logged in</h2>
         <h3>GET /posts</h3>
 
+          <h3>Parameters</h3>
+          <table class="parameters table table-striped table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                    <span class="name">page</span>
+                </td>
+                <td>
+                  <span class="description">Items page</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
 
           <h3>Request</h3>
@@ -132,7 +151,7 @@ Content-Type: application/json</pre>
             <pre class="request curl">curl -g &quot;http://localhost:3000/posts&quot; -X GET \
 	-H &quot;Accept: application/json&quot; \
 	-H &quot;Content-Type: application/json&quot; \
-	-H &quot;Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoxOH0.XJwV7HW0wMHtvPntJaxEEpl7g7XkE77LeMC3LIzO2-0&quot; \
+	-H &quot;Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjo2MH0.XnkXkU5obQPRsqoFuh-lLFwKgjdgWH6BFkN7ckQu9LQ&quot; \
 	-H &quot;Host: example.org&quot; \
 	-H &quot;Cookie: &quot;</pre>
 
@@ -142,7 +161,7 @@ Content-Type: application/json</pre>
             <h4>Status</h4>
             <pre class="response status">200 OK</pre>
               <h4>Body</h4>
-              <pre class="response body">[binary data]</pre>
+              <pre class="response body">[{&quot;id&quot;:52,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:59,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.901Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.901Z&quot;},{&quot;id&quot;:51,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:58,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.898Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.898Z&quot;},{&quot;id&quot;:50,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:57,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.895Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.895Z&quot;},{&quot;id&quot;:49,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:56,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.892Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.892Z&quot;},{&quot;id&quot;:48,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:55,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.890Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.890Z&quot;},{&quot;id&quot;:47,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:54,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.887Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.887Z&quot;},{&quot;id&quot;:46,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:53,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.884Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.884Z&quot;},{&quot;id&quot;:45,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:52,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.881Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.881Z&quot;},{&quot;id&quot;:44,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:51,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.878Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.878Z&quot;},{&quot;id&quot;:43,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:50,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.876Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.876Z&quot;},{&quot;id&quot;:42,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:49,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.873Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.873Z&quot;},{&quot;id&quot;:41,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:48,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.870Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.870Z&quot;},{&quot;id&quot;:40,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:47,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.868Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.868Z&quot;},{&quot;id&quot;:39,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:46,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.865Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.865Z&quot;},{&quot;id&quot;:38,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:45,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.863Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.863Z&quot;},{&quot;id&quot;:37,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:44,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.860Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.860Z&quot;},{&quot;id&quot;:36,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:43,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.857Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.857Z&quot;},{&quot;id&quot;:35,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:42,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.854Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.854Z&quot;},{&quot;id&quot;:34,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:41,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.852Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.852Z&quot;},{&quot;id&quot;:33,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:40,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.849Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.849Z&quot;},{&quot;id&quot;:32,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:39,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.846Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.846Z&quot;},{&quot;id&quot;:31,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:38,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.843Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.843Z&quot;},{&quot;id&quot;:30,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:37,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.839Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.839Z&quot;},{&quot;id&quot;:29,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:36,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.836Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.836Z&quot;},{&quot;id&quot;:28,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:35,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.834Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.834Z&quot;}]</pre>
       </div>
     </div>
   </body>

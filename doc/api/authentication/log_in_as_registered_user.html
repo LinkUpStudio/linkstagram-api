@@ -155,13 +155,13 @@ Content-Type: application/json</pre>
 
             <h4>Body</h4>
             <pre class="request body">{
-  "login": "person1@example.com",
+  "login": "person4@example.com",
   "password": "password"
 }</pre>
 
             <h4>cURL</h4>
             <pre class="request curl">curl &quot;http://localhost:3000/login&quot; -d &#39;{
-  &quot;login&quot;: &quot;person1@example.com&quot;,
+  &quot;login&quot;: &quot;person4@example.com&quot;,
   &quot;password&quot;: &quot;password&quot;
 }&#39; -X POST \
 	-H &quot;Accept: application/json&quot; \
@@ -175,7 +175,7 @@ Content-Type: application/json</pre>
             <h4>Status</h4>
             <pre class="response status">200 OK</pre>
               <h4>Body</h4>
-              <pre class="response body">[binary data]</pre>
+              <pre class="response body">{&quot;success&quot;:&quot;You have been logged in&quot;}</pre>
       </div>
     </div>
   </body>

@@ -109,8 +109,8 @@ table th, table td {
       <h1>Posts CRUD actions API</h1>
 
       <div class="article">
-        <h2>Create post</h2>
-        <h3>POST /posts</h3>
+        <h2>Get items from the concrete page</h2>
+        <h3>GET /posts</h3>
 
           <h3>Parameters</h3>
           <table class="parameters table table-striped table-bordered table-condensed">
@@ -123,10 +123,10 @@ table th, table td {
             <tbody>
               <tr>
                 <td>
-                    <span class="name">description</span>
+                    <span class="name">page</span>
                 </td>
                 <td>
-                  <span class="description">Post description</span>
+                  <span class="description">Items page</span>
                 </td>
               </tr>
             </tbody>
@@ -140,21 +140,17 @@ table th, table td {
 Content-Type: application/json</pre>
 
           <h4>Route</h4>
-          <pre class="request route highlight">POST /posts</pre>
+          <pre class="request route highlight">GET /posts?page=2</pre>
 
+            <h4>Query Parameters</h4>
+            <pre class="request query_parameters highlight">page: 2</pre>
 
-            <h4>Body</h4>
-            <pre class="request body">{
-  "description": "Nice post"
-}</pre>
 
             <h4>cURL</h4>
-            <pre class="request curl">curl &quot;http://localhost:3000/posts&quot; -d &#39;{
-  &quot;description&quot;: &quot;Nice post&quot;
-}&#39; -X POST \
+            <pre class="request curl">curl -g &quot;http://localhost:3000/posts?page=2&quot; -X GET \
 	-H &quot;Accept: application/json&quot; \
 	-H &quot;Content-Type: application/json&quot; \
-	-H &quot;Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoxMTN9.ilwXUugBkSolQYbmtu-LLy4Px-XxKebsMUkkGkS-AJk&quot; \
+	-H &quot;Authorization: &quot; \
 	-H &quot;Host: example.org&quot; \
 	-H &quot;Cookie: &quot;</pre>
 
@@ -164,39 +160,7 @@ Content-Type: application/json</pre>
             <h4>Status</h4>
             <pre class="response status">200 OK</pre>
               <h4>Body</h4>
-              <pre class="response body">{&quot;id&quot;:105,&quot;description&quot;:&quot;Nice post&quot;,&quot;account_id&quot;:113,&quot;created_at&quot;:&quot;2021-02-11T14:29:51.078Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:51.078Z&quot;}</pre>
-          <h3>Request</h3>
-
-            <h4>Headers</h4>
-            <pre class="request headers">Accept: application/json
-Content-Type: application/json</pre>
-
-          <h4>Route</h4>
-          <pre class="request route highlight">POST /posts</pre>
-
-
-            <h4>Body</h4>
-            <pre class="request body">{
-  "description": "Nice post"
-}</pre>
-
-            <h4>cURL</h4>
-            <pre class="request curl">curl &quot;http://localhost:3000/posts&quot; -d &#39;{
-  &quot;description&quot;: &quot;Nice post&quot;
-}&#39; -X POST \
-	-H &quot;Accept: application/json&quot; \
-	-H &quot;Content-Type: application/json&quot; \
-	-H &quot;Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoxMTN9.ilwXUugBkSolQYbmtu-LLy4Px-XxKebsMUkkGkS-AJk&quot; \
-	-H &quot;Host: example.org&quot; \
-	-H &quot;Cookie: &quot;</pre>
-
-            <h3>Response</h3>
-              <h4>Headers</h4>
-              <pre class="response headers">Content-Type: application/json; charset=utf-8</pre>
-            <h4>Status</h4>
-            <pre class="response status">200 OK</pre>
-              <h4>Body</h4>
-              <pre class="response body">{&quot;id&quot;:106,&quot;description&quot;:&quot;Nice post&quot;,&quot;account_id&quot;:113,&quot;created_at&quot;:&quot;2021-02-11T14:29:51.080Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:51.080Z&quot;}</pre>
+              <pre class="response body">[{&quot;id&quot;:53,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:61,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.916Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.916Z&quot;}]</pre>
       </div>
     </div>
   </body>

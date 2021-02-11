@@ -112,6 +112,25 @@ table th, table td {
         <h2>Get all posts if user logged out</h2>
         <h3>GET /posts</h3>
 
+          <h3>Parameters</h3>
+          <table class="parameters table table-striped table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                    <span class="name">page</span>
+                </td>
+                <td>
+                  <span class="description">Items page</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
 
           <h3>Request</h3>
@@ -142,7 +161,7 @@ Content-Type: application/json</pre>
             <h4>Status</h4>
             <pre class="response status">200 OK</pre>
               <h4>Body</h4>
-              <pre class="response body">[binary data]</pre>
+              <pre class="response body">[{&quot;id&quot;:26,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:33,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.823Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.823Z&quot;},{&quot;id&quot;:25,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:32,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.820Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.820Z&quot;},{&quot;id&quot;:24,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:31,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.817Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.817Z&quot;},{&quot;id&quot;:23,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:30,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.814Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.814Z&quot;},{&quot;id&quot;:22,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:29,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.812Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.812Z&quot;},{&quot;id&quot;:21,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:28,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.809Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.809Z&quot;},{&quot;id&quot;:20,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:27,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.806Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.806Z&quot;},{&quot;id&quot;:19,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:26,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.803Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.803Z&quot;},{&quot;id&quot;:18,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:25,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.800Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.800Z&quot;},{&quot;id&quot;:17,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:24,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.798Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.798Z&quot;},{&quot;id&quot;:16,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:23,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.795Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.795Z&quot;},{&quot;id&quot;:15,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:22,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.792Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.792Z&quot;},{&quot;id&quot;:14,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:21,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.789Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.789Z&quot;},{&quot;id&quot;:13,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:20,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.786Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.786Z&quot;},{&quot;id&quot;:12,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:19,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.783Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.783Z&quot;},{&quot;id&quot;:11,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:18,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.780Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.780Z&quot;},{&quot;id&quot;:10,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:17,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.770Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.770Z&quot;},{&quot;id&quot;:9,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:16,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.768Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.768Z&quot;},{&quot;id&quot;:8,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:15,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.765Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.765Z&quot;},{&quot;id&quot;:7,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:14,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.762Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.762Z&quot;},{&quot;id&quot;:6,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:13,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.759Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.759Z&quot;},{&quot;id&quot;:5,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:12,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.755Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.755Z&quot;},{&quot;id&quot;:4,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:11,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.753Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.753Z&quot;},{&quot;id&quot;:3,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:10,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.750Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.750Z&quot;},{&quot;id&quot;:2,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:9,&quot;created_at&quot;:&quot;2021-02-11T14:29:50.747Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:50.747Z&quot;}]</pre>
       </div>
     </div>
   </body>

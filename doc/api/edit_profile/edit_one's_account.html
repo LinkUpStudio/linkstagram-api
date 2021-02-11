@@ -109,7 +109,7 @@ table th, table td {
       <h1>Edit profile API</h1>
 
       <div class="article">
-        <h2>Edit user profile</h2>
+        <h2>Edit one&#39;s account</h2>
         <h3>PATCH /account</h3>
 
           <h3>Parameters</h3>
@@ -174,17 +174,17 @@ Content-Type: application/json</pre>
 }&#39; -X PATCH \
 	-H &quot;Accept: application/json&quot; \
 	-H &quot;Content-Type: application/json&quot; \
-	-H &quot;Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjo1fQ.DEPOEuupNi4qFEL9jagCx4bLm6fkjnyrjGJjcLtZYIs&quot; \
+	-H &quot;Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoyfQ.NsVcMGH9coCMIjh8iNoB5Tieil3Usm-T1jVlf-PEXFY&quot; \
 	-H &quot;Host: example.org&quot; \
 	-H &quot;Cookie: &quot;</pre>
 
             <h3>Response</h3>
               <h4>Headers</h4>
-              <pre class="response headers">Content-Type: text/plain; charset=utf-8</pre>
+              <pre class="response headers">Content-Type: application/json; charset=utf-8</pre>
             <h4>Status</h4>
             <pre class="response status">200 OK</pre>
               <h4>Body</h4>
-              <pre class="response body">[binary data]</pre>
+              <pre class="response body">{&quot;description&quot;:&quot;new description&quot;,&quot;username&quot;:&quot;new_name&quot;,&quot;profile_photo&quot;:&quot;new photo&quot;,&quot;id&quot;:2,&quot;email&quot;:&quot;person2@example.com&quot;,&quot;followers&quot;:762,&quot;following&quot;:498}</pre>
       </div>
     </div>
   </body>

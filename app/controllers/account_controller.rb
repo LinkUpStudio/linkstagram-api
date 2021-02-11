@@ -1,7 +1,16 @@
 class AccountController < ApplicationController
+  before_action :authenticate
+
+  def show
+    render json: current_user, status: 200
+  end
+
   def update
-    authenticate
-    render :json, status: 200 if current_user.update(account_params)
+    if current_user.update(account_params)
+      return render json: current_user, status: 200
+    end
+
+    render json: { errors: current_user.errors }, status: 422
   end
 
   private
