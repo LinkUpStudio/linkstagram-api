@@ -2,6 +2,11 @@
 
 class Account < ApplicationRecord
   has_many :posts
+  has_many :likes
+  has_many :liked_posts, through: :likes,
+                         class_name: 'Post',
+                         inverse_of: :account,
+                         source: 'post'
 
   validates :username, presence: true,
                        uniqueness: true,
