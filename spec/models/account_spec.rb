@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Account, type: :model do
-  describe '.new' do
+  describe '.create' do
     it 'is valid with valid attributes' do
       expect(build(:account, :with_description)).to be_valid
     end

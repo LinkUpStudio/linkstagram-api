@@ -35,4 +35,9 @@ FactoryBot.define do
     description { 'Post description' }
     account
   end
+
+  factory :like do
+    post
+    account
+  end
 end
