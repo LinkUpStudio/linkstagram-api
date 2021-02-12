@@ -49,3 +49,5 @@ gem 'jwt'
 gem "pundit"
 
 gem 'kaminari'
+
+gem 'blueprinter'
