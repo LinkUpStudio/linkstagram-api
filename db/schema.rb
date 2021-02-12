@@ -55,10 +55,10 @@ ActiveRecord::Schema.define(version: 2021_02_11_145139) do
 
   create_table "posts", force: :cascade do |t|
     t.text "description"
-    t.bigint "account_id", null: false
+    t.bigint "author_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["account_id"], name: "index_posts_on_account_id"
+    t.index ["author_id"], name: "index_posts_on_author_id"
   end
 
   add_foreign_key "account_login_change_keys", "accounts", column: "id"
@@ -66,5 +66,5 @@ ActiveRecord::Schema.define(version: 2021_02_11_145139) do
   add_foreign_key "account_password_reset_keys", "accounts", column: "id"
   add_foreign_key "likes", "accounts"
   add_foreign_key "likes", "posts"
-  add_foreign_key "posts", "accounts"
+  add_foreign_key "posts", "accounts", column: "author_id"
 end

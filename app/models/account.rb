@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class Account < ApplicationRecord
-  has_many :posts
+  has_many :posts, inverse_of: 'author',
+                   foreign_key: :author_id,
+                   dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes,
                          class_name: 'Post',

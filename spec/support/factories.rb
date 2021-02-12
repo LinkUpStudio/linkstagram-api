@@ -33,7 +33,7 @@ FactoryBot.define do
 
   factory :post do
     description { 'Post description' }
-    account
+    association :author, factory: :account
   end
 
   factory :like do

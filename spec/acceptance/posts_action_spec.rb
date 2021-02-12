@@ -9,7 +9,7 @@ resource 'Posts create/read/delete actions' do
   header 'Authorization', :token
 
   get '/posts' do
-    parameter :page, 'Items page'
+    parameter :page, 'Posts page'
 
     let!(:posts) { create_list(:post, 26) }
 
@@ -60,7 +60,7 @@ resource 'Posts create/read/delete actions' do
         expect(status).to eq(200)
         created_post = Post.first
         expect(created_post.description).to eq(description)
-        expect(created_post.account_id).to eq(author.id)
+        expect(created_post.author_id).to eq(author.id)
       end
     end
 
@@ -105,14 +105,14 @@ resource 'Posts create/read/delete actions' do
 
     let!(:posts) { create_list(:post, 5) }
     let!(:id) { posts.first.id }
-    let(:token) { jwt_token(posts.first.account_id) }
+    let(:token) { jwt_token(posts.first.author_id) }
     example_request 'Delete post only when the user is the author' do
       expect(status).to eq(200)
       expect(Post.count).to eq(4)
     end
 
     context 'failed requests', document: false do
-      let(:token) { jwt_token(posts.last.account_id) }
+      let(:token) { jwt_token(posts.last.author_id) }
       example_request 'does not delete post of the other user' do
         expect(status).to eq(401)
       end

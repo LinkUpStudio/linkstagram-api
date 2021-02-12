@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   def create
     authenticate
     post = Post.new(post_params)
-    post.account = current_user
+    post.author = current_user
 
     return render json: post, status: 200 if post.save
 

@@ -11,7 +11,7 @@ resource 'Likes' do
     parameter :post_id, 'Post id'
 
     let!(:user) { create(:account) }
-    let!(:post) { create(:post, account: user) }
+    let!(:post) { create(:post, author: user) }
     let(:post_id) { post.id }
     let(:token) { jwt_token(user.id) }
     context 'creates like as logged in user' do
@@ -41,7 +41,7 @@ resource 'Likes' do
 
     let!(:user) { create(:account) }
     let!(:stranger) { create(:account) }
-    let!(:post) { create(:post, account: user) }
+    let!(:post) { create(:post, author: user) }
     let!(:post_id) { post.id }
     let!(:like) { create(:like, post: post, account: user) }
     let(:token) { jwt_token(user.id) }

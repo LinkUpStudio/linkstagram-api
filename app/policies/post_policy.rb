@@ -7,6 +7,6 @@ class PostPolicy
   end
 
   def destroy?
-    user.id == post.account_id
+    user.id == post.author_id
   end
 end
