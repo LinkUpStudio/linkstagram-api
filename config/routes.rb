@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/account', to: 'account#show'
   resources :profiles
   resources :posts do
-    resources :likes
+    resources :likes, only: %i[create destroy]
   end
+  delete '/posts/:post_id/likes', to: 'likes#destroy'
 end

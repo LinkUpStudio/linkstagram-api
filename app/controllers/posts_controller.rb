@@ -3,7 +3,6 @@ class PostsController < ApplicationController
 
   def index
     page = to_int(params[:page])
-    page = 0 if Post.page(page).out_of_range?
     posts = Post.all.order(created_at: :desc)
     render json: posts.page(page), status: 200
   end

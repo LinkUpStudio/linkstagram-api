@@ -3,7 +3,7 @@ require 'acceptance_helper'
 include Helpers::JwtToken
 include Helpers::JsonParse
 
-resource 'Posts CRUD actions' do
+resource 'Posts create/read/delete actions' do
   header 'Accept', 'application/json'
   header 'Content-Type', 'application/json'
   header 'Authorization', :token
@@ -25,8 +25,7 @@ resource 'Posts CRUD actions' do
       example_request 'Get all posts if user logged in' do
         expect(status).to eq(200)
         expect(parsed_json.length).to eq(25)
-        sorted_posts = posts.sort_by { |post| post['created_at'] }
-        expect(parsed_json).to match_array(sorted_posts[1..25].as_json)
+        expect(parsed_json.first['created_at']).to be > parsed_json.last['created_at']
       end
     end
 
@@ -58,7 +57,6 @@ resource 'Posts CRUD actions' do
       let(:token) { jwt_token(author.id) }
       example 'Create post' do
         expect { do_request }.to change { Post.count }.from(0).to(1)
-        do_request
         expect(status).to eq(200)
         created_post = Post.first
         expect(created_post.description).to eq(description)

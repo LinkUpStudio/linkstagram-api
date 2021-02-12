@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Posts CRUD actions API</title>
+    <title>Posts create/read/delete actions API</title>
     <meta charset="utf-8">
     <style>
       
@@ -106,11 +106,11 @@ table th, table td {
   </head>
   <body>
     <div class="container">
-      <h1>Posts CRUD actions API</h1>
+      <h1>Posts create/read/delete actions API</h1>
 
       <div class="article">
-        <h2>Create post</h2>
-        <h3>POST /posts</h3>
+        <h2>Delete post only when the user is the author</h2>
+        <h3>DELETE /posts/:id</h3>
 
           <h3>Parameters</h3>
           <table class="parameters table table-striped table-bordered table-condensed">
@@ -123,10 +123,10 @@ table th, table td {
             <tbody>
               <tr>
                 <td>
-                    <span class="name">description</span>
+                    <span class="name">id</span>
                 </td>
                 <td>
-                  <span class="description">Post description</span>
+                  <span class="description">Post id</span>
                 </td>
               </tr>
             </tbody>
@@ -140,21 +140,19 @@ table th, table td {
 Content-Type: application/json</pre>
 
           <h4>Route</h4>
-          <pre class="request route highlight">POST /posts</pre>
+          <pre class="request route highlight">DELETE /posts/115</pre>
 
 
             <h4>Body</h4>
             <pre class="request body">{
-  "description": "Nice post"
 }</pre>
 
             <h4>cURL</h4>
-            <pre class="request curl">curl &quot;http://localhost:3000/posts&quot; -d &#39;{
-  &quot;description&quot;: &quot;Nice post&quot;
-}&#39; -X POST \
+            <pre class="request curl">curl &quot;http://localhost:3000/posts/115&quot; -d &#39;{
+}&#39; -X DELETE \
 	-H &quot;Accept: application/json&quot; \
 	-H &quot;Content-Type: application/json&quot; \
-	-H &quot;Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoxMTN9.ilwXUugBkSolQYbmtu-LLy4Px-XxKebsMUkkGkS-AJk&quot; \
+	-H &quot;Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoxMjd9.-AoojMdZrIL2j86940camCE1UpgM_myXBqqg5Z__beM&quot; \
 	-H &quot;Host: example.org&quot; \
 	-H &quot;Cookie: &quot;</pre>
 
@@ -164,39 +162,7 @@ Content-Type: application/json</pre>
             <h4>Status</h4>
             <pre class="response status">200 OK</pre>
               <h4>Body</h4>
-              <pre class="response body">{&quot;id&quot;:105,&quot;description&quot;:&quot;Nice post&quot;,&quot;account_id&quot;:113,&quot;created_at&quot;:&quot;2021-02-11T14:29:51.078Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:51.078Z&quot;}</pre>
-          <h3>Request</h3>
-
-            <h4>Headers</h4>
-            <pre class="request headers">Accept: application/json
-Content-Type: application/json</pre>
-
-          <h4>Route</h4>
-          <pre class="request route highlight">POST /posts</pre>
-
-
-            <h4>Body</h4>
-            <pre class="request body">{
-  "description": "Nice post"
-}</pre>
-
-            <h4>cURL</h4>
-            <pre class="request curl">curl &quot;http://localhost:3000/posts&quot; -d &#39;{
-  &quot;description&quot;: &quot;Nice post&quot;
-}&#39; -X POST \
-	-H &quot;Accept: application/json&quot; \
-	-H &quot;Content-Type: application/json&quot; \
-	-H &quot;Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoxMTN9.ilwXUugBkSolQYbmtu-LLy4Px-XxKebsMUkkGkS-AJk&quot; \
-	-H &quot;Host: example.org&quot; \
-	-H &quot;Cookie: &quot;</pre>
-
-            <h3>Response</h3>
-              <h4>Headers</h4>
-              <pre class="response headers">Content-Type: application/json; charset=utf-8</pre>
-            <h4>Status</h4>
-            <pre class="response status">200 OK</pre>
-              <h4>Body</h4>
-              <pre class="response body">{&quot;id&quot;:106,&quot;description&quot;:&quot;Nice post&quot;,&quot;account_id&quot;:113,&quot;created_at&quot;:&quot;2021-02-11T14:29:51.080Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:51.080Z&quot;}</pre>
+              <pre class="response body">{&quot;message&quot;:&quot;Post successfully deleted.&quot;}</pre>
       </div>
     </div>
   </body>

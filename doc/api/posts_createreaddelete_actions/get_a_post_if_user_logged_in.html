@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Posts CRUD actions API</title>
+    <title>Posts create/read/delete actions API</title>
     <meta charset="utf-8">
     <style>
       
@@ -106,7 +106,7 @@ table th, table td {
   </head>
   <body>
     <div class="container">
-      <h1>Posts CRUD actions API</h1>
+      <h1>Posts create/read/delete actions API</h1>
 
       <div class="article">
         <h2>Get a post if user logged in</h2>
@@ -140,7 +140,7 @@ table th, table td {
 Content-Type: application/json</pre>
 
           <h4>Route</h4>
-          <pre class="request route highlight">GET /posts/108</pre>
+          <pre class="request route highlight">GET /posts/113</pre>
 
             <h4>Query Parameters</h4>
             <pre class="request query_parameters highlight">{
@@ -148,10 +148,10 @@ Content-Type: application/json</pre>
 
 
             <h4>cURL</h4>
-            <pre class="request curl">curl -g &quot;http://localhost:3000/posts/108&quot; -X GET \
+            <pre class="request curl">curl -g &quot;http://localhost:3000/posts/113&quot; -X GET \
 	-H &quot;Accept: application/json&quot; \
 	-H &quot;Content-Type: application/json&quot; \
-	-H &quot;Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoxMTZ9.Bbomz1OCrPdBh54jyTlqP9VBpMJfjvNU_BbhgvwSM2U&quot; \
+	-H &quot;Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoxMjV9.dISMlo4VRymoSlABhOyDbBaT3r_ETqHvBacL9xcHnco&quot; \
 	-H &quot;Host: example.org&quot; \
 	-H &quot;Cookie: &quot;</pre>
 
@@ -161,7 +161,7 @@ Content-Type: application/json</pre>
             <h4>Status</h4>
             <pre class="response status">200 OK</pre>
               <h4>Body</h4>
-              <pre class="response body">{&quot;id&quot;:108,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:115,&quot;created_at&quot;:&quot;2021-02-11T14:29:51.095Z&quot;,&quot;updated_at&quot;:&quot;2021-02-11T14:29:51.095Z&quot;}</pre>
+              <pre class="response body">{&quot;id&quot;:113,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:124,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.699Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.699Z&quot;}</pre>
       </div>
     </div>
   </body>

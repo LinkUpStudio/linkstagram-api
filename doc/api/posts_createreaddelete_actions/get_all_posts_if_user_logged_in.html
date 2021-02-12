@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Posts create/read/delete actions API</title>
+    <meta charset="utf-8">
+    <style>
+      
+body {
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  color: #404040;
+}
+
+.container {
+  width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  zoom: 1;
+}
+
+pre {
+  background-color: #f5f5f5;
+  display: block;
+  padding: 8.5px;
+  margin: 0 0 18px;
+  line-height: 18px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+td.required .name:after {
+  float: right;
+  content: "required";
+  font-weight: normal;
+  color: #F08080;
+}
+
+a{
+  color: #0069d6;
+  text-decoration: none;
+  line-height: inherit;
+  font-weight: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  color: #404040;
+}
+
+h1 {
+  margin-bottom: 18px;
+  font-size: 30px;
+  line-height: 36px;
+}
+h2 {
+  font-size: 24px;
+  line-height: 36px;
+}
+h3{
+  font-size: 18px;
+  line-height: 36px;
+}
+h4 {
+  font-size: 16px;
+  line-height: 36px;
+}
+
+table{
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 0;
+  border-collapse: separate;
+  font-size: 13px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+}
+
+table th {
+  padding-top: 9px;
+  font-weight: bold;
+  vertical-align: middle;
+  border-bottom: 1px solid #ddd;
+}
+table th+th, table td+td {
+  border-left: 1px solid #ddd;
+}
+table th, table td {
+  padding: 10px 10px 9px;
+  line-height: 18px;
+  text-align: left;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Posts create/read/delete actions API</h1>
+
+      <div class="article">
+        <h2>Get all posts if user logged in</h2>
+        <h3>GET /posts</h3>
+
+          <h3>Parameters</h3>
+          <table class="parameters table table-striped table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                    <span class="name">page</span>
+                </td>
+                <td>
+                  <span class="description">Items page</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <h3>Request</h3>
+
+            <h4>Headers</h4>
+            <pre class="request headers">Accept: application/json
+Content-Type: application/json</pre>
+
+          <h4>Route</h4>
+          <pre class="request route highlight">GET /posts</pre>
+
+            <h4>Query Parameters</h4>
+            <pre class="request query_parameters highlight">{
+}: </pre>
+
+
+            <h4>cURL</h4>
+            <pre class="request curl">curl -g &quot;http://localhost:3000/posts&quot; -X GET \
+	-H &quot;Accept: application/json&quot; \
+	-H &quot;Content-Type: application/json&quot; \
+	-H &quot;Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjo2OX0.I1uOtSjMsohN2Szn0AYudpF1ylmSgnj5f3xjHMQIqVU&quot; \
+	-H &quot;Host: example.org&quot; \
+	-H &quot;Cookie: &quot;</pre>
+
+            <h3>Response</h3>
+              <h4>Headers</h4>
+              <pre class="response headers">Content-Type: application/json; charset=utf-8</pre>
+            <h4>Status</h4>
+            <pre class="response status">200 OK</pre>
+              <h4>Body</h4>
+              <pre class="response body">[{&quot;id&quot;:58,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:68,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.512Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.512Z&quot;},{&quot;id&quot;:57,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:67,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.509Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.509Z&quot;},{&quot;id&quot;:56,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:66,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.506Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.506Z&quot;},{&quot;id&quot;:55,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:65,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.503Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.503Z&quot;},{&quot;id&quot;:54,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:64,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.500Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.500Z&quot;},{&quot;id&quot;:53,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:63,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.496Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.496Z&quot;},{&quot;id&quot;:52,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:62,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.494Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.494Z&quot;},{&quot;id&quot;:51,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:61,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.491Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.491Z&quot;},{&quot;id&quot;:50,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:60,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.488Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.488Z&quot;},{&quot;id&quot;:49,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:59,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.481Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.481Z&quot;},{&quot;id&quot;:48,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:58,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.478Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.478Z&quot;},{&quot;id&quot;:47,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:57,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.476Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.476Z&quot;},{&quot;id&quot;:46,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:56,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.473Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.473Z&quot;},{&quot;id&quot;:45,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:55,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.470Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.470Z&quot;},{&quot;id&quot;:44,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:54,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.468Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.468Z&quot;},{&quot;id&quot;:43,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:53,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.465Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.465Z&quot;},{&quot;id&quot;:42,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:52,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.462Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.462Z&quot;},{&quot;id&quot;:41,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:51,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.460Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.460Z&quot;},{&quot;id&quot;:40,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:50,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.457Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.457Z&quot;},{&quot;id&quot;:39,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:49,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.454Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.454Z&quot;},{&quot;id&quot;:38,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:48,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.451Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.451Z&quot;},{&quot;id&quot;:37,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:47,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.448Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.448Z&quot;},{&quot;id&quot;:36,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:46,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.445Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.445Z&quot;},{&quot;id&quot;:35,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:45,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.442Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.442Z&quot;},{&quot;id&quot;:34,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:44,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.439Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.439Z&quot;}]</pre>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Edit profile API</title>
+    <title>Posts create/read/delete actions API</title>
     <meta charset="utf-8">
     <style>
       
@@ -106,11 +106,11 @@ table th, table td {
   </head>
   <body>
     <div class="container">
-      <h1>Edit profile API</h1>
+      <h1>Posts create/read/delete actions API</h1>
 
       <div class="article">
-        <h2>Edit one&#39;s account</h2>
-        <h3>PATCH /account</h3>
+        <h2>Get items from the concrete page</h2>
+        <h3>GET /posts</h3>
 
           <h3>Parameters</h3>
           <table class="parameters table table-striped table-bordered table-condensed">
@@ -123,26 +123,10 @@ table th, table td {
             <tbody>
               <tr>
                 <td>
-                    <span class="name">username</span>
+                    <span class="name">page</span>
                 </td>
                 <td>
-                  <span class="description">Username</span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                    <span class="name">profile_photo</span>
-                </td>
-                <td>
-                  <span class="description">User profile photo</span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                    <span class="name">description</span>
-                </td>
-                <td>
-                  <span class="description">User description</span>
+                  <span class="description">Items page</span>
                 </td>
               </tr>
             </tbody>
@@ -156,25 +140,17 @@ table th, table td {
 Content-Type: application/json</pre>
 
           <h4>Route</h4>
-          <pre class="request route highlight">PATCH /account</pre>
+          <pre class="request route highlight">GET /posts?page=2</pre>
 
+            <h4>Query Parameters</h4>
+            <pre class="request query_parameters highlight">page: 2</pre>
 
-            <h4>Body</h4>
-            <pre class="request body">{
-  "username": "new_name",
-  "profile_photo": "new photo",
-  "description": "new description"
-}</pre>
 
             <h4>cURL</h4>
-            <pre class="request curl">curl &quot;http://localhost:3000/account&quot; -d &#39;{
-  &quot;username&quot;: &quot;new_name&quot;,
-  &quot;profile_photo&quot;: &quot;new photo&quot;,
-  &quot;description&quot;: &quot;new description&quot;
-}&#39; -X PATCH \
+            <pre class="request curl">curl -g &quot;http://localhost:3000/posts?page=2&quot; -X GET \
 	-H &quot;Accept: application/json&quot; \
 	-H &quot;Content-Type: application/json&quot; \
-	-H &quot;Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoyfQ.NsVcMGH9coCMIjh8iNoB5Tieil3Usm-T1jVlf-PEXFY&quot; \
+	-H &quot;Authorization: &quot; \
 	-H &quot;Host: example.org&quot; \
 	-H &quot;Cookie: &quot;</pre>
 
@@ -184,7 +160,7 @@ Content-Type: application/json</pre>
             <h4>Status</h4>
             <pre class="response status">200 OK</pre>
               <h4>Body</h4>
-              <pre class="response body">{&quot;description&quot;:&quot;new description&quot;,&quot;username&quot;:&quot;new_name&quot;,&quot;profile_photo&quot;:&quot;new photo&quot;,&quot;id&quot;:2,&quot;email&quot;:&quot;person2@example.com&quot;,&quot;followers&quot;:686,&quot;following&quot;:416}</pre>
+              <pre class="response body">[{&quot;id&quot;:59,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:70,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.522Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.522Z&quot;}]</pre>
       </div>
     </div>
   </body>

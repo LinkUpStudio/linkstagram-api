@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Posts CRUD actions API</title>
+    <title>Likes API</title>
     <meta charset="utf-8">
     <style>
       
@@ -106,11 +106,11 @@ table th, table td {
   </head>
   <body>
     <div class="container">
-      <h1>Posts CRUD actions API</h1>
+      <h1>Likes API</h1>
 
       <div class="article">
-        <h2>Delete post only when the user is the author</h2>
-        <h3>DELETE /posts/:id</h3>
+        <h2>Remove like</h2>
+        <h3>DELETE /posts/:post_id/likes</h3>
 
           <h3>Parameters</h3>
           <table class="parameters table table-striped table-bordered table-condensed">
@@ -123,7 +123,7 @@ table th, table td {
             <tbody>
               <tr>
                 <td>
-                    <span class="name">id</span>
+                    <span class="name">post_id</span>
                 </td>
                 <td>
                   <span class="description">Post id</span>
@@ -140,7 +140,7 @@ table th, table td {
 Content-Type: application/json</pre>
 
           <h4>Route</h4>
-          <pre class="request route highlight">DELETE /posts/110</pre>
+          <pre class="request route highlight">DELETE /posts/4/likes</pre>
 
 
             <h4>Body</h4>
@@ -148,21 +148,17 @@ Content-Type: application/json</pre>
 }</pre>
 
             <h4>cURL</h4>
-            <pre class="request curl">curl &quot;http://localhost:3000/posts/110&quot; -d &#39;{
+            <pre class="request curl">curl &quot;http://localhost:3000/posts/4/likes&quot; -d &#39;{
 }&#39; -X DELETE \
 	-H &quot;Accept: application/json&quot; \
 	-H &quot;Content-Type: application/json&quot; \
-	-H &quot;Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoxMTh9.xCsuTOQ9O5icHmSq-tsZZkHMw70bQyl1OfNLpb2F7HY&quot; \
+	-H &quot;Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoxMX0.FDhKo5uVco3Q32Uou93nsQ8OcnIaLlHyYTHRiC5LAU4&quot; \
 	-H &quot;Host: example.org&quot; \
 	-H &quot;Cookie: &quot;</pre>
 
             <h3>Response</h3>
-              <h4>Headers</h4>
-              <pre class="response headers">Content-Type: application/json; charset=utf-8</pre>
             <h4>Status</h4>
-            <pre class="response status">200 OK</pre>
-              <h4>Body</h4>
-              <pre class="response body">{&quot;message&quot;:&quot;Post successfully deleted.&quot;}</pre>
+            <pre class="response status">204 No Content</pre>
       </div>
     </div>
   </body>
