@@ -1,8 +1,5 @@
 require 'acceptance_helper'
 
-include Helpers::JwtToken
-include Helpers::JsonParse
-
 resource 'Posts create/read/delete actions' do
   header 'Accept', 'application/json'
   header 'Content-Type', 'application/json'
@@ -11,12 +8,12 @@ resource 'Posts create/read/delete actions' do
   get '/posts' do
     parameter :page, 'Posts page'
 
-    let!(:posts) { create_list(:post, 26) }
+    let!(:posts) { create_list(:post, 2) }
 
     let(:token) { nil }
     example_request 'Get all posts if user logged out' do
       expect(status).to eq(200)
-      expect(parsed_json.length).to eq(25)
+      expect(parsed_json.length).to eq(2)
     end
 
     context 'when user logged in' do
@@ -24,25 +21,30 @@ resource 'Posts create/read/delete actions' do
       let(:token) { jwt_token(user.id) }
       example_request 'Get all posts if user logged in' do
         expect(status).to eq(200)
-        expect(parsed_json.length).to eq(25)
+        expect(parsed_json.length).to eq(2)
         expect(parsed_json.first['created_at']).to be > parsed_json.last['created_at']
       end
     end
 
-    context 'when page is defined' do
-      let(:page) { 2 }
+    context 'pagination' do
+      let(:author) { create(:account) }
+      let!(:posts) { create_list(:post, 26, author: author) }
 
-      example_request 'Get items from the concrete page' do
-        expect(status).to eq(200)
-        expect(parsed_json.length).to eq(1)
+      context 'when page is defined' do
+        let(:page) { 2 }
+
+        example_request 'Get items from the concrete page' do
+          expect(status).to eq(200)
+          expect(parsed_json.length).to eq(1)
+        end
       end
-    end
 
-    context 'when page is out of range', document: false do
-      let(:page) { 100 }
-      example_request 'returns items from the first page' do
-        expect(status).to eq(200)
-        expect(parsed_json.length).to eq(25)
+      context 'when page is out of range', document: false do
+        let(:page) { 100 }
+        example_request 'returns items from the first page' do
+          expect(status).to eq(200)
+          expect(parsed_json.length).to eq(25)
+        end
       end
     end
   end
@@ -83,7 +85,7 @@ resource 'Posts create/read/delete actions' do
       expect(parsed_json).to eq(post.as_json)
     end
 
-    context 'when user is logged in' do
+    context 'when user is logged in', document: false do
       let(:user) { create(:account) }
       let(:token) { jwt_token(user.id) }
       example_request 'Get a post if user logged in' do
@@ -106,9 +108,9 @@ resource 'Posts create/read/delete actions' do
     let!(:posts) { create_list(:post, 5) }
     let!(:id) { posts.first.id }
     let(:token) { jwt_token(posts.first.author_id) }
-    example_request 'Delete post only when the user is the author' do
+    example 'Delete post only when the user is the author' do
+      expect { do_request }.to change(Post, :count).from(5).to(4)
       expect(status).to eq(200)
-      expect(Post.count).to eq(4)
     end
 
     context 'failed requests', document: false do

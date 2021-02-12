@@ -1,7 +1,5 @@
 require 'acceptance_helper'
 
-include Helpers::JwtToken
-
 resource 'Likes' do
   header 'Accept', 'application/json'
   header 'Content-Type', 'application/json'
@@ -17,7 +15,8 @@ resource 'Likes' do
     context 'creates like as logged in user' do
       example 'Set like' do
         expect { do_request }.to change { Like.count }.from(0).to(1)
-        expect(status).to eq(204)
+        # check if like is author's, for that post
+        expect(status).to eq(200)
       end
     end
 
@@ -40,7 +39,6 @@ resource 'Likes' do
     parameter :post_id, 'Post id'
 
     let!(:user) { create(:account) }
-    let!(:stranger) { create(:account) }
     let!(:post) { create(:post, author: user) }
     let!(:post_id) { post.id }
     let!(:like) { create(:like, post: post, account: user) }
@@ -48,15 +46,16 @@ resource 'Likes' do
     context 'removes like as logged in user' do
       example 'Remove like' do
         expect { do_request }.to change { Like.count }.from(1).to(0)
-        expect(status).to eq(204)
+        expect(status).to eq(200)
       end
     end
 
     context 'cannot remove like of the other user', document: false do
+      let!(:stranger) { create(:account) }
       let(:token) { jwt_token(stranger.id) }
       example 'Remove like' do
         expect { do_request }.not_to change(Like, :count)
-        expect(status).to eq(422)
+        expect(status).to eq(400)
       end
     end
 

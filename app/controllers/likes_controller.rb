@@ -2,16 +2,21 @@ class LikesController < ApplicationController
   before_action :find_post, :authenticate
 
   def create
-    post.likes.create(account: current_user)
+    if post.likes.create(account: current_user)
+      return head 200
+    end
+
+    render json: { error: 'Cannot perform this action' }, status: 400
   end
 
   def destroy
-    like = post.likes.where(account: current_user)
-    unless like.empty?
-      return post.likes.destroy_by(account: current_user)
+    like = post.find_like_by(current_user)
+    if like
+      like.destroy
+      return head 200
     end
 
-    render json: { error: 'Cannot perform this action' }, status: 422
+    render json: { error: 'Cannot perform this action' }, status: 400
   end
 
   private

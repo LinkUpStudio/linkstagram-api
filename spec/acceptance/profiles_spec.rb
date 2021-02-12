@@ -1,7 +1,5 @@
 require 'acceptance_helper'
 
-include Helpers::JsonParse
-
 resource 'Get profiles' do
   header 'Accept', 'application/json'
   header 'Content-Type', 'application/json'

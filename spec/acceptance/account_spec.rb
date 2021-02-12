@@ -1,8 +1,5 @@
 require 'acceptance_helper'
 
-include Helpers::JwtToken
-include Helpers::JsonParse
-
 resource 'Edit profile' do
   header 'Accept', 'application/json'
   header 'Content-Type', 'application/json'

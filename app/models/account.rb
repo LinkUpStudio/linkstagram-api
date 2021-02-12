@@ -18,6 +18,8 @@ class Account < ApplicationRecord
 
   before_create :set_followers
 
+  scope :ordered, -> { order(followers: :desc) }
+
   private
 
   def set_followers
