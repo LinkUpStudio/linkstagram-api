@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   patch '/account', to: 'account#update'
   get '/account', to: 'account#show'
   resources :profiles
-  resources :posts
+  resources :posts do
+    resources :likes
+  end
 end

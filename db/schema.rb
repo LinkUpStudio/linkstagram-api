@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2021_02_11_145139) do
     t.index ["username"], name: "index_accounts_on_username", unique: true
   end
 
-  create_table "likes", id: false, force: :cascade do |t|
+  create_table "likes", force: :cascade do |t|
     t.bigint "account_id", null: false
     t.bigint "post_id", null: false
     t.datetime "created_at", precision: 6, null: false

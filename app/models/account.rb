@@ -2,7 +2,7 @@
 
 class Account < ApplicationRecord
   has_many :posts
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes,
                          class_name: 'Post',
                          inverse_of: :account,
@@ -13,7 +13,6 @@ class Account < ApplicationRecord
                        length: { in: 3..20 },
                        format: { with: /[a-zA-Z0-9._-]+/ }
   validates :description, presence: false
-  validates :profile_photo, presence: true
 
   before_create :set_followers
 
