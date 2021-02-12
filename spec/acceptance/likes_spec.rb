@@ -15,7 +15,9 @@ resource 'Likes' do
     context 'creates like as logged in user' do
       example 'Set like' do
         expect { do_request }.to change { Like.count }.from(0).to(1)
-        # check if like is author's, for that post
+        like = Like.first
+        expect(like.post).to eq(post)
+        expect(like.account).to eq(user)
         expect(status).to eq(200)
       end
     end
