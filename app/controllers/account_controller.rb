@@ -2,7 +2,7 @@ class AccountController < ApplicationController
   before_action :authenticate
 
   def show
-    render json: current_user, status: 200
+    render json: AccountBlueprint.render(current_user, view: :private), status: 200
   end
 
   def update
