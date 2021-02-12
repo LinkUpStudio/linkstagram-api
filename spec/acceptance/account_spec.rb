@@ -11,7 +11,7 @@ resource 'Edit profile' do
   get '/account' do
     let(:my_account) { create(:account) }
 
-    context 'get account as loged in user' do
+    context 'get account as logged in user' do
       let(:token) { jwt_token(my_account.id) }
 
       example_request "Get one's page" do

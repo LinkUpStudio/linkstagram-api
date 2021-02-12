@@ -39,7 +39,7 @@ resource 'Posts create/read/delete actions' do
     end
 
     context 'when page is out of range', document: false do
-      let(:page) { '-9' }
+      let(:page) { 100 }
       example_request 'returns items from the first page' do
         expect(status).to eq(200)
         expect(parsed_json.length).to eq(25)

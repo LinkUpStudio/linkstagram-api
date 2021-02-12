@@ -14,8 +14,7 @@ resource 'Get profiles' do
     example_request 'Get profiles of all users' do
       expect(status).to eq(200)
       expect(parsed_json.length).to eq(25)
-      sorted_profiles = profiles.sort_by { |profile| profile['followers'] }
-      expect(parsed_json).to match_array(sorted_profiles[1..25].as_json)
+      expect(parsed_json.first['followers']).to be > parsed_json.last['followers']
     end
 
     context 'when page is defined' do
@@ -24,6 +23,15 @@ resource 'Get profiles' do
       example_request 'Get profiles from the concrete page' do
         expect(status).to eq(200)
         expect(parsed_json.length).to eq(1)
+      end
+    end
+
+    context 'when page is defined', document: true do
+      let(:page) { 100 }
+
+      example_request 'returns profiles from the first page' do
+        expect(status).to eq(200)
+        expect(parsed_json.length).to eq(25)
       end
     end
   end
