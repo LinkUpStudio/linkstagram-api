@@ -45,12 +45,12 @@ ActiveRecord::Schema.define(version: 2021_02_15_141408) do
 
   create_table "comments", force: :cascade do |t|
     t.string "message"
-    t.bigint "account_id", null: false
+    t.bigint "post_id", null: false
     t.bigint "commenter_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["account_id"], name: "index_comments_on_account_id"
     t.index ["commenter_id"], name: "index_comments_on_commenter_id"
+    t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 2021_02_15_141408) do
   add_foreign_key "account_login_change_keys", "accounts", column: "id"
   add_foreign_key "account_password_hashes", "accounts", column: "id"
   add_foreign_key "account_password_reset_keys", "accounts", column: "id"
-  add_foreign_key "comments", "accounts"
   add_foreign_key "comments", "accounts", column: "commenter_id"
+  add_foreign_key "comments", "posts"
   add_foreign_key "likes", "accounts"
   add_foreign_key "likes", "posts"
   add_foreign_key "posts", "accounts", column: "author_id"
