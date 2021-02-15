@@ -1,7 +1,8 @@
 class Post < ApplicationRecord
   belongs_to :author, class_name: 'Account'
 
-  has_many :likes, dependent: :destroy, inverse_of: :post
+  has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   scope :ordered, -> { order(created_at: :desc) }
 

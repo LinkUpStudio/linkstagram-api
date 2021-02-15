@@ -9,6 +9,9 @@ class Account < ApplicationRecord
                          class_name: 'Post',
                          inverse_of: :account,
                          source: 'post'
+  has_many :comments, inverse_of: 'commenter',
+                      foreign_key: :commenter_id,
+                      dependent: :destroy
 
   validates :username, presence: true,
                        uniqueness: true,
