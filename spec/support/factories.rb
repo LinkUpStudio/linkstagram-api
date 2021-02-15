@@ -40,4 +40,10 @@ FactoryBot.define do
     post
     account
   end
+
+  factory :comment do
+    message { 'Comment' }
+    association :commenter, factory: :account
+    post
+  end
 end
