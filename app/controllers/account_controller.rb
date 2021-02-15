@@ -7,7 +7,7 @@ class AccountController < ApplicationController
 
   def update
     if current_user.update(account_params)
-      return render json: current_user, status: 200
+      return render json: AccountBlueprint.render(current_user, view: :private), status: 200
     end
 
     render json: { errors: current_user.errors }, status: 422

@@ -4,8 +4,8 @@ class PostsController < ApplicationController
   def index
     page = to_int(params[:page])
     page = 0 if Post.page(page).out_of_range?
-    posts = Post.ordered
-    render json: posts.page(page), status: 200
+    posts = Post.ordered.includes([:author])
+    render json: PostBlueprint.render(posts.page(page), view: :with_author), status: 200
   end
 
   def create
@@ -13,13 +13,15 @@ class PostsController < ApplicationController
     post = Post.new(post_params)
     post.author = current_user
 
-    return render json: post, status: 200 if post.save
+    if post.save
+      return render json: PostBlueprint.render(post, view: :with_author), status: 200
+    end
 
     render json: { errors: post.errors }, status: 422
   end
 
   def show
-    render json: post, status: 200
+    render json: PostBlueprint.render(post, view: :with_author), status: 200
   end
 
   def destroy

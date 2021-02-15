@@ -20,6 +20,11 @@ class Account < ApplicationRecord
 
   scope :ordered, -> { order(followers: :desc) }
 
+  def with_posts(account_id)
+    # Account.joins(:posts).where(posts: { author_id: account_id })
+    Account.includes(:posts).find(account_id)
+  end
+
   private
 
   def set_followers

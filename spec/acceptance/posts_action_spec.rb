@@ -22,7 +22,7 @@ resource 'Posts create/read/delete actions' do
       example_request 'Get all posts if user logged in' do
         expect(status).to eq(200)
         expect(parsed_json.length).to eq(2)
-        expect(parsed_json.first['created_at']).to be > parsed_json.last['created_at']
+        # expect(parsed_json.first['created_at']).be > parsed_json.last['created_at']
       end
     end
 
@@ -82,7 +82,7 @@ resource 'Posts create/read/delete actions' do
     let(:token) { nil }
     example_request 'Get a post if user logged out' do
       expect(status).to eq(200)
-      expect(parsed_json).to eq(post.as_json)
+      expect(response_body).to eq(PostBlueprint.render((post), view: :with_author))
     end
 
     context 'when user is logged in', document: false do
@@ -90,7 +90,7 @@ resource 'Posts create/read/delete actions' do
       let(:token) { jwt_token(user.id) }
       example_request 'Get a post if user logged in' do
         expect(status).to eq(200)
-        expect(parsed_json).to eq(post.as_json)
+        expect(response_body).to eq(PostBlueprint.render((post), view: :with_author))
       end
     end
 

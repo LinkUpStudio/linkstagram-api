@@ -33,4 +33,24 @@ resource 'Get profiles' do
       end
     end
   end
+
+  get '/profiles/:id', :realistic_error_responses do
+    parameter :id, 'Profile id'
+
+    let!(:user) { create(:account) }
+    let!(:posts) { create_list(:post, 5, author: user) }
+    let(:id) { user.id }
+    example_request 'Get profile with its posts' do
+      expect(status).to eq(200)
+      expect(parsed_json['posts'].size).to eq(posts.size)
+      expect(response_body).to eq(AccountBlueprint.render(user, view: :with_posts))
+    end
+
+    context 'failures', document: false do
+      let(:id) { 0 }
+      example_request 'returns 404' do
+        expect(status).to eq(404)
+      end
+    end
+  end
 end
