@@ -11,7 +11,7 @@ resource 'Edit profile' do
     context 'get account as logged in user' do
       let(:token) { jwt_token(my_account.id) }
 
-      example_request "Get one's page" do
+      example_request 'Get page' do
         expect(status).to eq(200)
         expect(parsed_json).to eq(my_account.as_json)
       end
@@ -39,7 +39,7 @@ resource 'Edit profile' do
     context 'edit own account' do
       let(:token) { jwt_token(my_account.id) }
 
-      example_request "Edit one's account" do
+      example_request 'Edit account' do
         expect(status).to eq(200)
         my_account.reload
         expect(my_account.username).to eq(username)

@@ -24,7 +24,7 @@ resource 'Get profiles' do
       end
     end
 
-    context 'when page is defined', document: true do
+    context 'when page is defined', document: false do
       let(:page) { 100 }
 
       example_request 'returns profiles from the first page' do

@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2021_02_11_145139) do
 
   create_table "posts", force: :cascade do |t|
     t.text "description"
+    t.integer "likes_count", default: 0
     t.bigint "author_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

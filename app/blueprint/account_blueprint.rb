@@ -2,7 +2,8 @@ class AccountBlueprint < Blueprinter::Base
   identifier :id
 
   view :normal do
-    fields :username, :description, :profile_photo, :followers, :following
+    fields :username, :description, :profile_photo, :followers,
+           :following
   end
 
   view :private do

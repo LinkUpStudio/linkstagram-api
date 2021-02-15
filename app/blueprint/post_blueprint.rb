@@ -2,7 +2,7 @@ class PostBlueprint < Blueprinter::Base
   identifier :id
 
   view :normal do
-    fields :description, :created_at
+    fields :description, :likes_count, :created_at
   end
 
   view :with_author do

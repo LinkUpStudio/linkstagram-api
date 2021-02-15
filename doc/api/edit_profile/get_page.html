@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Posts create/read/delete actions API</title>
+    <title>Edit profile API</title>
     <meta charset="utf-8">
     <style>
       
@@ -106,31 +106,12 @@ table th, table td {
   </head>
   <body>
     <div class="container">
-      <h1>Posts create/read/delete actions API</h1>
+      <h1>Edit profile API</h1>
 
       <div class="article">
-        <h2>Get a post if user logged in</h2>
-        <h3>GET /posts/:id</h3>
+        <h2>Get page</h2>
+        <h3>GET /account</h3>
 
-          <h3>Parameters</h3>
-          <table class="parameters table table-striped table-bordered table-condensed">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                    <span class="name">id</span>
-                </td>
-                <td>
-                  <span class="description">Post id</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
 
 
           <h3>Request</h3>
@@ -140,7 +121,7 @@ table th, table td {
 Content-Type: application/json</pre>
 
           <h4>Route</h4>
-          <pre class="request route highlight">GET /posts/113</pre>
+          <pre class="request route highlight">GET /account</pre>
 
             <h4>Query Parameters</h4>
             <pre class="request query_parameters highlight">{
@@ -148,10 +129,10 @@ Content-Type: application/json</pre>
 
 
             <h4>cURL</h4>
-            <pre class="request curl">curl -g &quot;http://localhost:3000/posts/113&quot; -X GET \
+            <pre class="request curl">curl -g &quot;http://localhost:3000/account&quot; -X GET \
 	-H &quot;Accept: application/json&quot; \
 	-H &quot;Content-Type: application/json&quot; \
-	-H &quot;Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoxMjV9.dISMlo4VRymoSlABhOyDbBaT3r_ETqHvBacL9xcHnco&quot; \
+	-H &quot;Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoxfQ.OhHNbs76m9_5VORZiN3xF2MYwOTBAGiXYWJ9-pPIU9A&quot; \
 	-H &quot;Host: example.org&quot; \
 	-H &quot;Cookie: &quot;</pre>
 
@@ -161,7 +142,7 @@ Content-Type: application/json</pre>
             <h4>Status</h4>
             <pre class="response status">200 OK</pre>
               <h4>Body</h4>
-              <pre class="response body">{&quot;id&quot;:113,&quot;description&quot;:&quot;Post description&quot;,&quot;account_id&quot;:124,&quot;created_at&quot;:&quot;2021-02-12T10:23:55.699Z&quot;,&quot;updated_at&quot;:&quot;2021-02-12T10:23:55.699Z&quot;}</pre>
+              <pre class="response body">{&quot;id&quot;:1,&quot;description&quot;:null,&quot;email&quot;:&quot;person1@example.com&quot;,&quot;followers&quot;:342,&quot;following&quot;:588,&quot;profile_photo&quot;:&quot;Profile photo&quot;,&quot;username&quot;:&quot;user1&quot;}</pre>
       </div>
     </div>
   </body>

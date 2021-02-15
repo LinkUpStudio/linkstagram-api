@@ -16,13 +16,13 @@ resource 'Posts create/read/delete actions' do
       expect(parsed_json.length).to eq(2)
     end
 
-    context 'when user logged in' do
+    context 'when user logged in', document: false do
       let(:user) { create(:account) }
       let(:token) { jwt_token(user.id) }
       example_request 'Get all posts if user logged in' do
         expect(status).to eq(200)
         expect(parsed_json.length).to eq(2)
-        # expect(parsed_json.first['created_at']).be > parsed_json.last['created_at']
+        # expect(parsed_json.first['created_at']).to be > parsed_json.last['created_at']
       end
     end
 
@@ -33,7 +33,7 @@ resource 'Posts create/read/delete actions' do
       context 'when page is defined' do
         let(:page) { 2 }
 
-        example_request 'Get items from the concrete page' do
+        example_request 'Get posts from the concrete page' do
           expect(status).to eq(200)
           expect(parsed_json.length).to eq(1)
         end
@@ -82,7 +82,7 @@ resource 'Posts create/read/delete actions' do
     let(:token) { nil }
     example_request 'Get a post if user logged out' do
       expect(status).to eq(200)
-      expect(response_body).to eq(PostBlueprint.render((post), view: :with_author))
+      expect(response_body).to eq(PostBlueprint.render(post, view: :with_author))
     end
 
     context 'when user is logged in', document: false do
@@ -90,7 +90,7 @@ resource 'Posts create/read/delete actions' do
       let(:token) { jwt_token(user.id) }
       example_request 'Get a post if user logged in' do
         expect(status).to eq(200)
-        expect(response_body).to eq(PostBlueprint.render((post), view: :with_author))
+        expect(response_body).to eq(PostBlueprint.render(post, view: :with_author))
       end
     end
 

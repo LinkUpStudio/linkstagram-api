@@ -20,10 +20,11 @@ class Account < ApplicationRecord
 
   scope :ordered, -> { order(followers: :desc) }
 
-  def with_posts(account_id)
-    # Account.joins(:posts).where(posts: { author_id: account_id })
-    Account.includes(:posts).find(account_id)
-  end
+  scope :with_posts, lambda { |account_id|
+    rel = left_outer_joins(posts: :likes).where(id: account_id)
+    p rel.to_sql
+    rel
+  }
 
   private
 
