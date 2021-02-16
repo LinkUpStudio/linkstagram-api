@@ -22,30 +22,18 @@ resource 'Posts create/read/delete actions' do
       example_request 'Get all posts if user logged in' do
         expect(status).to eq(200)
         expect(parsed_json.length).to eq(2)
-        # expect(parsed_json.first['created_at']).to be > parsed_json.last['created_at']
       end
     end
 
     context 'pagination' do
       let(:author) { create(:account) }
-      let!(:posts) { create_list(:post, 26, author: author) }
 
       context 'when page is defined' do
-        let(:page) { 2 }
-
-        example_request 'Get posts from the concrete page' do
-          expect(status).to eq(200)
-          expect(parsed_json.length).to eq(1)
-        end
+        let!(:posts) { create_list(:post, 26, author: author) }
+        include_examples 'when page is defined'
       end
 
-      context 'when page is out of range', document: false do
-        let(:page) { 100 }
-        example_request 'returns items from the first page' do
-          expect(status).to eq(200)
-          expect(parsed_json.length).to eq(25)
-        end
-      end
+      include_examples 'when page is invalid'
     end
   end
 
@@ -58,7 +46,7 @@ resource 'Posts create/read/delete actions' do
     context 'success' do
       let!(:other_user) do
         create(:account) do |user|
-          create_list(:post, 2, author: user)
+          create(:post, author: user)
         end
       end
 
@@ -69,10 +57,9 @@ resource 'Posts create/read/delete actions' do
       end
     end
 
-    context 'failures', document: false do
-      let!(:username) { 'bad_request' }
-      example_request 'returns 422' do
-        expect(status).to eq(422)
+    context 'failures' do
+      it_behaves_like 'failures when invalid username' do
+        let(:parameter) { 'bad_username' }
       end
     end
 
@@ -102,10 +89,9 @@ resource 'Posts create/read/delete actions' do
       end
     end
 
-    context 'failures', document: false do
-      let(:token) { nil }
-      example_request 'returns http unauthorized' do
-        expect(status).to eq(401)
+    context 'failures' do
+      it_behaves_like 'failures with authorization' do
+        let(:parameter) { nil }
       end
     end
   end
@@ -149,10 +135,9 @@ resource 'Posts create/read/delete actions' do
       expect(status).to eq(200)
     end
 
-    context 'failed requests', document: false do
-      let(:token) { jwt_token(posts.last.author_id) }
-      example_request 'does not delete post of the other user' do
-        expect(status).to eq(401)
+    context 'failures' do
+      it_behaves_like 'failures with authorization' do
+        let(:parameter) { jwt_token(posts.last.author_id) }
       end
     end
   end

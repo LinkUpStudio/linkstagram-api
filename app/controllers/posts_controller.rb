@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show destroy]
 
-  def index # profile username in params
+  # show Nazar fixing of routes
+  def index
     page = to_int(params[:page])
     page = 0 if Post.page(page).out_of_range?
     posts = Post.ordered.includes([:author])

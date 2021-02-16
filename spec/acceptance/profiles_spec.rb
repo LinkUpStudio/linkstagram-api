@@ -16,23 +16,12 @@ resource 'Get profiles' do
     end
 
     context 'when page is defined', content: false do
-      let(:page) { 2 }
       let!(:profiles) { create_list(:account, 26) }
 
-      example_request 'Get profiles from the concrete page' do
-        expect(status).to eq(200)
-        expect(parsed_json.length).to eq(1)
-      end
+      include_examples 'when page is defined'
     end
 
-    context 'when page is invalid', document: false do
-      let(:page) { 100 }
-
-      example_request 'returns profiles from the first page' do
-        expect(status).to eq(200)
-        expect(parsed_json.length).to eq(profiles.size)
-      end
-    end
+    include_examples 'when page is invalid'
   end
 
   get '/profiles/:username' do
@@ -47,10 +36,9 @@ resource 'Get profiles' do
       end
     end
 
-    context 'failures', document: false do
-      let!(:username) { 'bad_request' }
-      example_request 'returns 422' do
-        expect(status).to eq(422)
+    context 'failures' do
+      it_behaves_like 'failures when invalid username' do
+        let(:parameter) { 'bad_username' }
       end
     end
   end

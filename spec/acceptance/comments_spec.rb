@@ -37,14 +37,16 @@ resource 'Comments' do
 
     context 'pagination', document: false do
       let!(:comments) do
-        create_list(:comment, 26, post: post, commenter: user)
+        create_list(:comment, 2, post: post, commenter: user)
       end
-      let!(:page) { 2 }
       let!(:post_id) { post.id }
 
-      example_request 'get comments from the concrete page' do
-        expect(status).to eq(200)
-        expect(parsed_json.length).to eq(1)
+      context 'when page is defined', content: false do
+        let!(:comments) do
+          create_list(:comment, 26, post: post, commenter: user)
+        end
+
+        include_examples 'when page is defined'
       end
     end
 
@@ -78,12 +80,7 @@ resource 'Comments' do
       end
     end
 
-    context 'failures with authorization', document: false do
-      let!(:token) { 'bad_token' }
-      example_request 'does not create comment for logged out user' do
-        expect(status).to eq(400)
-      end
-    end # shared examples
+    include_examples 'failures with authentication'
 
     context 'failures with post id', document: false do
       let!(:token) { jwt_token(user.id) }

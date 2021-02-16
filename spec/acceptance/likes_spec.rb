@@ -29,12 +29,7 @@ resource 'Likes' do
       end
     end
 
-    context 'failures creating like', document: false do
-      let(:token) { 'bad_token' }
-      example_request 'returns 400 if user is logged out' do
-        expect(status).to eq(400)
-      end
-    end
+    include_examples 'failures with authentication'
   end
 
   delete '/posts/:post_id/likes' do
@@ -61,11 +56,6 @@ resource 'Likes' do
       end
     end
 
-    context 'failures creating like', document: false do
-      let(:token) { 'bad_token' }
-      example_request 'returns 400 if user is logged out' do
-        expect(status).to eq(400)
-      end
-    end
+    include_examples 'failures with authentication'
   end
 end

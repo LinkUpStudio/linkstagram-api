@@ -18,11 +18,7 @@ resource 'Edit profile' do
     end
 
     context 'get account as logged out user', document: false do
-      let(:token) { 'bad_token' }
-
-      example_request 'returns status non authorized' do
-        expect(status).to eq(400)
-      end
+      include_examples 'failures with authentication'
     end
   end
 
