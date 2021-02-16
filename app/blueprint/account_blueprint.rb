@@ -1,19 +1,11 @@
 class AccountBlueprint < Blueprinter::Base
-  identifier :id
+  identifier :username
 
-  view :normal do
-    fields :username, :description, :profile_photo, :followers,
-           :following
-  end
+  fields :description, :profile_photo, :followers,
+         :following
 
   view :private do
-    include_view :normal
-    fields :email
-  end
-
-  view :with_posts do
-    include_view :normal
-    association :posts, blueprint: PostBlueprint, view: :normal
+    field :email
   end
 end
 

@@ -13,9 +13,15 @@ resource 'Comments' do
     let!(:user) { create(:account) }
     let!(:comments) { create_list(:comment, 3, post: post, commenter: user) }
 
+    let!(:other_post) do
+      create(:post) do |post|
+        create_list(:comment, 3, post: post, commenter: user)
+      end
+    end
+
     let!(:post_id) { post.id }
     context 'get comments of some post' do
-      example_request 'Show comments for logged out user' do
+      example_request 'Show comments for all user' do
         expect(status).to eq(200)
         expect(parsed_json.length).to eq(comments.size)
       end
@@ -41,6 +47,13 @@ resource 'Comments' do
         expect(parsed_json.length).to eq(1)
       end
     end
+
+    context 'failure request', document: false do
+      let!(:post_id) { 0 }
+      example_request 'returns http status 422' do
+        expect(status).to eq(422)
+      end
+    end
   end
 
   post '/posts/:post_id/comments', :realistic_error_responses do
@@ -56,7 +69,7 @@ resource 'Comments' do
     context 'successfully created comment' do
       let!(:token) { jwt_token(user.id) }
 
-      example 'Create comment for logged in user' do
+      example 'Leave comment only as logged in user' do
         expect { do_request }.to change { Comment.count }.from(0).to(1)
         expect(status).to eq(200)
         created_comment = Comment.first
@@ -70,7 +83,7 @@ resource 'Comments' do
       example_request 'does not create comment for logged out user' do
         expect(status).to eq(400)
       end
-    end
+    end # shared examples
 
     context 'failures with post id', document: false do
       let!(:token) { jwt_token(user.id) }

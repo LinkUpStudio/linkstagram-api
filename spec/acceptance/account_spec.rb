@@ -11,9 +11,9 @@ resource 'Edit profile' do
     context 'get account as logged in user' do
       let(:token) { jwt_token(my_account.id) }
 
-      example_request 'Get page' do
+      example_request 'Get account' do
         expect(status).to eq(200)
-        expect(parsed_json).to eq(my_account.as_json)
+        expect(response_body).to eq(AccountBlueprint.render(my_account, view: :private))
       end
     end
 

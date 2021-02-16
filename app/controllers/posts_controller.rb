@@ -1,11 +1,16 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show destroy]
 
-  def index
+  def index # profile username in params
     page = to_int(params[:page])
     page = 0 if Post.page(page).out_of_range?
     posts = Post.ordered.includes([:author])
-    render json: PostBlueprint.render(posts.page(page), view: :with_author), status: 200
+    posts = posts_by_username(posts)
+    if posts.any? || Account.exists?(username: params[:profile_username])
+      return render json: PostBlueprint.render(posts.page(page)), status: 200
+    end
+
+    render json: { errors: 'Invalid username' }, status: 422
   end
 
   def create
@@ -14,14 +19,14 @@ class PostsController < ApplicationController
     post.author = current_user
 
     if post.save
-      return render json: PostBlueprint.render(post, view: :with_author), status: 200
+      return render json: PostBlueprint.render(post), status: 200
     end
 
     render json: { errors: post.errors }, status: 422
   end
 
   def show
-    render json: PostBlueprint.render(post, view: :with_author), status: 200
+    render json: PostBlueprint.render(post), status: 200
   end
 
   def destroy
@@ -31,6 +36,10 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def posts_by_username(posts)
+    PostFilter.call(posts, params)
+  end
 
   attr_reader :post
 

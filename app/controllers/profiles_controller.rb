@@ -3,11 +3,13 @@ class ProfilesController < ApplicationController
     page = to_int(params[:page])
     page = 0 if Account.page(page).out_of_range?
     profiles = Account.ordered
-    render json: AccountBlueprint.render(profiles.page(page), view: :normal), status: 200
+    render json: AccountBlueprint.render(profiles.page(page)), status: 200
   end
 
   def show
-    profile = Account.find(params[:id])
-    render json: AccountBlueprint.render(profile, view: :with_posts), status: 200
+    profile = Account.find_by_username(params[:username])
+    return render json: AccountBlueprint.render(profile), status: 200 if profile
+
+    render json: { errors: 'Invalid username' }, status: 422
   end
 end

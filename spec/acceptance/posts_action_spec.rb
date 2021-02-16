@@ -11,7 +11,7 @@ resource 'Posts create/read/delete actions' do
     let!(:posts) { create_list(:post, 2) }
 
     let(:token) { nil }
-    example_request 'Get all posts if user logged out' do
+    example_request 'Get all posts' do
       expect(status).to eq(200)
       expect(parsed_json.length).to eq(2)
     end
@@ -49,6 +49,42 @@ resource 'Posts create/read/delete actions' do
     end
   end
 
+  get '/profiles/:username/posts' do
+    parameter :username, 'Profile username'
+
+    let!(:user) { create(:account) }
+    let!(:user_posts) { create_list(:post, 2, author: user) }
+
+    context 'success' do
+      let!(:other_user) do
+        create(:account) do |user|
+          create_list(:post, 2, author: user)
+        end
+      end
+
+      let!(:username) { user.username }
+      example_request 'Get posts of single user' do
+        expect(status).to eq(200)
+        expect(parsed_json.length).to eq(user_posts.size)
+      end
+    end
+
+    context 'failures', document: false do
+      let!(:username) { 'bad_request' }
+      example_request 'returns 422' do
+        expect(status).to eq(422)
+      end
+    end
+
+    context 'failures', document: false do
+      let!(:boring_user) { create(:account, username: 'boring') }
+      let!(:username) { boring_user.username }
+      example_request 'returns 422' do
+        expect(status).to eq(200)
+      end
+    end
+  end
+
   post '/posts' do
     parameter :description, 'Post description'
 
@@ -80,9 +116,9 @@ resource 'Posts create/read/delete actions' do
     let!(:post) { create(:post) }
     let!(:id) { post.id }
     let(:token) { nil }
-    example_request 'Get a post if user logged out' do
+    example_request 'Get a post' do
       expect(status).to eq(200)
-      expect(response_body).to eq(PostBlueprint.render(post, view: :with_author))
+      expect(response_body).to eq(PostBlueprint.render(post))
     end
 
     context 'when user is logged in', document: false do
@@ -90,7 +126,7 @@ resource 'Posts create/read/delete actions' do
       let(:token) { jwt_token(user.id) }
       example_request 'Get a post if user logged in' do
         expect(status).to eq(200)
-        expect(response_body).to eq(PostBlueprint.render(post, view: :with_author))
+        expect(response_body).to eq(PostBlueprint.render(post))
       end
     end
 
