@@ -5,8 +5,7 @@ class PostsController < ApplicationController
   def index
     page = to_int(params[:page])
     page = 0 if Post.page(page).out_of_range?
-    posts = Post.ordered.includes([:author])
-    posts = posts_by_username(posts)
+    posts = find_posts
     if posts.any? || Account.exists?(username: params[:profile_username])
       return render json: PostBlueprint.render(posts.page(page)), status: 200
     end
@@ -38,11 +37,12 @@ class PostsController < ApplicationController
 
   private
 
-  def posts_by_username(posts)
+  attr_reader :post
+
+  def find_posts
+    posts = Post.ordered.includes([:author])
     PostFilter.call(posts, params)
   end
-
-  attr_reader :post
 
   def post_params
     params.require(:post).permit(:description)
