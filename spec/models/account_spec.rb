@@ -20,8 +20,8 @@ RSpec.describe Account, type: :model do
       expect(build(:account, username: Array('a'..'z').join)).not_to be_valid
     end
 
-    it 'is invalid without profile photo' do
-      expect(build(:account, profile_photo: nil)).to be_valid
+    it 'is valid without profile photo' do
+      expect(build(:account, profile_photo_data: nil)).to be_valid
     end
   end
 end

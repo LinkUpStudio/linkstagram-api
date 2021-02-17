@@ -104,7 +104,6 @@ class RodauthApp < Rodauth::Rails::App
         throw_error_status(422, "username", "must be present")
       end
       account[:username] = username
-      account[:profile_photo] = param("profile_photo")
     end
 
     # Perform additional actions after the account is created.

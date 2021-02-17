@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
 
   # show Nazar using of username
   def show
-    profile = Account.find_by_username(params[:username])
+    profile = Account.find_by_username(params[:username]) # custom method
     return render json: AccountBlueprint.render(profile), status: 200 if profile
 
     render json: { errors: 'Invalid username' }, status: 422

@@ -7,7 +7,7 @@ FactoryBot.define do
     sequence :username do |n|
       "user#{n}"
     end
-    profile_photo { 'Profile photo' }
+    profile_photo_data { Helpers::TestData.image_data }
     sequence :email do |n|
       "person#{n}@example.com"
     end
@@ -45,5 +45,13 @@ FactoryBot.define do
     message { 'Comment' }
     association :commenter, factory: :account
     post
+  end
+
+  factory :photo do
+    image_data { Helpers::TestData.image_data }
+
+    trait :with_post do
+      post
+    end
   end
 end

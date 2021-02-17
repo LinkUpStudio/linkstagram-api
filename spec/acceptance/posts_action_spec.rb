@@ -74,8 +74,10 @@ resource 'Posts create/read/delete actions' do
 
   post '/posts' do
     parameter :description, 'Post description'
+    parameter :photos, 'Photos'
 
     let(:author) { create(:account) }
+    let(:photos) { [Helpers::TestData.image_data] }
     let(:description) { 'Nice post' }
 
     context 'successfully created post' do
@@ -86,6 +88,7 @@ resource 'Posts create/read/delete actions' do
         created_post = Post.first
         expect(created_post.description).to eq(description)
         expect(created_post.author_id).to eq(author.id)
+        expect(created_post.photos.size).to eq(photos.size)
       end
     end
 
@@ -132,6 +135,12 @@ resource 'Posts create/read/delete actions' do
     let(:token) { jwt_token(posts.first.author_id) }
     example 'Delete post only when the user is the author' do
       expect { do_request }.to change(Post, :count).from(5).to(4)
+      expect(status).to eq(200)
+    end
+
+    let!(:photo) { create(:photo, :with_post, post: posts.first) }
+    example 'Delete photo along with post', document: false do
+      expect { do_request }.to change(Photo, :count).from(1).to(0)
       expect(status).to eq(200)
     end
 

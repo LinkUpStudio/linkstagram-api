@@ -5,7 +5,7 @@ resource 'Likes' do
   header 'Content-Type', 'application/json'
   header 'Authorization', :token
 
-  post '/posts/:post_id/likes', :realistic_error_responses do
+  post '/posts/:post_id/like', :realistic_error_responses do
     parameter :post_id, 'Post id'
 
     let!(:user) { create(:account) }
@@ -32,7 +32,7 @@ resource 'Likes' do
     include_examples 'failures with authentication'
   end
 
-  delete '/posts/:post_id/likes' do
+  delete '/posts/:post_id/like' do
     parameter :post_id, 'Post id'
 
     let!(:user) { create(:account) }

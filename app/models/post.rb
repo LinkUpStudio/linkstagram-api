@@ -3,6 +3,8 @@ class Post < ApplicationRecord
 
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :photos, dependent: :destroy
+  accepts_nested_attributes_for :photos
 
   scope :ordered, -> { order(created_at: :desc) }
 

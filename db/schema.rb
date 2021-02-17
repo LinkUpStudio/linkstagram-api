@@ -64,8 +64,8 @@ ActiveRecord::Schema.define(version: 2021_02_17_085553) do
   end
 
   create_table "photos", force: :cascade do |t|
-    t.text "image_data"
-    t.bigint "post_id", null: false
+    t.text "image_data", null: false
+    t.bigint "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_photos_on_post_id"

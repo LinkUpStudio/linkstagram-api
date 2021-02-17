@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[show destroy]
+  # before_action :set_post, only: %i[show destroy]
 
   # show Nazar fixing of routes
   def index
@@ -17,6 +17,13 @@ class PostsController < ApplicationController
     authenticate
     post = Post.new(post_params)
     post.author = current_user
+
+    params[:photos].each do |photo|
+      p = Photo.new
+      p.image_data = photo
+      p.post = post
+      p.save
+    end
 
     if post.save
       return render json: PostBlueprint.render(post), status: 200
@@ -37,18 +44,26 @@ class PostsController < ApplicationController
 
   private
 
-  attr_reader :post
+  # attr_reader :post
+  #
+  def post
+    @post ||= Post.find(params[:id])
+  end
+
+  def profile
+    # @profile ||= Post.find(params[:id])
+  end
 
   def find_posts
-    posts = Post.ordered.includes([:author])
-    PostFilter.call(posts, params)
+    posts = Post.ordered.includes(:author, :photos)
+    PostFilter.new.call(posts, params)
   end
 
   def post_params
-    params.require(:post).permit(:description)
+    params.require(:post).permit(:description, photos: [])
   end
 
-  def set_post
-    @post = Post.find(params[:id])
-  end
+  # def set_post
+  #   @post = Post.find(params[:id])
+  # end
 end
