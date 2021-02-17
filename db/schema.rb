@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_15_141408) do
+ActiveRecord::Schema.define(version: 2021_02_17_085553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2021_02_15_141408) do
     t.string "email", null: false
     t.string "username", null: false
     t.text "description"
-    t.string "profile_photo"
+    t.text "profile_photo_data"
     t.integer "followers"
     t.integer "following"
     t.index ["email"], name: "index_accounts_on_email", unique: true
@@ -63,6 +63,14 @@ ActiveRecord::Schema.define(version: 2021_02_15_141408) do
     t.index ["post_id"], name: "index_likes_on_post_id"
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.text "image_data"
+    t.bigint "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_photos_on_post_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.text "description"
     t.integer "likes_count", default: 0
@@ -79,5 +87,6 @@ ActiveRecord::Schema.define(version: 2021_02_15_141408) do
   add_foreign_key "comments", "posts"
   add_foreign_key "likes", "accounts"
   add_foreign_key "likes", "posts"
+  add_foreign_key "photos", "posts"
   add_foreign_key "posts", "accounts", column: "author_id"
 end

@@ -23,12 +23,6 @@ class Account < ApplicationRecord
 
   scope :ordered, -> { order(followers: :desc) }
 
-  scope :with_posts, lambda { |account_id|
-    rel = left_outer_joins(posts: :likes).where(id: account_id)
-    p rel.to_sql
-    rel
-  }
-
   private
 
   def set_followers
