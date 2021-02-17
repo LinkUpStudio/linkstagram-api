@@ -43,12 +43,18 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+# Authentication
 gem 'rodauth-rails', '~> 0.6'
-
 gem 'jwt'
 
-gem "pundit"
+# Authorization
+gem 'pundit'
 
+# Pagination
 gem 'kaminari'
 
+# Json Serializer
 gem 'blueprinter'
+
+# Photo uploader
+gem 'shrine', '~> 3.0'
