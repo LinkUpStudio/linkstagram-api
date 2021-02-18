@@ -32,6 +32,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.2'
   gem 'rspec_api_documentation'
   gem 'bullet'
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -59,6 +60,3 @@ gem 'blueprinter'
 # Photo uploader
 gem 'shrine', '~> 3.0'
 gem 'aws-sdk-s3', '~> 1'
-
-# For environment variables
-gem 'dotenv-rails'
