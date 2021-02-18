@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Account < ApplicationRecord
+  include ImageUploader::Attachment(:profile_photo)
+
   has_many :posts, inverse_of: 'author',
                    foreign_key: :author_id,
                    dependent: :destroy
@@ -25,6 +27,10 @@ class Account < ApplicationRecord
 
   def self.find_by_username(username)
     find_by!('lower(username) = ?', username.downcase.strip)
+  end
+
+  def profile_photo_url
+    profile_photo.url
   end
 
   private
