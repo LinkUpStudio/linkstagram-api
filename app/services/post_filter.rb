@@ -1,6 +1,6 @@
 class PostFilter
   def call(posts, params)
     username = params[:profile_username]
-    username.nil? ? posts : posts.by_username(username)
+    posts.by_username(username)
   end
 end

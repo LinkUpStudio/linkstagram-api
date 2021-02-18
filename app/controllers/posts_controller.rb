@@ -1,16 +1,9 @@
 class PostsController < ApplicationController
-  # before_action :set_post, only: %i[show destroy]
-
-  # show Nazar fixing of routes
   def index
     page = to_int(params[:page])
     page = 0 if Post.page(page).out_of_range?
     posts = find_posts
-    if posts.any? || Account.exists?(username: params[:profile_username])
-      return render json: PostBlueprint.render(posts.page(page)), status: 200
-    end
-
-    render json: { errors: 'Invalid username' }, status: 422
+    render json: PostBlueprint.render(posts.page(page)), status: 200
   end
 
   def create
@@ -18,12 +11,12 @@ class PostsController < ApplicationController
     post = Post.new(post_params)
     post.author = current_user
 
-    params[:photos].each do |photo|
-      p = Photo.new
-      p.image_data = photo
-      p.post = post
-      p.save
-    end
+    # params[:photos].each do |photo|
+    #   p = Photo.new
+    #   p.image_data = photo
+    #   p.post = post
+    #   p.save
+    # end # nested params
 
     if post.save
       return render json: PostBlueprint.render(post), status: 200
@@ -44,26 +37,23 @@ class PostsController < ApplicationController
 
   private
 
-  # attr_reader :post
-  #
   def post
     @post ||= Post.find(params[:id])
   end
 
   def profile
-    # @profile ||= Post.find(params[:id])
+    unless params[:profile_username].nil?
+      @profile ||= Account.find_by_username(params[:profile_username])
+    end
   end
 
   def find_posts
-    posts = Post.ordered.includes(:author, :photos)
-    PostFilter.new.call(posts, params)
+    posts = Post.ordered.includes(:author) # sense?
+    posts = PostFilter.new.call(posts, params) if profile
+    posts.includes(:photos)
   end
 
   def post_params
-    params.require(:post).permit(:description, photos: [])
+    params.require(:post).permit(:description, photos_attributes: [:image_data])
   end
-
-  # def set_post
-  #   @post = Post.find(params[:id])
-  # end
 end

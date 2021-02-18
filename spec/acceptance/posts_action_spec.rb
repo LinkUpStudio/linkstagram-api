@@ -37,7 +37,7 @@ resource 'Posts create/read/delete actions' do
     end
   end
 
-  get '/profiles/:username/posts' do
+  get '/profiles/:username/posts', :realistic_error_responses do
     parameter :username, 'Profile username'
 
     let!(:user) { create(:account) }
@@ -77,7 +77,7 @@ resource 'Posts create/read/delete actions' do
     parameter :photos, 'Photos'
 
     let(:author) { create(:account) }
-    let(:photos) { [Helpers::TestData.image_data] }
+    let(:photos) { Helpers::TestData.image_data }
     let(:description) { 'Nice post' }
 
     context 'successfully created post' do

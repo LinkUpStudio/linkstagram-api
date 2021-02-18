@@ -28,7 +28,7 @@ resource 'Edit profile' do
     parameter :description, 'User description'
 
     let(:username) { 'new_name' }
-    let(:profile_photo_data) { Helpers::TestData.image_data }
+    let(:profile_photo_data) { 'Helpers::TestData.image_data' }
     let(:description) { 'new description' }
     let(:my_account) { create(:account) }
 

@@ -24,7 +24,7 @@ resource 'Get profiles' do
     include_examples 'when page is invalid'
   end
 
-  get '/profiles/:username' do
+  get '/profiles/:username', :realistic_error_responses do
     parameter :username, 'Profile username'
 
     context 'success' do

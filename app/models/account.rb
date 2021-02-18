@@ -23,6 +23,10 @@ class Account < ApplicationRecord
 
   scope :ordered, -> { order(followers: :desc) }
 
+  scope :find_by_username, lambda { |username|
+    find_by!('lower(username) = ?', username.downcase.strip)
+  }
+
   private
 
   def set_followers
