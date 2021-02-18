@@ -58,4 +58,7 @@ gem 'blueprinter'
 
 # Photo uploader
 gem 'shrine', '~> 3.0'
-gem 'aws-sdk', '~> 3'
+gem 'aws-sdk-s3', '~> 1'
+
+# For environment variables
+gem 'dotenv-rails'
