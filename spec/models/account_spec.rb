@@ -23,5 +23,10 @@ RSpec.describe Account, type: :model do
     it 'is valid without profile photo' do
       expect(build(:account, profile_photo_data: nil)).to be_valid
     end
+
+    it 'is invalid with the existed username' do
+      create(:account, username: 'user')
+      expect(build(:account, username: 'User')).not_to be_valid
+    end
   end
 end

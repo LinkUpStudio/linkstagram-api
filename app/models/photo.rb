@@ -1,6 +1,6 @@
 class Photo < ApplicationRecord
   include ImageUploader::Attachment(:image)
-  belongs_to :post, optional: true
+  belongs_to :post
 
   validates :image_data, presence: true
 

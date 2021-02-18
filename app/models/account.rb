@@ -7,19 +7,14 @@ class Account < ApplicationRecord
                    foreign_key: :author_id,
                    dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :liked_posts, through: :likes,
-                         class_name: 'Post',
-                         inverse_of: :account,
-                         source: 'post'
   has_many :comments, inverse_of: 'commenter',
                       foreign_key: :commenter_id,
                       dependent: :destroy
 
   validates :username, presence: true,
-                       uniqueness: true,
+                       uniqueness: { case_sensitive: false },
                        length: { in: 3..20 },
                        format: { with: /[a-zA-Z0-9._-]+/ }
-  validates :description, presence: false
 
   before_create :set_followers
 

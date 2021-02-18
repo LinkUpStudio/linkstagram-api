@@ -5,7 +5,7 @@ resource 'Comments' do
   header 'Content-Type', 'application/json'
   header 'Authorization', :token
 
-  get '/posts/:post_id/comments' do
+  get '/posts/:post_id/comments', :realistic_error_responses do
     parameter :post_id, 'Post id'
     parameter :page, 'Comments page'
 
@@ -53,7 +53,7 @@ resource 'Comments' do
     context 'failure request', document: false do
       let!(:post_id) { 0 }
       example_request 'returns http status 422' do
-        expect(status).to eq(422)
+        expect(status).to eq(404)
       end
     end
   end

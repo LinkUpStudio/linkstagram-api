@@ -9,7 +9,7 @@ RSpec.describe Photo, type: :model do
     end
 
     it 'is valid without post id' do
-      expect(build(:photo, post: nil)).to be_valid
+      expect(build(:photo, post: nil)).not_to be_valid
     end
 
     it 'is invalid without image data' do

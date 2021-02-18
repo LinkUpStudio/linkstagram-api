@@ -2,12 +2,8 @@ class CommentsController < ApplicationController
   def index
     page = to_int(params[:page])
     page = 0 if Comment.page(page).out_of_range?
-    comments = Comment.ordered.includes([:commenter]).where(post_id: params[:post_id])
-    if comments.any?
-      return render json: CommentBlueprint.render(comments.page(page)), status: 200
-    end
-
-    render json: { error: 'Post id must exist' }, status: 422
+    comments = Comment.ordered.includes([:commenter]).where(post: post)
+    render json: CommentBlueprint.render(comments.page(page)), status: 200
   end
 
   def create
@@ -24,6 +20,10 @@ class CommentsController < ApplicationController
   end
 
   private
+
+  def post
+    @post ||= Post.find(params[:post_id])
+  end
 
   def comment_params
     params.require(:comment).permit(:message)

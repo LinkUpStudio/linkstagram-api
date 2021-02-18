@@ -17,10 +17,10 @@ Shrine.plugin :presign_endpoint, presign_options: lambda { |request|
 
 s3_options = {
   bucket: ENV.fetch('S3_BUCKET'),
-  access_key_id: ENV['S3_KEY_ID'],
-  secret_access_key: ENV['S3_SECRET_KEY'],
-  region: ENV['S3_REGION'],
-  endpoint: ENV['S3_ENDPOINT'],
+  access_key_id: ENV.fetch('S3_KEY_ID'),
+  secret_access_key: ENV.fetch('S3_SECRET_KEY'),
+  region: ENV.fetch('S3_REGION'),
+  endpoint: ENV.fetch('S3_ENDPOINT'),
   force_path_style: ENV['MINIO_FOR_S3'] == 'true'
 }
 
