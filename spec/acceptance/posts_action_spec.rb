@@ -52,9 +52,9 @@ resource 'Posts create/read/delete actions' do
 
       let!(:username) { user.username }
       example_request 'Get posts of single user' do
-      expect(status).to eq(200)
-      expect(parsed_json.length).to eq(user_posts.size)
-    end
+        expect(status).to eq(200)
+        expect(parsed_json.length).to eq(user_posts.size)
+      end
     end
 
     context 'failures' do
@@ -74,17 +74,21 @@ resource 'Posts create/read/delete actions' do
   end
 
   post '/posts' do
-    parameter :description, 'Post description'
-    parameter :photos_attributes, 'Photos'
+    with_options scope: :post do
+      parameter :description, 'Post description'
+      parameter :photos_attributes, 'Photos'
+    end
 
     let(:author) { create(:account) }
-    let(:photos_attributes) { [{ image: Helpers::TestData.image_data }] }
+    let!(:photos_attributes) { [{ image: Helpers::TestData.image_data }] }
     let(:description) { 'Nice post' }
 
     context 'successfully created post' do
       let(:token) { jwt_token(author.id) }
       example 'Create post' do
-        expect { do_request }.to change { Post.count }.from(0).to(1)
+        # expect { do_request }.to change { Post.count }.from(0).to(1)
+        do_request
+        # p response_body
         expect(status).to eq(200)
         created_post = Post.first
         expect(created_post.description).to eq(description)
@@ -139,7 +143,7 @@ resource 'Posts create/read/delete actions' do
       expect(status).to eq(200)
     end
 
-    let!(:photo) { create(:photo, :with_post, post: posts.first) }
+    let!(:photo) { create(:photo, post: posts.first) }
     example 'Delete photo along with post', document: false do
       expect { do_request }.to change(Photo, :count).from(1).to(0)
       expect(status).to eq(200)

@@ -10,7 +10,9 @@ class PostsController < ApplicationController
     authenticate
     post = Post.new(post_params)
     post.author = current_user
+    p params
 
+    p post_params
     if post.save
       return render json: PostBlueprint.render(post), status: 200
     end
@@ -46,6 +48,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:description, photos_attributes: [:image])
+    params.require(:post).permit(:description, photos_attributes: [{ image: {} }])
   end
 end

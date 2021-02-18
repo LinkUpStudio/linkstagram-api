@@ -25,7 +25,7 @@ class Account < ApplicationRecord
   end
 
   def profile_photo_url
-    profile_photo.url
+    profile_photo&.url
   end
 
   private

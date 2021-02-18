@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2021_02_17_085553) do
     t.string "email", null: false
     t.string "username", null: false
     t.text "description"
-    t.text "profile_photo_data"
+    t.jsonb "profile_photo_data"
     t.integer "followers"
     t.integer "following"
     t.index ["email"], name: "index_accounts_on_email", unique: true
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2021_02_17_085553) do
   end
 
   create_table "photos", force: :cascade do |t|
-    t.text "image_data", null: false
+    t.jsonb "image_data", null: false
     t.bigint "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

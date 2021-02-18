@@ -23,9 +23,11 @@ resource 'Edit profile' do
   end
 
   patch '/account' do
-    parameter :username, 'Username'
-    parameter :profile_photo, 'User profile photo'
-    parameter :description, 'User description'
+    with_options scope: :account do
+      parameter :username, 'Username'
+      parameter :profile_photo, 'User profile photo'
+      parameter :description, 'User description'
+    end
 
     let(:username) { 'new_name' }
     let(:profile_photo) { Helpers::TestData.image_data }
@@ -39,8 +41,7 @@ resource 'Edit profile' do
         expect(status).to eq(200)
         my_account.reload
         expect(my_account.username).to eq(username)
-        p my_account.profile_photo
-        # expect(my_account.profile_photo_data[:storage]).to eq('store')
+        expect(my_account.profile_photo_data['storage']).to eq('store')
         expect(my_account.description).to eq(description)
       end
     end

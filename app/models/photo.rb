@@ -5,6 +5,6 @@ class Photo < ApplicationRecord
   validates :image_data, presence: true
 
   def url
-    image.url
+    image&.url
   end
 end

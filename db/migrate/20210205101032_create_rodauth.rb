@@ -8,7 +8,7 @@ class CreateRodauth < ActiveRecord::Migration[6.1]
       t.string :email, null: false, index: { unique: true }
       t.string :username, null: false, index: { unique: true }
       t.text :description
-      t.text :profile_photo_data
+      t.jsonb :profile_photo_data
       t.integer :followers
       t.integer :following
     end
