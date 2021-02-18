@@ -58,3 +58,4 @@ gem 'blueprinter'
 
 # Photo uploader
 gem 'shrine', '~> 3.0'
+gem 'aws-sdk', '~> 3'
