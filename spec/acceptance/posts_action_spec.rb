@@ -88,6 +88,7 @@ resource 'Posts create/read/delete actions' do
         created_post = Post.first
         expect(created_post.description).to eq(description)
         expect(created_post.author_id).to eq(author.id)
+        p Photo.all
         expect(created_post.photos.size).to eq(photos.size)
       end
     end
