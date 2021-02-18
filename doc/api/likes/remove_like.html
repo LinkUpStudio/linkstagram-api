@@ -110,7 +110,7 @@ table th, table td {
 
       <div class="article">
         <h2>Remove like</h2>
-        <h3>DELETE /posts/:post_id/likes</h3>
+        <h3>DELETE /posts/:post_id/like</h3>
 
           <h3>Parameters</h3>
           <table class="parameters table table-striped table-bordered table-condensed">
@@ -140,7 +140,7 @@ table th, table td {
 Content-Type: application/json</pre>
 
           <h4>Route</h4>
-          <pre class="request route highlight">DELETE /posts/16/likes</pre>
+          <pre class="request route highlight">DELETE /posts/16/like</pre>
 
 
             <h4>Body</h4>
@@ -148,7 +148,7 @@ Content-Type: application/json</pre>
 }</pre>
 
             <h4>cURL</h4>
-            <pre class="request curl">curl &quot;http://localhost:3000/posts/16/likes&quot; -d &#39;{
+            <pre class="request curl">curl &quot;http://localhost:3000/posts/16/like&quot; -d &#39;{
 }&#39; -X DELETE \
 	-H &quot;Accept: application/json&quot; \
 	-H &quot;Content-Type: application/json&quot; \

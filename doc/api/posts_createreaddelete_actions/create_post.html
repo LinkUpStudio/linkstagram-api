@@ -129,6 +129,14 @@ table th, table td {
                   <span class="description">Post description</span>
                 </td>
               </tr>
+              <tr>
+                <td>
+                    <span class="name">photos_attributes</span>
+                </td>
+                <td>
+                  <span class="description">Photos</span>
+                </td>
+              </tr>
             </tbody>
           </table>
 
@@ -145,16 +153,26 @@ Content-Type: application/json</pre>
 
             <h4>Body</h4>
             <pre class="request body">{
-  "description": "Nice post"
+  "description": "Nice post",
+  "photos_attributes": [
+    {
+      "image": "{\"id\":\"2c37253997d9ad47c90c53fe1d994da0\",\"storage\":\"cache\",\"metadata\":{\"size\":68393,\"mime_type\":\"image/jpeg\",\"filename\":\"test.jpg\"}}"
+    }
+  ]
 }</pre>
 
             <h4>cURL</h4>
             <pre class="request curl">curl &quot;http://localhost:3000/posts&quot; -d &#39;{
-  &quot;description&quot;: &quot;Nice post&quot;
+  &quot;description&quot;: &quot;Nice post&quot;,
+  &quot;photos_attributes&quot;: [
+    {
+      &quot;image&quot;: &quot;{\&quot;id\&quot;:\&quot;2c37253997d9ad47c90c53fe1d994da0\&quot;,\&quot;storage\&quot;:\&quot;cache\&quot;,\&quot;metadata\&quot;:{\&quot;size\&quot;:68393,\&quot;mime_type\&quot;:\&quot;image/jpeg\&quot;,\&quot;filename\&quot;:\&quot;test.jpg\&quot;}}&quot;
+    }
+  ]
 }&#39; -X POST \
 	-H &quot;Accept: application/json&quot; \
 	-H &quot;Content-Type: application/json&quot; \
-	-H &quot;Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjo0N30.sxnLHyC7P1zPGHnFu6K4IvPQTIFJrD7oYbuGllEgSnc&quot; \
+	-H &quot;Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjo0OH0.dmezEqalyol2gsGI3wqwUtxmoS7v-hTKVola-lyXXSM&quot; \
 	-H &quot;Host: example.org&quot; \
 	-H &quot;Cookie: &quot;</pre>
 
@@ -164,7 +182,7 @@ Content-Type: application/json</pre>
             <h4>Status</h4>
             <pre class="response status">200 OK</pre>
               <h4>Body</h4>
-              <pre class="response body">{&quot;id&quot;:83,&quot;author&quot;:{&quot;username&quot;:&quot;user45&quot;,&quot;description&quot;:null,&quot;followers&quot;:719,&quot;following&quot;:747,&quot;profile_photo&quot;:&quot;Profile photo&quot;},&quot;created_at&quot;:&quot;2021-02-16 13:57:51 UTC&quot;,&quot;description&quot;:&quot;Nice post&quot;,&quot;likes_count&quot;:0}</pre>
+              <pre class="response body">{&quot;id&quot;:58,&quot;author&quot;:{&quot;username&quot;:&quot;user46&quot;,&quot;description&quot;:null,&quot;followers&quot;:869,&quot;following&quot;:649,&quot;profile_photo_data&quot;:&quot;{\&quot;id\&quot;:\&quot;9750007347ff7cf28960b252a23d9276\&quot;,\&quot;storage\&quot;:\&quot;cache\&quot;,\&quot;metadata\&quot;:{\&quot;size\&quot;:68393,\&quot;mime_type\&quot;:\&quot;image/jpeg\&quot;,\&quot;filename\&quot;:\&quot;test.jpg\&quot;}}&quot;},&quot;created_at&quot;:&quot;2021-02-18 14:37:55 UTC&quot;,&quot;description&quot;:&quot;Nice post&quot;,&quot;likes_count&quot;:0,&quot;photos&quot;:[{&quot;id&quot;:1,&quot;url&quot;:&quot;http://localhost:9000/images/store/d1dedff2fc082aab08b648e550ad2af9.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=minioadmin%2F20210218%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20210218T143755Z&amp;X-Amz-Expires=900&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=c65a789987b6ea01c4978b93d46a4428979d14e350be829844b5c1db33800248&quot;}]}</pre>
       </div>
     </div>
   </body>

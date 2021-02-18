@@ -16,15 +16,15 @@ Shrine.plugin :presign_endpoint, presign_options: lambda { |request|
 }
 
 s3_options = {
-  bucket: ENV['S3_BUCKET'],
+  bucket: ENV.fetch('S3_BUCKET'),
   access_key_id: ENV['S3_KEY_ID'],
   secret_access_key: ENV['S3_SECRET_KEY'],
   region: ENV['S3_REGION'],
   endpoint: ENV['S3_ENDPOINT'],
-  force_path_style: true # This will be important for minio to work
+  force_path_style: ENV['MINIO_FOR_S3'] == 'true'
 }
 
 Shrine.storages = {
   cache: Shrine::Storage::S3.new(prefix: 'cache', **s3_options),
-  store: Shrine::Storage::S3.new(**s3_options)
+  store: Shrine::Storage::S3.new(prefix: 'store', **s3_options)
 }

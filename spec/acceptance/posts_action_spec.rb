@@ -52,9 +52,9 @@ resource 'Posts create/read/delete actions' do
 
       let!(:username) { user.username }
       example_request 'Get posts of single user' do
-        expect(status).to eq(200)
-        expect(parsed_json.length).to eq(user_posts.size)
-      end
+      expect(status).to eq(200)
+      expect(parsed_json.length).to eq(user_posts.size)
+    end
     end
 
     context 'failures' do
@@ -66,18 +66,19 @@ resource 'Posts create/read/delete actions' do
     context 'failures', document: false do
       let!(:boring_user) { create(:account, username: 'boring') }
       let!(:username) { boring_user.username }
-      example_request 'returns 422' do
+      example_request 'returns empty array' do
         expect(status).to eq(200)
+        expect(boring_user.posts.size).to eq(0)
       end
     end
   end
 
   post '/posts' do
     parameter :description, 'Post description'
-    parameter :photos, 'Photos'
+    parameter :photos_attributes, 'Photos'
 
     let(:author) { create(:account) }
-    let(:photos) { Helpers::TestData.image_data }
+    let(:photos_attributes) { [{ image: Helpers::TestData.image_data }] }
     let(:description) { 'Nice post' }
 
     context 'successfully created post' do
@@ -88,8 +89,7 @@ resource 'Posts create/read/delete actions' do
         created_post = Post.first
         expect(created_post.description).to eq(description)
         expect(created_post.author_id).to eq(author.id)
-        p Photo.all
-        expect(created_post.photos.size).to eq(photos.size)
+        expect(created_post.photos.size).to eq(photos_attributes.size)
       end
     end
 

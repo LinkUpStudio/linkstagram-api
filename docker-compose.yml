@@ -35,6 +35,7 @@ services:
       EDITOR: vi
     depends_on:
       - postgres
+      - minio
 
   runner:
     <<: *backend
@@ -66,7 +67,6 @@ services:
       - 5432
 
   minio:
-    restart: always
     image: minio/minio:latest
     ports:
       - "9000:9000"

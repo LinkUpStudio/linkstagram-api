@@ -25,11 +25,11 @@ module Helpers
       attacher.column_data # or attacher.data in case of postgres jsonb column
     end
 
-    def uploaded_image
+    def uploaded_image(storage: :cache)
       file = File.open('spec/files/image.jpg', binmode: true)
 
       # for performance we skip metadata extraction and assign test metadata
-      uploaded_file = ImageUploader.upload(file, :store, metadata: false)
+      uploaded_file = ImageUploader.upload(file, storage, metadata: false)
       uploaded_file.metadata.merge!(
         'size' => File.size(file.path),
         'mime_type' => 'image/jpeg',

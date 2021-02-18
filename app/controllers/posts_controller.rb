@@ -11,13 +11,6 @@ class PostsController < ApplicationController
     post = Post.new(post_params)
     post.author = current_user
 
-    # params[:photos].each do |photo|
-    #   p = Photo.new
-    #   p.image_data = photo
-    #   p.post = post
-    #   p.save
-    # end # nested params
-
     if post.save
       return render json: PostBlueprint.render(post), status: 200
     end
@@ -42,18 +35,17 @@ class PostsController < ApplicationController
   end
 
   def profile
-    unless params[:profile_username].nil?
-      @profile ||= Account.find_by_username(params[:profile_username])
-    end
+    return unless params[:profile_username]
+
+    @profile ||= Account.find_by_username(params[:profile_username])
   end
 
   def find_posts
-    posts = Post.ordered.includes(:author) # sense?
-    posts = PostFilter.new.call(posts, params) if profile
-    posts.includes(:photos)
+    posts = profile ? profile.posts.includes(:photos) : Post.includes(:author, :photos)
+    posts.ordered
   end
 
   def post_params
-    params.require(:post).permit(:description, photos_attributes: [:image_data])
+    params.require(:post).permit(:description, photos_attributes: [:image])
   end
 end

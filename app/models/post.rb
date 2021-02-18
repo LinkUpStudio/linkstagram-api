@@ -4,11 +4,9 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :photos, dependent: :destroy
-  accepts_nested_attributes_for :photos
+  accepts_nested_attributes_for :photos, allow_destroy: true
 
   scope :ordered, -> { order(created_at: :desc) }
-
-  scope :by_username, ->(username) { Account.find_by_username(username).posts }
 
   def liked_by?(user)
     !!find_like_by(user)
