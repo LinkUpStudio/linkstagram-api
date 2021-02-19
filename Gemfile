@@ -32,7 +32,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.2'
   gem 'rspec_api_documentation'
   gem 'bullet'
-  gem 'dotenv-rails'
 end
 
 group :development do
@@ -44,6 +43,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+gem 'dotenv-rails'
 # Authentication
 gem 'rodauth-rails', '~> 0.6'
 gem 'jwt'
