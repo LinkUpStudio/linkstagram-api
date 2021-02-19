@@ -43,6 +43,8 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'rspec_api_documentation'
+gem 'apitome'
+
 gem 'dotenv-rails'
 # Authentication
 gem 'rodauth-rails', '~> 0.6'

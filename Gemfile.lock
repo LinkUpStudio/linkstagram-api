@@ -64,6 +64,9 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     after_commit_everywhere (0.1.5)
       activerecord (>= 4.2)
+    apitome (0.3.0)
+      kramdown
+      railties
     aws-eventstream (1.1.0)
     aws-partitions (1.427.0)
     aws-sdk-core (3.112.0)
@@ -131,6 +134,8 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
+    kramdown (2.3.0)
+      rexml
     listen (3.4.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -195,6 +200,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    rexml (3.2.4)
     roda (3.40.0)
       rack
     rodauth (2.9.0)
@@ -264,6 +270,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  apitome
   aws-sdk-s3 (~> 1)
   blueprinter
   bootsnap (>= 1.4.4)
