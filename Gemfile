@@ -30,7 +30,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 4.0.2'
-  gem 'rspec_api_documentation'
   gem 'bullet'
 end
 
@@ -43,6 +42,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+gem 'rspec_api_documentation'
 gem 'dotenv-rails'
 # Authentication
 gem 'rodauth-rails', '~> 0.6'
