@@ -291,6 +291,7 @@ DEPENDENCIES
   rspec_api_documentation
   shrine (~> 3.0)
   spring
+  sprockets (= 4.0.2)
   tzinfo-data
 
 RUBY VERSION
