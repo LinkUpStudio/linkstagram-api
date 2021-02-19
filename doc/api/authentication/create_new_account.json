@@ -1,0 +1,58 @@
+{
+  "resource": "Authentication",
+  "resource_explanation": null,
+  "http_method": "POST",
+  "route": "/create-account",
+  "description": "Create new account",
+  "explanation": null,
+  "parameters": [
+    {
+      "type": "string",
+      "example": "john_doe",
+      "required": true,
+      "name": "username",
+      "description": "Username"
+    },
+    {
+      "type": "string",
+      "example": "john_doe@example.com",
+      "required": true,
+      "name": "login",
+      "description": "User email"
+    },
+    {
+      "type": "string",
+      "required": true,
+      "name": "password",
+      "description": "User password"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/create-account",
+      "request_body": "{\n  \"username\": \"username\",\n  \"login\": \"user@example.com\",\n  \"password\": \"password\"\n}",
+      "request_headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"success\":\"Your account has been created\"}",
+      "response_headers": {
+        "Content-Type": "application/json"
+      },
+      "response_content_type": "application/json",
+      "curl": "curl \"http://localhost:3000/create-account\" -d '{\n  \"username\": \"username\",\n  \"login\": \"user@example.com\",\n  \"password\": \"password\"\n}' -X POST \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \"",
+      "request_headers_text": "Accept: application/json\nContent-Type: application/json",
+      "request_query_parameters_text": null,
+      "response_headers_text": "Content-Type: application/json"
+    }
+  ]
+}

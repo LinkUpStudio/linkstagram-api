@@ -1,0 +1,42 @@
+{
+  "resource": "Likes",
+  "resource_explanation": null,
+  "http_method": "POST",
+  "route": "/posts/:post_id/like",
+  "description": "Set like",
+  "explanation": null,
+  "parameters": [
+    {
+      "name": "post_id",
+      "description": "Post id"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/posts/13/like",
+      "request_body": "{\n}",
+      "request_headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": null,
+      "response_headers": {
+        "Content-Type": "application/json"
+      },
+      "response_content_type": "application/json",
+      "curl": "curl \"http://localhost:3000/posts/13/like\" -d '{\n}' -X POST \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoyOH0.ARC9EQcgJ88tTplbF7rXo0MJzJ-5k8wQD9JFGh2Kqak\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \"",
+      "request_headers_text": "Accept: application/json\nContent-Type: application/json",
+      "request_query_parameters_text": null,
+      "response_headers_text": "Content-Type: application/json"
+    }
+  ]
+}

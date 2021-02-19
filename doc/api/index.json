@@ -1,0 +1,145 @@
+{
+  "resources": [
+    {
+      "name": "Authentication",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Create new account",
+          "link": "authentication/create_new_account.json",
+          "groups": "all",
+          "route": "/create-account",
+          "method": "post"
+        },
+        {
+          "description": "Log in as registered user",
+          "link": "authentication/log_in_as_registered_user.json",
+          "groups": "all",
+          "route": "/login",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "name": "Comments",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Leave comment only as logged in user",
+          "link": "comments/leave_comment_only_as_logged_in_user.json",
+          "groups": "all",
+          "route": "/posts/:post_id/comments",
+          "method": "post"
+        },
+        {
+          "description": "Show comments for all user",
+          "link": "comments/show_comments_for_all_user.json",
+          "groups": "all",
+          "route": "/posts/:post_id/comments",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "name": "Edit profile",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Edit account",
+          "link": "edit_profile/edit_account.json",
+          "groups": "all",
+          "route": "/account",
+          "method": "patch"
+        },
+        {
+          "description": "Get account",
+          "link": "edit_profile/get_account.json",
+          "groups": "all",
+          "route": "/account",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "name": "Get profiles",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Get profile",
+          "link": "get_profiles/get_profile.json",
+          "groups": "all",
+          "route": "/profiles/:username",
+          "method": "get"
+        },
+        {
+          "description": "Get profiles of all users",
+          "link": "get_profiles/get_profiles_of_all_users.json",
+          "groups": "all",
+          "route": "/profiles",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "name": "Likes",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Remove like",
+          "link": "likes/remove_like.json",
+          "groups": "all",
+          "route": "/posts/:post_id/like",
+          "method": "delete"
+        },
+        {
+          "description": "Set like",
+          "link": "likes/set_like.json",
+          "groups": "all",
+          "route": "/posts/:post_id/like",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "name": "Posts create/read/delete actions",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Create post",
+          "link": "posts_create/read/delete_actions/create_post.json",
+          "groups": "all",
+          "route": "/posts",
+          "method": "post"
+        },
+        {
+          "description": "Delete post only when the user is the author",
+          "link": "posts_create/read/delete_actions/delete_post_only_when_the_user_is_the_author.json",
+          "groups": "all",
+          "route": "/posts/:id",
+          "method": "delete"
+        },
+        {
+          "description": "Get a post",
+          "link": "posts_create/read/delete_actions/get_a_post.json",
+          "groups": "all",
+          "route": "/posts/:id",
+          "method": "get"
+        },
+        {
+          "description": "Get all posts",
+          "link": "posts_create/read/delete_actions/get_all_posts.json",
+          "groups": "all",
+          "route": "/posts",
+          "method": "get"
+        },
+        {
+          "description": "Get posts of single user",
+          "link": "posts_create/read/delete_actions/get_posts_of_single_user.json",
+          "groups": "all",
+          "route": "/profiles/:username/posts",
+          "method": "get"
+        }
+      ]
+    }
+  ]
+}

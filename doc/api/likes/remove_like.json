@@ -1,0 +1,42 @@
+{
+  "resource": "Likes",
+  "resource_explanation": null,
+  "http_method": "DELETE",
+  "route": "/posts/:post_id/like",
+  "description": "Remove like",
+  "explanation": null,
+  "parameters": [
+    {
+      "name": "post_id",
+      "description": "Post id"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "DELETE",
+      "request_path": "/posts/16/like",
+      "request_body": "{\n}",
+      "request_headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": null,
+      "response_headers": {
+        "Content-Type": "application/json"
+      },
+      "response_content_type": "application/json",
+      "curl": "curl \"http://localhost:3000/posts/16/like\" -d '{\n}' -X DELETE \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjozMX0.xiIbxKfFc7KWEoDG1nRNvGKqBDxc4p8up-3ssaN5Y5s\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \"",
+      "request_headers_text": "Accept: application/json\nContent-Type: application/json",
+      "request_query_parameters_text": null,
+      "response_headers_text": "Content-Type: application/json"
+    }
+  ]
+}

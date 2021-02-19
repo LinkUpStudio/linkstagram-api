@@ -1,0 +1,40 @@
+{
+  "resource": "Edit profile",
+  "resource_explanation": null,
+  "http_method": "GET",
+  "route": "/account",
+  "description": "Get account",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/account",
+      "request_body": null,
+      "request_headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "request_query_parameters": {
+        "{\n}": null
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"username\":\"user1\",\"description\":null,\"email\":\"person1@example.com\",\"followers\":150,\"following\":100,\"profile_photo_url\":null}",
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl -g \"http://localhost:3000/account\" -X GET \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoxfQ.OhHNbs76m9_5VORZiN3xF2MYwOTBAGiXYWJ9-pPIU9A\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \"",
+      "request_headers_text": "Accept: application/json\nContent-Type: application/json",
+      "request_query_parameters_text": "{\n}: ",
+      "response_headers_text": "Content-Type: application/json; charset=utf-8"
+    }
+  ]
+}

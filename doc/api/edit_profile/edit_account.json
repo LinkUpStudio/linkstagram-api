@@ -1,0 +1,53 @@
+{
+  "resource": "Edit profile",
+  "resource_explanation": null,
+  "http_method": "PATCH",
+  "route": "/account",
+  "description": "Edit account",
+  "explanation": null,
+  "parameters": [
+    {
+      "scope": "account",
+      "name": "username",
+      "description": "Username"
+    },
+    {
+      "scope": "account",
+      "name": "profile_photo",
+      "description": "User profile photo"
+    },
+    {
+      "scope": "account",
+      "name": "description",
+      "description": "User description"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "PATCH",
+      "request_path": "/account",
+      "request_body": "{\n  \"account\": {\n    \"username\": \"new_name\",\n    \"profile_photo\": {\n      \"id\": \"1fdb8e913dac7893c21e54448e07869f\",\n      \"storage\": \"cache\",\n      \"metadata\": {\n        \"size\": 68393,\n        \"mime_type\": \"image/jpeg\",\n        \"filename\": \"test.jpg\"\n      }\n    },\n    \"description\": \"new description\"\n  }\n}",
+      "request_headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"username\":\"new_name\",\"description\":\"new description\",\"email\":\"person2@example.com\",\"followers\":150,\"following\":100,\"profile_photo_url\":\"http://localhost:9000/images/store/86fa33b7928d6cfacecb1d5919d9adaa.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=minioadmin%2F20210219%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210219T160420Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=5a662e080466d075608f05c32f7ae266e613ec821830e6984e7f4677f69b577e\"}",
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"http://localhost:3000/account\" -d '{\n  \"account\": {\n    \"username\": \"new_name\",\n    \"profile_photo\": {\n      \"id\": \"1fdb8e913dac7893c21e54448e07869f\",\n      \"storage\": \"cache\",\n      \"metadata\": {\n        \"size\": 68393,\n        \"mime_type\": \"image/jpeg\",\n        \"filename\": \"test.jpg\"\n      }\n    },\n    \"description\": \"new description\"\n  }\n}' -X PATCH \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoyfQ.NsVcMGH9coCMIjh8iNoB5Tieil3Usm-T1jVlf-PEXFY\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \"",
+      "request_headers_text": "Accept: application/json\nContent-Type: application/json",
+      "request_query_parameters_text": null,
+      "response_headers_text": "Content-Type: application/json; charset=utf-8"
+    }
+  ]
+}

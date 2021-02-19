@@ -1,0 +1,43 @@
+{
+  "resource": "Posts create/read/delete actions",
+  "resource_explanation": null,
+  "http_method": "GET",
+  "route": "/profiles/:username/posts",
+  "description": "Get posts of single user",
+  "explanation": null,
+  "parameters": [
+    {
+      "name": "username",
+      "description": "Profile username"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/profiles/user42/posts",
+      "request_body": null,
+      "request_headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "request_query_parameters": {
+        "{\n}": null
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "[{\"id\":52,\"author\":{\"username\":\"user42\",\"description\":null,\"followers\":150,\"following\":100,\"profile_photo_url\":null},\"created_at\":\"2021-02-19 16:04:20 UTC\",\"description\":\"Post description\",\"is_liked\":false,\"likes_count\":0,\"photos\":[]},{\"id\":51,\"author\":{\"username\":\"user42\",\"description\":null,\"followers\":150,\"following\":100,\"profile_photo_url\":null},\"created_at\":\"2021-02-19 16:04:20 UTC\",\"description\":\"Post description\",\"is_liked\":false,\"likes_count\":0,\"photos\":[]}]",
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl -g \"http://localhost:3000/profiles/user42/posts\" -X GET \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \"",
+      "request_headers_text": "Accept: application/json\nContent-Type: application/json",
+      "request_query_parameters_text": "{\n}: ",
+      "response_headers_text": "Content-Type: application/json; charset=utf-8"
+    }
+  ]
+}
