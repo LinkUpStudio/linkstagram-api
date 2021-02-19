@@ -7,6 +7,8 @@ class Post < ApplicationRecord
   accepts_nested_attributes_for :photos, allow_destroy: true
 
   scope :ordered, -> { order(created_at: :desc) }
+  scope :with_photos, -> { includes(:photos) }
+  scope :with_authors, -> { includes(:author) }
 
   def liked_by?(user)
     !!find_like_by(user)

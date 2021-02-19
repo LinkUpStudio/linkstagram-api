@@ -123,7 +123,7 @@ table th, table td {
             <tbody>
               <tr>
                 <td>
-                    <span class="name">username</span>
+                    <span class="name">account[username]</span>
                 </td>
                 <td>
                   <span class="description">Username</span>
@@ -131,7 +131,7 @@ table th, table td {
               </tr>
               <tr>
                 <td>
-                    <span class="name">profile_photo_data</span>
+                    <span class="name">account[profile_photo]</span>
                 </td>
                 <td>
                   <span class="description">User profile photo</span>
@@ -139,7 +139,7 @@ table th, table td {
               </tr>
               <tr>
                 <td>
-                    <span class="name">description</span>
+                    <span class="name">account[description]</span>
                 </td>
                 <td>
                   <span class="description">User description</span>
@@ -161,16 +161,36 @@ Content-Type: application/json</pre>
 
             <h4>Body</h4>
             <pre class="request body">{
-  "username": "new_name",
-  "profile_photo_data": "Helpers::TestData.image_data",
-  "description": "new description"
+  "account": {
+    "username": "new_name",
+    "profile_photo": {
+      "id": "7cd81b26af843bee6a4d5a0722dc7a19",
+      "storage": "cache",
+      "metadata": {
+        "size": 68393,
+        "mime_type": "image/jpeg",
+        "filename": "test.jpg"
+      }
+    },
+    "description": "new description"
+  }
 }</pre>
 
             <h4>cURL</h4>
             <pre class="request curl">curl &quot;http://localhost:3000/account&quot; -d &#39;{
-  &quot;username&quot;: &quot;new_name&quot;,
-  &quot;profile_photo_data&quot;: &quot;Helpers::TestData.image_data&quot;,
-  &quot;description&quot;: &quot;new description&quot;
+  &quot;account&quot;: {
+    &quot;username&quot;: &quot;new_name&quot;,
+    &quot;profile_photo&quot;: {
+      &quot;id&quot;: &quot;7cd81b26af843bee6a4d5a0722dc7a19&quot;,
+      &quot;storage&quot;: &quot;cache&quot;,
+      &quot;metadata&quot;: {
+        &quot;size&quot;: 68393,
+        &quot;mime_type&quot;: &quot;image/jpeg&quot;,
+        &quot;filename&quot;: &quot;test.jpg&quot;
+      }
+    },
+    &quot;description&quot;: &quot;new description&quot;
+  }
 }&#39; -X PATCH \
 	-H &quot;Accept: application/json&quot; \
 	-H &quot;Content-Type: application/json&quot; \
@@ -184,7 +204,7 @@ Content-Type: application/json</pre>
             <h4>Status</h4>
             <pre class="response status">200 OK</pre>
               <h4>Body</h4>
-              <pre class="response body">{&quot;username&quot;:&quot;new_name&quot;,&quot;description&quot;:&quot;new description&quot;,&quot;email&quot;:&quot;person2@example.com&quot;,&quot;followers&quot;:750,&quot;following&quot;:802,&quot;profile_photo_data&quot;:&quot;Helpers::TestData.image_data&quot;}</pre>
+              <pre class="response body">{&quot;username&quot;:&quot;new_name&quot;,&quot;description&quot;:&quot;new description&quot;,&quot;email&quot;:&quot;person2@example.com&quot;,&quot;followers&quot;:169,&quot;following&quot;:534,&quot;profile_photo_url&quot;:&quot;http://localhost:9000/images/store/da2397d4e39607e9ee68c9566e9bebff.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=minioadmin%2F20210219%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20210219T101633Z&amp;X-Amz-Expires=900&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=a04f279af78a9e453d0b0da480c3917ce272cb44d230ffd707a43fa5326784a0&quot;}</pre>
       </div>
     </div>
   </body>

@@ -123,7 +123,7 @@ table th, table td {
             <tbody>
               <tr>
                 <td>
-                    <span class="name">description</span>
+                    <span class="name">post[description]</span>
                 </td>
                 <td>
                   <span class="description">Post description</span>
@@ -131,7 +131,7 @@ table th, table td {
               </tr>
               <tr>
                 <td>
-                    <span class="name">photos_attributes</span>
+                    <span class="name">post[photos_attributes]</span>
                 </td>
                 <td>
                   <span class="description">Photos</span>
@@ -153,22 +153,42 @@ Content-Type: application/json</pre>
 
             <h4>Body</h4>
             <pre class="request body">{
-  "description": "Nice post",
-  "photos_attributes": [
-    {
-      "image": "{\"id\":\"2c37253997d9ad47c90c53fe1d994da0\",\"storage\":\"cache\",\"metadata\":{\"size\":68393,\"mime_type\":\"image/jpeg\",\"filename\":\"test.jpg\"}}"
-    }
-  ]
+  "post": {
+    "description": "Nice post",
+    "photos_attributes": [
+      {
+        "image": {
+          "id": "bc3a3010b766537c89eaf5623d5d7545",
+          "storage": "cache",
+          "metadata": {
+            "size": 68393,
+            "mime_type": "image/jpeg",
+            "filename": "test.jpg"
+          }
+        }
+      }
+    ]
+  }
 }</pre>
 
             <h4>cURL</h4>
             <pre class="request curl">curl &quot;http://localhost:3000/posts&quot; -d &#39;{
-  &quot;description&quot;: &quot;Nice post&quot;,
-  &quot;photos_attributes&quot;: [
-    {
-      &quot;image&quot;: &quot;{\&quot;id\&quot;:\&quot;2c37253997d9ad47c90c53fe1d994da0\&quot;,\&quot;storage\&quot;:\&quot;cache\&quot;,\&quot;metadata\&quot;:{\&quot;size\&quot;:68393,\&quot;mime_type\&quot;:\&quot;image/jpeg\&quot;,\&quot;filename\&quot;:\&quot;test.jpg\&quot;}}&quot;
-    }
-  ]
+  &quot;post&quot;: {
+    &quot;description&quot;: &quot;Nice post&quot;,
+    &quot;photos_attributes&quot;: [
+      {
+        &quot;image&quot;: {
+          &quot;id&quot;: &quot;bc3a3010b766537c89eaf5623d5d7545&quot;,
+          &quot;storage&quot;: &quot;cache&quot;,
+          &quot;metadata&quot;: {
+            &quot;size&quot;: 68393,
+            &quot;mime_type&quot;: &quot;image/jpeg&quot;,
+            &quot;filename&quot;: &quot;test.jpg&quot;
+          }
+        }
+      }
+    ]
+  }
 }&#39; -X POST \
 	-H &quot;Accept: application/json&quot; \
 	-H &quot;Content-Type: application/json&quot; \
@@ -182,7 +202,7 @@ Content-Type: application/json</pre>
             <h4>Status</h4>
             <pre class="response status">200 OK</pre>
               <h4>Body</h4>
-              <pre class="response body">{&quot;id&quot;:58,&quot;author&quot;:{&quot;username&quot;:&quot;user46&quot;,&quot;description&quot;:null,&quot;followers&quot;:869,&quot;following&quot;:649,&quot;profile_photo_data&quot;:&quot;{\&quot;id\&quot;:\&quot;9750007347ff7cf28960b252a23d9276\&quot;,\&quot;storage\&quot;:\&quot;cache\&quot;,\&quot;metadata\&quot;:{\&quot;size\&quot;:68393,\&quot;mime_type\&quot;:\&quot;image/jpeg\&quot;,\&quot;filename\&quot;:\&quot;test.jpg\&quot;}}&quot;},&quot;created_at&quot;:&quot;2021-02-18 14:37:55 UTC&quot;,&quot;description&quot;:&quot;Nice post&quot;,&quot;likes_count&quot;:0,&quot;photos&quot;:[{&quot;id&quot;:1,&quot;url&quot;:&quot;http://localhost:9000/images/store/d1dedff2fc082aab08b648e550ad2af9.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=minioadmin%2F20210218%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20210218T143755Z&amp;X-Amz-Expires=900&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=c65a789987b6ea01c4978b93d46a4428979d14e350be829844b5c1db33800248&quot;}]}</pre>
+              <pre class="response body">{&quot;id&quot;:58,&quot;author&quot;:{&quot;username&quot;:&quot;user46&quot;,&quot;description&quot;:null,&quot;followers&quot;:38,&quot;following&quot;:327,&quot;profile_photo_url&quot;:null},&quot;created_at&quot;:&quot;2021-02-19 10:16:33 UTC&quot;,&quot;description&quot;:&quot;Nice post&quot;,&quot;is_liked&quot;:false,&quot;likes_count&quot;:0,&quot;photos&quot;:[{&quot;id&quot;:1,&quot;url&quot;:&quot;http://localhost:9000/images/store/3e8648d9b2505ab0c7a2623d535ed88a.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=minioadmin%2F20210219%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20210219T101633Z&amp;X-Amz-Expires=900&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=dbb7c2656ba4a6a2ec55e4cf8411e8b40370ff9d8b7d00225b4cdd57dcb37c7d&quot;}]}</pre>
       </div>
     </div>
   </body>

@@ -52,7 +52,7 @@ resource 'Comments' do
 
     context 'failure request', document: false do
       let!(:post_id) { 0 }
-      example_request 'returns http status 422' do
+      example_request 'returns http status 404' do
         expect(status).to eq(404)
       end
     end

@@ -19,7 +19,7 @@ end
 RSpec.shared_examples 'failures when invalid username' do
   context 'failures', document: false do
     let!(:username) { parameter }
-    example_request 'returns 422' do
+    example_request 'returns 404' do
       expect(status).to eq(404)
     end
   end

@@ -3,16 +3,14 @@ class PostsController < ApplicationController
     page = to_int(params[:page])
     page = 0 if Post.page(page).out_of_range?
     posts = find_posts
-    render json: PostBlueprint.render(posts.page(page)), status: 200
+    render json: PostBlueprint.render(posts.page(page), user: user_or_nil), status: 200
   end
 
   def create
     authenticate
     post = Post.new(post_params)
     post.author = current_user
-    p params
 
-    p post_params
     if post.save
       return render json: PostBlueprint.render(post), status: 200
     end
@@ -21,7 +19,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    render json: PostBlueprint.render(post), status: 200
+    render json: PostBlueprint.render(post, user: user_or_nil), status: 200
   end
 
   def destroy
@@ -42,9 +40,13 @@ class PostsController < ApplicationController
     @profile ||= Account.find_by_username(params[:profile_username])
   end
 
+  def user_or_nil
+    rodauth.session_value ? current_user : nil
+  end
+
   def find_posts
-    posts = profile ? profile.posts.includes(:photos) : Post.includes(:author, :photos)
-    posts.ordered
+    posts = profile ? profile.posts : Post.with_authors
+    posts.ordered.with_photos
   end
 
   def post_params

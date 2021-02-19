@@ -7,7 +7,6 @@ FactoryBot.define do
     sequence :username do |n|
       "user#{n}"
     end
-    # profile_photo_data { Helpers::TestData.image_data }
     sequence :email do |n|
       "person#{n}@example.com"
     end

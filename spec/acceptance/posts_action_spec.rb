@@ -86,9 +86,7 @@ resource 'Posts create/read/delete actions' do
     context 'successfully created post' do
       let(:token) { jwt_token(author.id) }
       example 'Create post' do
-        # expect { do_request }.to change { Post.count }.from(0).to(1)
-        do_request
-        # p response_body
+        expect { do_request }.to change { Post.count }.from(0).to(1)
         expect(status).to eq(200)
         created_post = Post.first
         expect(created_post.description).to eq(description)
@@ -118,9 +116,10 @@ resource 'Posts create/read/delete actions' do
     context 'when user is logged in', document: false do
       let(:user) { create(:account) }
       let(:token) { jwt_token(user.id) }
+      let!(:like) { create(:like, post: post, account: user) }
       example_request 'Get a post if user logged in' do
         expect(status).to eq(200)
-        expect(response_body).to eq(PostBlueprint.render(post))
+        expect(response_body).to eq(PostBlueprint.render(post, user: user))
       end
     end
 

@@ -4,5 +4,6 @@ class Comment < ApplicationRecord
 
   validates :message, presence: true
 
-  scope :ordered, -> { order(created_at: :desc) }
+  scope :ordered, -> { order(created_at: :asc) }
+  scope :with_commenter, -> { includes([:commenter]) }
 end
