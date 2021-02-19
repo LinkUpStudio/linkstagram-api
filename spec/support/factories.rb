@@ -10,7 +10,8 @@ FactoryBot.define do
     sequence :email do |n|
       "person#{n}@example.com"
     end
-
+    following { 100 }
+    followers { 150 }
     trait :with_description do
       description { 'Description text' }
     end

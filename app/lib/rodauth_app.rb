@@ -104,6 +104,8 @@ class RodauthApp < Rodauth::Rails::App
         throw_error_status(422, "username", "must be present")
       end
       account[:username] = username
+      account[:followers] = rand(0..1000)
+      account[:following] = rand(0..1000)
     end
 
     # Perform additional actions after the account is created.

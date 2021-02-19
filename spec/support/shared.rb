@@ -29,7 +29,7 @@ RSpec.shared_examples 'when page is defined' do
   context 'when page is defined', document: false do
     let(:page) { 2 }
 
-    example_request 'Get profiles from the concrete page' do
+    example_request 'Get items from the concrete page' do
       expect(status).to eq(200)
       expect(parsed_json.length).to eq(1)
     end
@@ -40,7 +40,7 @@ RSpec.shared_examples 'when page is invalid' do
   context 'when page is invalid', document: false do
     let(:page) { 100 }
 
-    example_request 'returns profiles from the first page' do
+    example_request 'returns items from the first page' do
       expect(status).to eq(200)
       expect(parsed_json.length).to eq(2)
     end

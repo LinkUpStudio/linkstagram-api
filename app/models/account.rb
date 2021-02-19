@@ -16,8 +16,6 @@ class Account < ApplicationRecord
                        length: { in: 3..20 },
                        format: { with: /[a-zA-Z0-9._-]+/ }
 
-  before_create :set_followers
-
   scope :ordered, -> { order(followers: :desc) }
 
   def self.find_by_username(username)
@@ -26,12 +24,5 @@ class Account < ApplicationRecord
 
   def profile_photo_url
     profile_photo&.url
-  end
-
-  private
-
-  def set_followers
-    self.followers = rand(0..1000)
-    self.following = rand(0..1000)
   end
 end

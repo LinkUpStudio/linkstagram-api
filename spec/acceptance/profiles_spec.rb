@@ -7,12 +7,17 @@ resource 'Get profiles' do
   get '/profiles' do
     parameter :page, 'Profiles page'
 
-    let!(:profiles) { create_list(:account, 2) }
+    context 'successful request' do
+      let!(:popular_user) { create(:account, followers: 900) }
+      let!(:boring_user) { create(:account, followers: 50) }
 
-    example_request 'Get profiles of all users' do
-      expect(status).to eq(200)
-      expect(parsed_json.length).to eq(profiles.size)
-      expect(parsed_json.first['followers']).to be > parsed_json.last['followers']
+      example_request 'Get profiles of all users' do
+        expect(status).to eq(200)
+        expect(parsed_json.length).to eq(Account.count)
+        expect(parsed_json.first['followers']).to be > parsed_json.last['followers']
+      end
+
+      include_examples 'when page is invalid'
     end
 
     context 'when page is defined', content: false do
@@ -20,8 +25,6 @@ resource 'Get profiles' do
 
       include_examples 'when page is defined'
     end
-
-    include_examples 'when page is invalid'
   end
 
   get '/profiles/:username', :realistic_error_responses do
