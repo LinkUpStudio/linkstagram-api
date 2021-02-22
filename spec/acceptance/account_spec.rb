@@ -27,11 +27,17 @@ resource 'Edit profile' do
       parameter :username, 'Username'
       parameter :profile_photo, 'User profile photo'
       parameter :description, 'User description'
+      parameter :first_name, 'User first name'
+      parameter :last_name, 'User last name'
+      parameter :job_title, 'User job title'
     end
 
     let(:username) { 'new_name' }
     let(:profile_photo) { Helpers::TestData.image_data }
     let(:description) { 'new description' }
+    let(:first_name) { 'new first name' }
+    let(:last_name) { 'new last name' }
+    let(:job_title) { 'new job title' }
     let(:my_account) { create(:account) }
 
     context 'edit own account' do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_17_085553) do
+ActiveRecord::Schema.define(version: 2021_02_22_165802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -39,6 +39,9 @@ ActiveRecord::Schema.define(version: 2021_02_17_085553) do
     t.jsonb "profile_photo_data"
     t.integer "followers"
     t.integer "following"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "job_title"
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["username"], name: "index_accounts_on_username", unique: true
   end
