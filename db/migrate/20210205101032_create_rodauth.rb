@@ -2,8 +2,6 @@
 
 class CreateRodauth < ActiveRecord::Migration[6.1]
   def change
-    enable_extension 'citext'
-
     create_table :accounts do |t|
       t.string :email, null: false, index: { unique: true }
       t.string :username, null: false, index: { unique: true }
