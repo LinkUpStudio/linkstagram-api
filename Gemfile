@@ -26,11 +26,12 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'bullet'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'database_cleaner'
   gem 'factory_bot_rails'
+  gem 'rspec_api_documentation'
   gem 'rspec-rails', '~> 4.0.2'
-  gem 'bullet'
 end
 
 group :development do
@@ -42,13 +43,16 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-gem 'rspec_api_documentation'
-gem 'apitome'
-gem 'sprockets', '4.0.2'
 gem 'dotenv-rails'
+gem 'rack-cors'
+
+# API documentation pages
+gem 'apitome'
+gem 'sprockets', '~> 4.0'
+
 # Authentication
-gem 'rodauth-rails', '~> 0.6'
 gem 'jwt'
+gem 'rodauth-rails', '~> 0.9'
 
 # Authorization
 gem 'pundit'
@@ -60,5 +64,5 @@ gem 'kaminari'
 gem 'blueprinter'
 
 # Photo uploader
-gem 'shrine', '~> 3.0'
 gem 'aws-sdk-s3', '~> 1'
+gem 'shrine', '~> 3.0'
