@@ -1,14 +1,14 @@
 {
-  "resource": "Get profiles",
+  "resource": "Posts",
   "resource_explanation": null,
-  "http_method": "GET",
-  "route": "/profiles/:username",
-  "description": "Get profile",
+  "http_method": "DELETE",
+  "route": "/posts/:id",
+  "description": "Delete post only when the user is the author",
   "explanation": null,
   "parameters": [
     {
-      "name": "username",
-      "description": "Profile username"
+      "name": "id",
+      "description": "Post id"
     }
   ],
   "response_fields": [
@@ -16,27 +16,26 @@
   ],
   "requests": [
     {
-      "request_method": "GET",
-      "request_path": "/profiles/user96",
-      "request_body": null,
+      "request_method": "DELETE",
+      "request_path": "/posts/62",
+      "request_body": "{\n}",
       "request_headers": {
         "Accept": "application/json",
         "Content-Type": "application/json"
       },
       "request_query_parameters": {
-        "{\n}": null
       },
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\"username\":\"user96\",\"description\":null,\"followers\":150,\"following\":100,\"profile_photo_url\":null}",
+      "response_body": "{\"message\":\"Post successfully deleted.\"}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl -g \"http://localhost:3000/profiles/user96\" -X GET \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \"",
+      "curl": "curl \"http://localhost:3000/posts/62\" -d '{\n}' -X DELETE \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjo1M30._ZupGldH5ib43IvMQv8TDC3QegYblpj2RWfPOrw1gMM\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \"",
       "request_headers_text": "Accept: application/json\nContent-Type: application/json",
-      "request_query_parameters_text": "{\n}: ",
+      "request_query_parameters_text": null,
       "response_headers_text": "Content-Type: application/json; charset=utf-8"
     }
   ]

@@ -1,0 +1,48 @@
+{
+  "resource": "Posts",
+  "resource_explanation": null,
+  "http_method": "POST",
+  "route": "/posts",
+  "description": "Create post",
+  "explanation": null,
+  "parameters": [
+    {
+      "scope": "post",
+      "name": "description",
+      "description": "Post description"
+    },
+    {
+      "scope": "post",
+      "name": "photos_attributes",
+      "description": "Photos"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/posts",
+      "request_body": "{\n  \"post\": {\n    \"description\": \"Nice post\",\n    \"photos_attributes\": [\n      {\n        \"image\": {\n          \"id\": \"b2bfc976570169c2ece43a184ecbebf9\",\n          \"storage\": \"cache\",\n          \"metadata\": {\n            \"size\": 68393,\n            \"mime_type\": \"image/jpeg\",\n            \"filename\": \"test.jpg\"\n          }\n        }\n      }\n    ]\n  }\n}",
+      "request_headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"id\":58,\"author\":{\"username\":\"user46\",\"description\":null,\"first_name\":null,\"followers\":150,\"following\":100,\"job_title\":null,\"last_name\":null,\"profile_photo_url\":null},\"created_at\":\"2021-02-22 17:43:32 UTC\",\"description\":\"Nice post\",\"is_liked\":false,\"likes_count\":0,\"photos\":[{\"id\":1,\"url\":\"http://localhost:9000/images/store/4cbd5131c8d97b45c53b82488bd95ba0.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=minioadmin%2F20210222%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210222T174332Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=43262f52bd677f5a049b9c57b226c5706b27796232dfae4c66e518f167996320\"}]}",
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"http://localhost:3000/posts\" -d '{\n  \"post\": {\n    \"description\": \"Nice post\",\n    \"photos_attributes\": [\n      {\n        \"image\": {\n          \"id\": \"b2bfc976570169c2ece43a184ecbebf9\",\n          \"storage\": \"cache\",\n          \"metadata\": {\n            \"size\": 68393,\n            \"mime_type\": \"image/jpeg\",\n            \"filename\": \"test.jpg\"\n          }\n        }\n      }\n    ]\n  }\n}' -X POST \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjo0OH0.dmezEqalyol2gsGI3wqwUtxmoS7v-hTKVola-lyXXSM\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \"",
+      "request_headers_text": "Accept: application/json\nContent-Type: application/json",
+      "request_query_parameters_text": null,
+      "response_headers_text": "Content-Type: application/json; charset=utf-8"
+    }
+  ]
+}

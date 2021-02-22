@@ -1,6 +1,6 @@
 require 'acceptance_helper'
 
-resource 'Posts create/read/delete actions' do
+resource 'Posts' do
   header 'Accept', 'application/json'
   header 'Content-Type', 'application/json'
   header 'Authorization', :token

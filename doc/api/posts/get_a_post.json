@@ -1,9 +1,9 @@
 {
-  "resource": "Posts create/read/delete actions",
+  "resource": "Posts",
   "resource_explanation": null,
-  "http_method": "DELETE",
+  "http_method": "GET",
   "route": "/posts/:id",
-  "description": "Delete post only when the user is the author",
+  "description": "Get a post",
   "explanation": null,
   "parameters": [
     {
@@ -16,26 +16,27 @@
   ],
   "requests": [
     {
-      "request_method": "DELETE",
-      "request_path": "/posts/62",
-      "request_body": "{\n}",
+      "request_method": "GET",
+      "request_path": "/posts/59",
+      "request_body": null,
       "request_headers": {
         "Accept": "application/json",
         "Content-Type": "application/json"
       },
       "request_query_parameters": {
+        "{\n}": null
       },
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\"message\":\"Post successfully deleted.\"}",
+      "response_body": "{\"id\":59,\"author\":{\"username\":\"user47\",\"description\":null,\"first_name\":null,\"followers\":150,\"following\":100,\"job_title\":null,\"last_name\":null,\"profile_photo_url\":null},\"created_at\":\"2021-02-22 17:43:32 UTC\",\"description\":\"Post description\",\"is_liked\":false,\"likes_count\":0,\"photos\":[]}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:3000/posts/62\" -d '{\n}' -X DELETE \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjo1M30._ZupGldH5ib43IvMQv8TDC3QegYblpj2RWfPOrw1gMM\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \"",
+      "curl": "curl -g \"http://localhost:3000/posts/59\" -X GET \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: \" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \"",
       "request_headers_text": "Accept: application/json\nContent-Type: application/json",
-      "request_query_parameters_text": null,
+      "request_query_parameters_text": "{\n}: ",
       "response_headers_text": "Content-Type: application/json; charset=utf-8"
     }
   ]

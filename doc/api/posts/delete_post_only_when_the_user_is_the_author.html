@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Posts create/read/delete actions API</title>
+    <title>Posts API</title>
     <meta charset="utf-8">
     <style>
       
@@ -106,11 +106,11 @@ table th, table td {
   </head>
   <body>
     <div class="container">
-      <h1>Posts create/read/delete actions API</h1>
+      <h1>Posts API</h1>
 
       <div class="article">
-        <h2>Get posts of single user</h2>
-        <h3>GET /profiles/:username/posts</h3>
+        <h2>Delete post only when the user is the author</h2>
+        <h3>DELETE /posts/:id</h3>
 
           <h3>Parameters</h3>
           <table class="parameters table table-striped table-bordered table-condensed">
@@ -123,10 +123,10 @@ table th, table td {
             <tbody>
               <tr>
                 <td>
-                    <span class="name">username</span>
+                    <span class="name">id</span>
                 </td>
                 <td>
-                  <span class="description">Profile username</span>
+                  <span class="description">Post id</span>
                 </td>
               </tr>
             </tbody>
@@ -140,17 +140,19 @@ table th, table td {
 Content-Type: application/json</pre>
 
           <h4>Route</h4>
-          <pre class="request route highlight">GET /profiles/user42/posts</pre>
+          <pre class="request route highlight">DELETE /posts/62</pre>
 
-            <h4>Query Parameters</h4>
-            <pre class="request query_parameters highlight">{
-}: </pre>
 
+            <h4>Body</h4>
+            <pre class="request body">{
+}</pre>
 
             <h4>cURL</h4>
-            <pre class="request curl">curl -g &quot;http://localhost:3000/profiles/user42/posts&quot; -X GET \
+            <pre class="request curl">curl &quot;http://localhost:3000/posts/62&quot; -d &#39;{
+}&#39; -X DELETE \
 	-H &quot;Accept: application/json&quot; \
 	-H &quot;Content-Type: application/json&quot; \
+	-H &quot;Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjo1M30._ZupGldH5ib43IvMQv8TDC3QegYblpj2RWfPOrw1gMM&quot; \
 	-H &quot;Host: example.org&quot; \
 	-H &quot;Cookie: &quot;</pre>
 
@@ -160,7 +162,7 @@ Content-Type: application/json</pre>
             <h4>Status</h4>
             <pre class="response status">200 OK</pre>
               <h4>Body</h4>
-              <pre class="response body">[{&quot;id&quot;:52,&quot;author&quot;:{&quot;username&quot;:&quot;user42&quot;,&quot;description&quot;:null,&quot;followers&quot;:150,&quot;following&quot;:100,&quot;profile_photo_url&quot;:null},&quot;created_at&quot;:&quot;2021-02-19 16:04:20 UTC&quot;,&quot;description&quot;:&quot;Post description&quot;,&quot;is_liked&quot;:false,&quot;likes_count&quot;:0,&quot;photos&quot;:[]},{&quot;id&quot;:51,&quot;author&quot;:{&quot;username&quot;:&quot;user42&quot;,&quot;description&quot;:null,&quot;followers&quot;:150,&quot;following&quot;:100,&quot;profile_photo_url&quot;:null},&quot;created_at&quot;:&quot;2021-02-19 16:04:20 UTC&quot;,&quot;description&quot;:&quot;Post description&quot;,&quot;is_liked&quot;:false,&quot;likes_count&quot;:0,&quot;photos&quot;:[]}]</pre>
+              <pre class="response body">{&quot;message&quot;:&quot;Post successfully deleted.&quot;}</pre>
       </div>
     </div>
   </body>

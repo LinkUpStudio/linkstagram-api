@@ -1,6 +1,6 @@
 require 'acceptance_helper'
 
-resource 'Get profiles' do
+resource 'Profiles' do
   header 'Accept', 'application/json'
   header 'Content-Type', 'application/json'
 

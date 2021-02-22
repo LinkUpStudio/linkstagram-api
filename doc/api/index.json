@@ -61,26 +61,6 @@
       ]
     },
     {
-      "name": "Get profiles",
-      "explanation": null,
-      "examples": [
-        {
-          "description": "Get profile",
-          "link": "get_profiles/get_profile.json",
-          "groups": "all",
-          "route": "/profiles/:username",
-          "method": "get"
-        },
-        {
-          "description": "Get profiles of all users",
-          "link": "get_profiles/get_profiles_of_all_users.json",
-          "groups": "all",
-          "route": "/profiles",
-          "method": "get"
-        }
-      ]
-    },
-    {
       "name": "Likes",
       "explanation": null,
       "examples": [
@@ -101,42 +81,62 @@
       ]
     },
     {
-      "name": "Posts create/read/delete actions",
+      "name": "Posts",
       "explanation": null,
       "examples": [
         {
           "description": "Create post",
-          "link": "posts_create/read/delete_actions/create_post.json",
+          "link": "posts/create_post.json",
           "groups": "all",
           "route": "/posts",
           "method": "post"
         },
         {
           "description": "Delete post only when the user is the author",
-          "link": "posts_create/read/delete_actions/delete_post_only_when_the_user_is_the_author.json",
+          "link": "posts/delete_post_only_when_the_user_is_the_author.json",
           "groups": "all",
           "route": "/posts/:id",
           "method": "delete"
         },
         {
           "description": "Get a post",
-          "link": "posts_create/read/delete_actions/get_a_post.json",
+          "link": "posts/get_a_post.json",
           "groups": "all",
           "route": "/posts/:id",
           "method": "get"
         },
         {
           "description": "Get all posts",
-          "link": "posts_create/read/delete_actions/get_all_posts.json",
+          "link": "posts/get_all_posts.json",
           "groups": "all",
           "route": "/posts",
           "method": "get"
         },
         {
           "description": "Get posts of single user",
-          "link": "posts_create/read/delete_actions/get_posts_of_single_user.json",
+          "link": "posts/get_posts_of_single_user.json",
           "groups": "all",
           "route": "/profiles/:username/posts",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "name": "Profiles",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Get profile",
+          "link": "profiles/get_profile.json",
+          "groups": "all",
+          "route": "/profiles/:username",
+          "method": "get"
+        },
+        {
+          "description": "Get profiles of all users",
+          "link": "profiles/get_profiles_of_all_users.json",
+          "groups": "all",
+          "route": "/profiles",
           "method": "get"
         }
       ]

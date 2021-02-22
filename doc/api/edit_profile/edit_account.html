@@ -145,6 +145,30 @@ table th, table td {
                   <span class="description">User description</span>
                 </td>
               </tr>
+              <tr>
+                <td>
+                    <span class="name">account[first_name]</span>
+                </td>
+                <td>
+                  <span class="description">User first name</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">account[last_name]</span>
+                </td>
+                <td>
+                  <span class="description">User last name</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">account[job_title]</span>
+                </td>
+                <td>
+                  <span class="description">User job title</span>
+                </td>
+              </tr>
             </tbody>
           </table>
 
@@ -164,7 +188,7 @@ Content-Type: application/json</pre>
   "account": {
     "username": "new_name",
     "profile_photo": {
-      "id": "1fdb8e913dac7893c21e54448e07869f",
+      "id": "60e658cb9e14a80516f423c5a193cd1f",
       "storage": "cache",
       "metadata": {
         "size": 68393,
@@ -172,7 +196,10 @@ Content-Type: application/json</pre>
         "filename": "test.jpg"
       }
     },
-    "description": "new description"
+    "description": "new description",
+    "first_name": "new first name",
+    "last_name": "new last name",
+    "job_title": "new job title"
   }
 }</pre>
 
@@ -181,7 +208,7 @@ Content-Type: application/json</pre>
   &quot;account&quot;: {
     &quot;username&quot;: &quot;new_name&quot;,
     &quot;profile_photo&quot;: {
-      &quot;id&quot;: &quot;1fdb8e913dac7893c21e54448e07869f&quot;,
+      &quot;id&quot;: &quot;60e658cb9e14a80516f423c5a193cd1f&quot;,
       &quot;storage&quot;: &quot;cache&quot;,
       &quot;metadata&quot;: {
         &quot;size&quot;: 68393,
@@ -189,7 +216,10 @@ Content-Type: application/json</pre>
         &quot;filename&quot;: &quot;test.jpg&quot;
       }
     },
-    &quot;description&quot;: &quot;new description&quot;
+    &quot;description&quot;: &quot;new description&quot;,
+    &quot;first_name&quot;: &quot;new first name&quot;,
+    &quot;last_name&quot;: &quot;new last name&quot;,
+    &quot;job_title&quot;: &quot;new job title&quot;
   }
 }&#39; -X PATCH \
 	-H &quot;Accept: application/json&quot; \
@@ -204,7 +234,7 @@ Content-Type: application/json</pre>
             <h4>Status</h4>
             <pre class="response status">200 OK</pre>
               <h4>Body</h4>
-              <pre class="response body">{&quot;username&quot;:&quot;new_name&quot;,&quot;description&quot;:&quot;new description&quot;,&quot;email&quot;:&quot;person2@example.com&quot;,&quot;followers&quot;:150,&quot;following&quot;:100,&quot;profile_photo_url&quot;:&quot;http://localhost:9000/images/store/86fa33b7928d6cfacecb1d5919d9adaa.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=minioadmin%2F20210219%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20210219T160420Z&amp;X-Amz-Expires=900&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=5a662e080466d075608f05c32f7ae266e613ec821830e6984e7f4677f69b577e&quot;}</pre>
+              <pre class="response body">{&quot;username&quot;:&quot;new_name&quot;,&quot;description&quot;:&quot;new description&quot;,&quot;email&quot;:&quot;person2@example.com&quot;,&quot;first_name&quot;:&quot;new first name&quot;,&quot;followers&quot;:150,&quot;following&quot;:100,&quot;job_title&quot;:&quot;new job title&quot;,&quot;last_name&quot;:&quot;new last name&quot;,&quot;profile_photo_url&quot;:&quot;http://localhost:9000/images/store/534aaae5d4ec28eae464f1a07da123b5.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=minioadmin%2F20210222%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20210222T174332Z&amp;X-Amz-Expires=900&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=8e68da0c0f0e79cc71b1307b00bc9c2bec90c0f7f99122d6671b6eef62ba0c56&quot;}</pre>
       </div>
     </div>
   </body>
