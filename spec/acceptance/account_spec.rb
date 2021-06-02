@@ -6,13 +6,14 @@ resource 'Edit profile' do
   header 'Authorization', :token
 
   get '/account' do
-    let(:my_account) { create(:account) }
+    let(:my_account) { create(:account, :with_photo) }
 
     context 'get account as logged in user' do
       let(:token) { jwt_token(my_account.id) }
 
       example_request 'Get account' do
         expect(status).to eq(200)
+         response_body
         expect(response_body).to eq(AccountBlueprint.render(my_account, view: :private))
       end
     end

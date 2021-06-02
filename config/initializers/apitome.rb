@@ -3,5 +3,5 @@ Apitome.setup do |config|
   config.root = nil
   config.doc_path = "doc/api"
   config.title = "API Documentation"
-  config.readme = nil
+  config.readme = "../api.md"
 end

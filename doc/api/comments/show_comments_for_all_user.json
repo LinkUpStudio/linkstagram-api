@@ -33,15 +33,12 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "[{\"id\":1,\"commenter\":{\"username\":\"user8\",\"description\":null,\"followers\":150,\"following\":100,\"profile_photo_url\":null},\"created_at\":\"2021-02-19 16:04:20 UTC\",\"message\":\"Comment\"},{\"id\":2,\"commenter\":{\"username\":\"user8\",\"description\":null,\"followers\":150,\"following\":100,\"profile_photo_url\":null},\"created_at\":\"2021-02-19 16:04:20 UTC\",\"message\":\"Comment\"},{\"id\":3,\"commenter\":{\"username\":\"user8\",\"description\":null,\"followers\":150,\"following\":100,\"profile_photo_url\":null},\"created_at\":\"2021-02-19 16:04:20 UTC\",\"message\":\"Comment\"}]",
+      "response_body": "[{\"id\":1,\"commenter\":{\"username\":\"user8\",\"description\":null,\"first_name\":null,\"followers\":150,\"following\":100,\"job_title\":null,\"last_name\":null,\"profile_photo_url\":null},\"created_at\":\"2021-06-02 08:19:35 UTC\",\"message\":\"Comment\"},{\"id\":2,\"commenter\":{\"username\":\"user8\",\"description\":null,\"first_name\":null,\"followers\":150,\"following\":100,\"job_title\":null,\"last_name\":null,\"profile_photo_url\":null},\"created_at\":\"2021-06-02 08:19:35 UTC\",\"message\":\"Comment\"},{\"id\":3,\"commenter\":{\"username\":\"user8\",\"description\":null,\"first_name\":null,\"followers\":150,\"following\":100,\"job_title\":null,\"last_name\":null,\"profile_photo_url\":null},\"created_at\":\"2021-06-02 08:19:35 UTC\",\"message\":\"Comment\"}]",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl -g \"http://localhost:3000/posts/1/comments\" -X GET \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \"",
-      "request_headers_text": "Accept: application/json\nContent-Type: application/json",
-      "request_query_parameters_text": "{\n}: ",
-      "response_headers_text": "Content-Type: application/json; charset=utf-8"
+      "curl": "curl -g \"http://localhost:3000/posts/1/comments\" -X GET \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
     }
   ]
 }

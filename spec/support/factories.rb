@@ -16,6 +16,10 @@ FactoryBot.define do
       description { 'Description text' }
     end
 
+    trait :with_photo do
+      profile_photo_data { Helpers::TestData.image_data }
+    end
+
     transient do
       password { 'password' }
     end

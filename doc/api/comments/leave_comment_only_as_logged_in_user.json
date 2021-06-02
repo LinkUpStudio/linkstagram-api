@@ -32,15 +32,12 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\"id\":48,\"commenter\":{\"username\":\"user20\",\"description\":null,\"followers\":150,\"following\":100,\"profile_photo_url\":null},\"created_at\":\"2021-02-19 16:04:20 UTC\",\"message\":\"my first comment\"}",
+      "response_body": "{\"id\":48,\"commenter\":{\"username\":\"user20\",\"description\":null,\"first_name\":null,\"followers\":150,\"following\":100,\"job_title\":null,\"last_name\":null,\"profile_photo_url\":null},\"created_at\":\"2021-06-02 08:19:35 UTC\",\"message\":\"my first comment\"}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:3000/posts/9/comments\" -d '{\n  \"message\": \"my first comment\"\n}' -X POST \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoyMX0.-Oc3CJEChdZpFDGYmT3seqbJTo0ZXJ7FYr7Q0r6KnUA\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \"",
-      "request_headers_text": "Accept: application/json\nContent-Type: application/json",
-      "request_query_parameters_text": null,
-      "response_headers_text": "Content-Type: application/json; charset=utf-8"
+      "curl": "curl \"http://localhost:3000/posts/9/comments\" -d '{\n  \"message\": \"my first comment\"\n}' -X POST \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoyMX0.-Oc3CJEChdZpFDGYmT3seqbJTo0ZXJ7FYr7Q0r6KnUA\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
     }
   ]
 }
