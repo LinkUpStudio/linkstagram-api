@@ -44,7 +44,7 @@
     {
       "request_method": "PATCH",
       "request_path": "/account",
-      "request_body": "{\n  \"account\": {\n    \"username\": \"new_name\",\n    \"profile_photo\": {\n      \"id\": \"596c1a7d7818db548cd716647631b61b\",\n      \"storage\": \"cache\",\n      \"metadata\": {\n        \"size\": 68393,\n        \"mime_type\": \"image/jpeg\",\n        \"filename\": \"test.jpg\"\n      }\n    },\n    \"description\": \"new description\",\n    \"first_name\": \"new first name\",\n    \"last_name\": \"new last name\",\n    \"job_title\": \"new job title\"\n  }\n}",
+      "request_body": "{\n  \"account\": {\n    \"username\": \"new_name\",\n    \"profile_photo\": {\n      \"id\": \"85ec3b3cae2c5e6972ac9e1c3d29aa5a\",\n      \"storage\": \"cache\",\n      \"metadata\": {\n        \"size\": 68393,\n        \"mime_type\": \"image/jpeg\",\n        \"filename\": \"test.jpg\"\n      }\n    },\n    \"description\": \"new description\",\n    \"first_name\": \"new first name\",\n    \"last_name\": \"new last name\",\n    \"job_title\": \"new job title\"\n  }\n}",
       "request_headers": {
         "Accept": "application/json",
         "Content-Type": "application/json"
@@ -54,12 +54,12 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\"username\":\"new_name\",\"description\":\"new description\",\"email\":\"person2@example.com\",\"first_name\":\"new first name\",\"followers\":150,\"following\":100,\"job_title\":\"new job title\",\"last_name\":\"new last name\",\"profile_photo_url\":\"http://localhost:9000/images/store/883d3e31262b8e1fd6ca7aaebbddbfd0.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=minioadmin%2F20210602%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210602T081935Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=d5994b91e73a05c2e9b47d12e28ae424af7c6c5bf32d8d4748b1ba57ad7fc909\"}",
+      "response_body": "{\"username\":\"new_name\",\"description\":\"new description\",\"email\":\"person2@example.com\",\"first_name\":\"new first name\",\"followers\":150,\"following\":100,\"job_title\":\"new job title\",\"last_name\":\"new last name\",\"profile_photo_url\":\"http://localhost:9000/images/store/7a3305ec77af834f04bd8c50806a92d0.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=minioadmin%2F20210602%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210602T084931Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=0ae2f1f091eb587b91e92af1065a322ca0142a9c9a97ee430efd1d2279db1bd8\"}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:3000/account\" -d '{\n  \"account\": {\n    \"username\": \"new_name\",\n    \"profile_photo\": {\n      \"id\": \"596c1a7d7818db548cd716647631b61b\",\n      \"storage\": \"cache\",\n      \"metadata\": {\n        \"size\": 68393,\n        \"mime_type\": \"image/jpeg\",\n        \"filename\": \"test.jpg\"\n      }\n    },\n    \"description\": \"new description\",\n    \"first_name\": \"new first name\",\n    \"last_name\": \"new last name\",\n    \"job_title\": \"new job title\"\n  }\n}' -X PATCH \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoyfQ.NsVcMGH9coCMIjh8iNoB5Tieil3Usm-T1jVlf-PEXFY\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+      "curl": "curl \"http://localhost:3000/account\" -d '{\n  \"account\": {\n    \"username\": \"new_name\",\n    \"profile_photo\": {\n      \"id\": \"85ec3b3cae2c5e6972ac9e1c3d29aa5a\",\n      \"storage\": \"cache\",\n      \"metadata\": {\n        \"size\": 68393,\n        \"mime_type\": \"image/jpeg\",\n        \"filename\": \"test.jpg\"\n      }\n    },\n    \"description\": \"new description\",\n    \"first_name\": \"new first name\",\n    \"last_name\": \"new last name\",\n    \"job_title\": \"new job title\"\n  }\n}' -X PATCH \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoyfQ.NsVcMGH9coCMIjh8iNoB5Tieil3Usm-T1jVlf-PEXFY\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
     }
   ]
 }

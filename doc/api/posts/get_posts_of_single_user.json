@@ -29,7 +29,7 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "[{\"id\":52,\"author\":{\"username\":\"user42\",\"description\":null,\"first_name\":null,\"followers\":150,\"following\":100,\"job_title\":null,\"last_name\":null,\"profile_photo_url\":null},\"created_at\":\"2021-06-02 08:19:35 UTC\",\"description\":\"Post description\",\"is_liked\":false,\"likes_count\":0,\"photos\":[]},{\"id\":51,\"author\":{\"username\":\"user42\",\"description\":null,\"first_name\":null,\"followers\":150,\"following\":100,\"job_title\":null,\"last_name\":null,\"profile_photo_url\":null},\"created_at\":\"2021-06-02 08:19:35 UTC\",\"description\":\"Post description\",\"is_liked\":false,\"likes_count\":0,\"photos\":[]}]",
+      "response_body": "[{\"id\":52,\"author\":{\"username\":\"user42\",\"description\":null,\"first_name\":null,\"followers\":150,\"following\":100,\"job_title\":null,\"last_name\":null,\"profile_photo_url\":null},\"created_at\":\"2021-06-02 08:49:31 UTC\",\"description\":\"Post description\",\"is_liked\":false,\"likes_count\":0,\"photos\":[]},{\"id\":51,\"author\":{\"username\":\"user42\",\"description\":null,\"first_name\":null,\"followers\":150,\"following\":100,\"job_title\":null,\"last_name\":null,\"profile_photo_url\":null},\"created_at\":\"2021-06-02 08:49:31 UTC\",\"description\":\"Post description\",\"is_liked\":false,\"likes_count\":0,\"photos\":[]}]",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
