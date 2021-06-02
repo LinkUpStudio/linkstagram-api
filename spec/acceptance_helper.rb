@@ -17,7 +17,7 @@ module RspecApiDocumentation
 end
 
 RspecApiDocumentation.configure do |config|
-  config.format = [:html, :json]
+  config.format = :json
   config.request_body_formatter = proc do |params|
     JSON.pretty_generate(params)
   end

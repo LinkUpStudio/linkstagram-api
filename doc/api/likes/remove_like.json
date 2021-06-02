@@ -33,10 +33,7 @@
         "Content-Type": "application/json"
       },
       "response_content_type": "application/json",
-      "curl": "curl \"http://localhost:3000/posts/16/like\" -d '{\n}' -X DELETE \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjozMX0.xiIbxKfFc7KWEoDG1nRNvGKqBDxc4p8up-3ssaN5Y5s\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \"",
-      "request_headers_text": "Accept: application/json\nContent-Type: application/json",
-      "request_query_parameters_text": null,
-      "response_headers_text": "Content-Type: application/json"
+      "curl": "curl \"http://localhost:3000/posts/16/like\" -d '{\n}' -X DELETE \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjozMX0.xiIbxKfFc7KWEoDG1nRNvGKqBDxc4p8up-3ssaN5Y5s\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
     }
   ]
 }

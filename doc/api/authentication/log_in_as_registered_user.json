@@ -42,10 +42,7 @@
         "Content-Type": "application/json"
       },
       "response_content_type": "application/json",
-      "curl": "curl \"http://localhost:3000/login\" -d '{\n  \"login\": \"person4@example.com\",\n  \"password\": \"password\"\n}' -X POST \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \"",
-      "request_headers_text": "Accept: application/json\nContent-Type: application/json",
-      "request_query_parameters_text": null,
-      "response_headers_text": "Content-Type: application/json"
+      "curl": "curl \"http://localhost:3000/login\" -d '{\n  \"login\": \"person4@example.com\",\n  \"password\": \"password\"\n}' -X POST \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
     }
   ]
 }

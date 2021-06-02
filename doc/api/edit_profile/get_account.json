@@ -26,15 +26,12 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\"username\":\"user1\",\"description\":null,\"email\":\"person1@example.com\",\"first_name\":null,\"followers\":150,\"following\":100,\"job_title\":null,\"last_name\":null,\"profile_photo_url\":null}",
+      "response_body": "{\"username\":\"user1\",\"description\":null,\"email\":\"person1@example.com\",\"first_name\":null,\"followers\":150,\"following\":100,\"job_title\":null,\"last_name\":null,\"profile_photo_url\":\"http://localhost:9000/images/cache/a3524705d61506e012fe8a5706a4634e?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=minioadmin%2F20210602%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210602T081935Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=ca03e11fef52b8e1190c515734c2490485693994ab1727ad549c1abdae0c924f\"}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl -g \"http://localhost:3000/account\" -X GET \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoxfQ.OhHNbs76m9_5VORZiN3xF2MYwOTBAGiXYWJ9-pPIU9A\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \"",
-      "request_headers_text": "Accept: application/json\nContent-Type: application/json",
-      "request_query_parameters_text": "{\n}: ",
-      "response_headers_text": "Content-Type: application/json; charset=utf-8"
+      "curl": "curl -g \"http://localhost:3000/account\" -X GET \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoxfQ.OhHNbs76m9_5VORZiN3xF2MYwOTBAGiXYWJ9-pPIU9A\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
     }
   ]
 }
