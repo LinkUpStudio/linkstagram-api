@@ -6,6 +6,8 @@ class Post < ApplicationRecord
   has_many :photos, dependent: :destroy
   accepts_nested_attributes_for :photos, allow_destroy: true
 
+  validates :photos, presence: true
+
   scope :ordered, -> { order(created_at: :desc) }
   scope :with_photos, -> { includes(:photos) }
   scope :with_authors, -> { includes(:author) }

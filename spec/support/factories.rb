@@ -38,6 +38,9 @@ FactoryBot.define do
   factory :post do
     description { 'Post description' }
     association :author, factory: :account
+    photos do
+      Array.new(2) { association(:photo) }
+    end
   end
 
   factory :like do
@@ -53,6 +56,5 @@ FactoryBot.define do
 
   factory :photo do
     image_data { Helpers::TestData.image_data }
-    post
   end
 end

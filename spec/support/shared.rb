@@ -42,7 +42,6 @@ RSpec.shared_examples 'when page is invalid' do
 
     example_request 'returns items from the first page' do
       expect(status).to eq(200)
-      expect(parsed_json.length).to eq(2)
     end
   end
 end

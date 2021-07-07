@@ -1,9 +1,13 @@
 class PostsController < ApplicationController
   def index
     page = to_int(params[:page])
-    page = 0 if Post.page(page).out_of_range?
+    if Post.page(page).out_of_range?
+      return render json: []
+    end
+
     posts = find_posts
-    render json: PostBlueprint.render(posts.page(page), user: user_or_nil), status: 200
+    render json: PostBlueprint.render(posts.page(page), user: user_or_nil),
+           status: 200
   end
 
   def create
@@ -11,9 +15,7 @@ class PostsController < ApplicationController
     post = Post.new(post_params)
     post.author = current_user
 
-    if post.save
-      return render json: PostBlueprint.render(post), status: 200
-    end
+    return render json: PostBlueprint.render(post), status: 200 if post.save
 
     render json: { errors: post.errors }, status: 422
   end

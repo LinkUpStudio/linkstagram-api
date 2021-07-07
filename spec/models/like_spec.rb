@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Like, type: :model do
   describe '.create' do
-    let(:post) { create(:post) }
+    let!(:photo) { build(:photo) }
+    let!(:post) { create(:post, photos: [photo]) }
     let(:account) { create(:account) }
     let!(:like) { create(:like, account: account, post: post) }
     it 'does not create second like for the same post' do

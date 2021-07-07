@@ -26,7 +26,7 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\"username\":\"user1\",\"description\":null,\"email\":\"person1@example.com\",\"first_name\":null,\"followers\":150,\"following\":100,\"job_title\":null,\"last_name\":null,\"profile_photo_url\":\"http://localhost:9000/images/cache/301a3fe9178d71ac0ef2b2462eb79c06?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=minioadmin%2F20210602%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210602T084931Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=4af5f8b3403ad899d31c015853bd1ceb4f419ded26955ebb6bc4698695a3d7b4\"}",
+      "response_body": "{\"username\":\"user1\",\"description\":null,\"email\":\"person1@example.com\",\"first_name\":null,\"followers\":150,\"following\":100,\"job_title\":null,\"last_name\":null,\"profile_photo_url\":\"http://localhost:9000/images/cache/b8f9b6d10f9c818c9a1a800bc9ed029c.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=minioadmin%2F20210707%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210707T084030Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=bfe61ab47417ae46c8fc7184270ce229260fa3086ded10c1e805be1de81be4d0\"}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },

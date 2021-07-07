@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
   describe '#liked_by?' do
-    let(:post) { create(:post) }
+    let!(:photo) { build(:photo) }
+    let!(:post) { create(:post, photos: [photo]) }
     let(:user) { create(:account) }
     let(:other_user) { create(:account) }
     let!(:like) { create(:like, account: user, post: post) }
@@ -13,7 +14,8 @@ RSpec.describe Post, type: :model do
   end
 
   describe '#find_like_by' do
-    let(:post) { create(:post) }
+    let!(:photo) { build(:photo) }
+    let!(:post) { create(:post, photos: [photo]) }
     let(:user) { create(:account) }
     let(:other_user) { create(:account) }
     let!(:like) { create(:like, account: user, post: post) }

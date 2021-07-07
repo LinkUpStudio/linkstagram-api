@@ -76,15 +76,15 @@ resource 'Posts' do
   post '/posts' do
     with_options scope: :post do
       parameter :description, 'Post description'
-      parameter :photos_attributes, 'Photos'
+      parameter :photos_attributes, 'Photos', required: true
     end
 
     let(:author) { create(:account) }
     let!(:photos_attributes) { [{ image: Helpers::TestData.image_data }] }
-    let(:description) { 'Nice post' }
+    let!(:description) { 'Nice post' }
 
     context 'successfully created post' do
-      let(:token) { jwt_token(author.id) }
+      let!(:token) { jwt_token(author.id) }
       example 'Create post' do
         expect { do_request }.to change { Post.count }.from(0).to(1)
         expect(status).to eq(200)
@@ -144,7 +144,7 @@ resource 'Posts' do
 
     let!(:photo) { create(:photo, post: posts.first) }
     example 'Delete photo along with post', document: false do
-      expect { do_request }.to change(Photo, :count).from(1).to(0)
+      expect { do_request }.to change(Photo, :count).by(-3)
       expect(status).to eq(200)
     end
 

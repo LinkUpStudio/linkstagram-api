@@ -13,6 +13,7 @@
     },
     {
       "scope": "post",
+      "required": true,
       "name": "photos_attributes",
       "description": "Photos"
     }
@@ -24,7 +25,7 @@
     {
       "request_method": "POST",
       "request_path": "/posts",
-      "request_body": "{\n  \"post\": {\n    \"description\": \"Nice post\",\n    \"photos_attributes\": [\n      {\n        \"image\": {\n          \"id\": \"3a395085a5adb620bb5c024e9919adc9\",\n          \"storage\": \"cache\",\n          \"metadata\": {\n            \"size\": 68393,\n            \"mime_type\": \"image/jpeg\",\n            \"filename\": \"test.jpg\"\n          }\n        }\n      }\n    ]\n  }\n}",
+      "request_body": "{\n  \"post\": {\n    \"description\": \"Nice post\",\n    \"photos_attributes\": [\n      {\n        \"image\": {\n          \"id\": \"23cf096f93e15a6aa7eebb9d8267895e.jpg\",\n          \"storage\": \"cache\",\n          \"metadata\": {\n            \"filename\": \"test.jpg\",\n            \"size\": 68393,\n            \"mime_type\": \"image/jpeg\"\n          }\n        }\n      }\n    ]\n  }\n}",
       "request_headers": {
         "Accept": "application/json",
         "Content-Type": "application/json"
@@ -34,12 +35,12 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\"id\":58,\"author\":{\"username\":\"user46\",\"description\":null,\"first_name\":null,\"followers\":150,\"following\":100,\"job_title\":null,\"last_name\":null,\"profile_photo_url\":null},\"created_at\":\"2021-06-02 08:49:31 UTC\",\"description\":\"Nice post\",\"is_liked\":false,\"likes_count\":0,\"photos\":[{\"id\":1,\"url\":\"http://localhost:9000/images/store/09b4d404fbf3fcb20cfd3caf296b8005.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=minioadmin%2F20210602%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210602T084931Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=fb8d213204c9c4bbc186a86711bb19e32dfba19f4c1b07d4b52b4c42db351db9\"}]}",
+      "response_body": "{\"id\":58,\"author\":{\"username\":\"user46\",\"description\":null,\"first_name\":null,\"followers\":150,\"following\":100,\"job_title\":null,\"last_name\":null,\"profile_photo_url\":null},\"comments_count\":0,\"created_at\":\"2021-07-07 08:40:32 UTC\",\"description\":\"Nice post\",\"is_liked\":false,\"likes_count\":0,\"photos\":[{\"id\":115,\"url\":\"http://localhost:9000/images/store/ed441b1fb195703c1740ecf7f07ac6a7.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=minioadmin%2F20210707%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210707T084032Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=6733e7c721fa9850fac568793ea14ce42bf3a3ef7f6cd9edd5330effc44eaf54\"}]}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:3000/posts\" -d '{\n  \"post\": {\n    \"description\": \"Nice post\",\n    \"photos_attributes\": [\n      {\n        \"image\": {\n          \"id\": \"3a395085a5adb620bb5c024e9919adc9\",\n          \"storage\": \"cache\",\n          \"metadata\": {\n            \"size\": 68393,\n            \"mime_type\": \"image/jpeg\",\n            \"filename\": \"test.jpg\"\n          }\n        }\n      }\n    ]\n  }\n}' -X POST \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjo0OH0.dmezEqalyol2gsGI3wqwUtxmoS7v-hTKVola-lyXXSM\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+      "curl": "curl \"http://localhost:3000/posts\" -d '{\n  \"post\": {\n    \"description\": \"Nice post\",\n    \"photos_attributes\": [\n      {\n        \"image\": {\n          \"id\": \"23cf096f93e15a6aa7eebb9d8267895e.jpg\",\n          \"storage\": \"cache\",\n          \"metadata\": {\n            \"filename\": \"test.jpg\",\n            \"size\": 68393,\n            \"mime_type\": \"image/jpeg\"\n          }\n        }\n      }\n    ]\n  }\n}' -X POST \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjo0OH0.dmezEqalyol2gsGI3wqwUtxmoS7v-hTKVola-lyXXSM\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
     }
   ]
 }

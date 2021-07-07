@@ -29,7 +29,7 @@ module Helpers
       file = File.open('spec/files/image.jpg', binmode: true)
 
       # for performance we skip metadata extraction and assign test metadata
-      uploaded_file = ImageUploader.upload(file, storage, metadata: false)
+      uploaded_file = ImageUploader.upload(file, storage, metadata: true)
       uploaded_file.metadata.merge!(
         'size' => File.size(file.path),
         'mime_type' => 'image/jpeg',
