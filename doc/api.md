@@ -6,7 +6,7 @@
  Linkstagram requires direct photo uploading onto S3 storage, which
  can de done with Uppy file-uploader.
  <br> Firstly, it gets AWS credentials with the following request:
- <br>`GET /s3/params`
+ <br>`GET /s3/params?filename=image.png&type=image/png`
  <br> It returns the HTTP verb (POST) and the S3 URL to which the file
   should be uploaded, along with the required POST parameters and request headers.
  <br> Secondly, Uppy's AWS S3 plugin would then make a request to this endpoint and use these parameters to upload the
