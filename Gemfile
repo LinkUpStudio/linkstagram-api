@@ -58,6 +58,7 @@ gem 'rodauth-rails', '~> 0.9'
 gem 'pundit'
 
 # Pagination
+gem 'api-pagination'
 gem 'kaminari'
 
 # Json Serializer

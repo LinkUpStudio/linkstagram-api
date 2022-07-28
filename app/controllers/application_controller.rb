@@ -10,12 +10,6 @@ class ApplicationController < ActionController::API
     render json: { error: 'User is not allowed to perform this action' }, status: 401
   end
 
-  def to_int(str)
-    Integer(str || 0)
-  rescue ArgumentError, TypeError
-    0
-  end
-
   def authenticate
     rodauth.require_authentication
   end

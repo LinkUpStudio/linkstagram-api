@@ -7,6 +7,7 @@ resource 'Posts' do
 
   get '/posts' do
     parameter :page, 'Posts page'
+    parameter :per_page, 'Posts per page'
 
     let!(:posts) { create_list(:post, 2) }
 
@@ -28,9 +29,9 @@ resource 'Posts' do
     context 'pagination' do
       let(:author) { create(:account) }
 
-      context 'when page is defined' do
+      context 'when page and per_page defined' do
         let!(:posts) { create_list(:post, 26, author: author) }
-        include_examples 'when page is defined'
+        include_examples 'when page and per_page defined'
       end
 
       include_examples 'when page is invalid'

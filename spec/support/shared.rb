@@ -25,9 +25,10 @@ RSpec.shared_examples 'failures when invalid username' do
   end
 end
 
-RSpec.shared_examples 'when page is defined' do
-  context 'when page is defined', document: false do
+RSpec.shared_examples 'when page and per_page defined' do
+  context 'when page and per_page defined', document: false do
     let(:page) { 2 }
+    let(:per_page) { 25 }
 
     example_request 'Get items from the concrete page' do
       expect(status).to eq(200)

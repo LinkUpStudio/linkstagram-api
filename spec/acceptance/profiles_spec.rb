@@ -6,6 +6,7 @@ resource 'Profiles' do
 
   get '/profiles' do
     parameter :page, 'Profiles page'
+    parameter :per_page, 'Profiles per page'
 
     context 'successful request' do
       let!(:popular_user) { create(:account, followers: 900) }
@@ -20,10 +21,10 @@ resource 'Profiles' do
       include_examples 'when page is invalid'
     end
 
-    context 'when page is defined', content: false do
+    context 'when page and per_page defined', content: false do
       let!(:profiles) { create_list(:account, 26) }
 
-      include_examples 'when page is defined'
+      include_examples 'when page and per_page defined'
     end
   end
 

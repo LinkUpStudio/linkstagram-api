@@ -1,13 +1,7 @@
 class PostsController < ApplicationController
   def index
-    page = to_int(params[:page])
-    if Post.page(page).out_of_range?
-      return render json: []
-    end
-
-    posts = find_posts
-    render json: PostBlueprint.render(posts.page(page), user: user_or_nil),
-           status: 200
+    posts = paginate(find_posts)
+    render json: PostBlueprint.render(posts, user: user_or_nil), status: 200
   end
 
   def create

@@ -8,6 +8,7 @@ resource 'Comments' do
   get '/posts/:post_id/comments', :realistic_error_responses do
     parameter :post_id, 'Post id'
     parameter :page, 'Comments page'
+    parameter :per_page, 'Comments per page'
 
     let!(:post) { create(:post) }
     let!(:user) { create(:account) }
@@ -41,12 +42,12 @@ resource 'Comments' do
       end
       let!(:post_id) { post.id }
 
-      context 'when page is defined', content: false do
+      context 'when page and per_page defined', content: false do
         let!(:comments) do
           create_list(:comment, 26, post: post, commenter: user)
         end
 
-        include_examples 'when page is defined'
+        include_examples 'when page and per_page defined'
       end
     end
 
