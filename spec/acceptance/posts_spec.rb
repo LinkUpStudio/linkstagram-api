@@ -7,7 +7,7 @@ resource 'Posts' do
 
   get '/posts' do
     parameter :page, 'Posts page'
-    parameter :per_page, 'Posts per page'
+    parameter :per_page, 'Posts per page', default: 25
 
     let!(:posts) { create_list(:post, 2) }
 

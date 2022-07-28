@@ -8,7 +8,7 @@ resource 'Comments' do
   get '/posts/:post_id/comments', :realistic_error_responses do
     parameter :post_id, 'Post id'
     parameter :page, 'Comments page'
-    parameter :per_page, 'Comments per page'
+    parameter :per_page, 'Comments per page', default: 25
 
     let!(:post) { create(:post) }
     let!(:user) { create(:account) }

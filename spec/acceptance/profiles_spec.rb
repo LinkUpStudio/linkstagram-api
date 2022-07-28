@@ -6,7 +6,7 @@ resource 'Profiles' do
 
   get '/profiles' do
     parameter :page, 'Profiles page'
-    parameter :per_page, 'Profiles per page'
+    parameter :per_page, 'Profiles per page', default: 25
 
     context 'successful request' do
       let!(:popular_user) { create(:account, followers: 900) }

@@ -1,0 +1,115 @@
+name: Check and Deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+jobs:
+  run-unit-tests:
+    name: Run Unit Tests
+    runs-on: ubuntu-latest
+
+    env:
+      RAILS_ENV: test
+      RAILS_MASTER_KEY: df2ec6c90243365671101faa980d7a53
+
+    services:
+      minio:
+        image: fclairamb/minio-github-actions
+        ports:
+          - 9000:9000
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up PostgreSQL
+        run: |
+          sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+          wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+          sudo apt-get update
+          echo "Install postgresql"
+          sudo apt-get -yq install postgresql-14
+          echo "Restart postgres"
+          sudo service postgresql restart
+          sudo -u postgres createuser --superuser "$USER"
+          sudo -u postgres createdb linkstagram_api_test
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Run migrations
+        run: bin/rails db:migrate
+
+      - name: Run tests
+        run: bundle exec rspec --format documentation
+
+  deploy-to-production:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: run-unit-tests
+
+    name: Deploy to production
+    runs-on: ubuntu-latest
+
+    environment:
+      name: production
+      url: https://linkstagram-api.linkupst.com
+
+    env:
+      RAILS_ENV: test
+      RAILS_MASTER_KEY: df2ec6c90243365671101faa980d7a53
+
+    services:
+      minio:
+        image: fclairamb/minio-github-actions
+        ports:
+          - 9000:9000
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Set up PostgreSQL
+        run: |
+          sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+          wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+          sudo apt-get update
+          echo "Install postgresql"
+          sudo apt-get -yq install postgresql-14
+          echo "Restart postgres"
+          sudo service postgresql restart
+          sudo -u postgres createuser --superuser "$USER"
+          sudo -u postgres createdb linkstagram_api_test
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Run migrations
+        run: bin/rails db:migrate
+
+      - name: Generate docs
+        run: bin/rails docs:generate
+
+      - name: Temporary commit
+        id: temporary_commit
+        uses: EndBug/add-and-commit@v8
+        with:
+          push: false
+
+      - name: Push to dokku
+        uses: dokku/github-action@master
+        with:
+          git_remote_url: ssh://dokku@linkstagram-api.linkupst.com:22/linkstagram-api
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ci_commit: ${{ steps.temporary_commit.outputs.commit_sha }}
+          git_push_flags: --force
