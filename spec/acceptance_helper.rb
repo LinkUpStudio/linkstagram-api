@@ -26,7 +26,7 @@ RspecApiDocumentation.configure do |config|
     response_body
   end
   config.request_headers_to_include = %w[Content-Type Accept]
-  config.response_headers_to_include = %w[Content-Type]
+  config.response_headers_to_include = %w[Content-Type per-page total]
 
   config.curl_host = 'http://localhost:3000'
   config.api_name = 'Linkstagram API'
